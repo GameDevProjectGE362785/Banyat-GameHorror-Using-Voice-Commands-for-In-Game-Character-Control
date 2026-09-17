@@ -1,17 +1,15 @@
 [gd_scene format=3 uid="uid://kpb4chml8u5f"]
 
-[ext_resource type="PackedScene" uid="uid://b5djgvtqjgvca" path="res://Asset/Item/Box/glb/cc0_free_cardboard_box.glb" id="1_28h57"]
 [ext_resource type="Script" uid="uid://3bhp6g8dsmrj" path="res://Asset/Item/Box/box.gd" id="1_dof8h"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_s1fef"]
-size = Vector3(0.7509155, 0.45965576, 0.56347656)
+[ext_resource type="PackedScene" uid="uid://bfv0qn32snhuc" path="res://Asset/Item/Box/glb/sketchfab_scene.tscn" id="2_q6ax1"]
+[ext_resource type="Shape3D" uid="uid://bfwtnf87vt0ys" path="res://Asset/Item/new_box_shape_3d.tres" id="3_q07mc"]
 
 [node name="Box" type="StaticBody3D" unique_id=1432651663]
 collision_layer = 2
 script = ExtResource("1_dof8h")
 
-[node name="Sketchfab_Scene" parent="." unique_id=1274883815 instance=ExtResource("1_28h57")]
+[node name="Sketchfab_Scene" parent="." unique_id=79407850 instance=ExtResource("2_q6ax1")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=58811613]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022064209, 0.23782349, -0.00048828125)
-shape = SubResource("BoxShape3D_s1fef")
+shape = ExtResource("3_q07mc")
