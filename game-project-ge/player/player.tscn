@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://m8182wl5f50w" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://dbhf2ltybb4hv" path="res://player/camera_controller.gd" id="2_rkbax"]
+[ext_resource type="PackedScene" uid="uid://d4a6uq4akepgb" path="res://Asset/Item/Wrench/Wrench.tscn" id="3_qjkh3"]
 [ext_resource type="PackedScene" uid="uid://d0lk6sw7lvmi2" path="res://UI/CameraView.tscn" id="3_yw30f"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s1fef"]
@@ -13,6 +14,7 @@ height = 2.0390625
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_g1dw6"]
 
 [node name="Player" type="CharacterBody3D" unique_id=965063473]
+collision_mask = 3
 script = ExtResource("1_oul6g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1097621574]
@@ -26,16 +28,23 @@ shape = SubResource("CapsuleShape3D_s1fef")
 script = ExtResource("2_rkbax")
 
 [node name="Camera3D" type="Camera3D" parent="CameraController" unique_id=968241352]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.595, -0.35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.595, -0.34877294)
 current = true
 
+[node name="HandedItem" type="Node3D" parent="CameraController/Camera3D" unique_id=1777925866]
+
+[node name="Wrench" parent="CameraController/Camera3D/HandedItem" unique_id=1082256035 instance=ExtResource("3_qjkh3")]
+transform = Transform3D(0.12246314, -0.7217732, 0.6812094, -0.23387054, 0.64606017, 0.72657466, -0.96452445, -0.24829343, -0.08968293, 0.1397925, -0.19349802, -0.27274865)
+collision_layer = 0
+collision_mask = 0
+
 [node name="RayCast3D" type="RayCast3D" parent="CameraController" unique_id=1718595647]
-transform = Transform3D(1.32, 0, 0, 0, 1.32, 0, 0, 0, 2, 0, 0.52834046, -0.5075002)
+transform = Transform3D(1.32, 0, 0, 0, 1.32, 0, 0, 0, 2, 0, 0.51315755, -0.5075002)
 target_position = Vector3(0, 0, -1)
 collision_mask = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CameraController" unique_id=966368335]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.35898876)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52175295, -0.35898876)
 light_energy = 1.989
 spot_range = 10.0
 spot_attenuation = 0.9
