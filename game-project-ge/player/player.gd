@@ -68,48 +68,83 @@ func _process(delta: float) -> void:
 		EventScheduler.Fix = true
 		EventScheduler.GodangTwoCheck = true
 var textChange = false
+
+
 func checkObjectInfront():
-	if raycast.is_colliding():
-		var item = raycast.get_collider()
-		if item.is_in_group("EventItem"):
-			if not textChange:
-				UI.setCollition(true)
-				var text = item.getInteractive()
-				UI.TextChanger(text)
-				if Input.is_action_just_pressed("PickUp"):
-					item.interactive()
-					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
-		elif item.is_in_group("ElecBox"):
-			if not textChange:
-				UI.setCollition(true)
-				UI.TextChanger(item.getInteractive())
-
-			if Input.is_action_just_pressed("PickUp"):
-				var used: bool = item.use_item(ItemOnHand)
-				if used:
-					if ItemOnHand == "Fuse":
-						hideItemInHand()
-						ItemOnHand = "none"
-				elif ItemOnHand != "Fuse" and not item.powered:
-					UI.TextChanger("ต้องถือ Fuse อยู่ในมือก่อน")
-					textChange = true
-					await get_tree().create_timer(0.8).timeout
-					textChange = false
-
-		elif item is itemClass:
-			if not textChange:
-				UI.setCollition(true)
-				var text = item.getInteractive()
-				UI.TextChanger(text)
-				if Input.is_action_just_pressed("PickUp"):
-					if ItemOnHand != "none":
-						checkItemOnHand(item)
-					else:
-						showItemandUseItemInHand(item)
-	else:
+	if not raycast.is_colliding():
 		UI.setCollition(false)
+		return
+	
+	var item = raycast.get_collider()
+	var picked := Input.is_action_just_pressed("PickUp")
+	print("RayCast เจอ: ", item)
+	print("Class: ", item.get_class())
+	print("Is itemClass: ", item is itemClass)
 
+	# =========================================================
+	# BOX
+	# =========================================================
+	if item.is_in_group("Box") and picked:
+		item.remove_from_group("Box")
+		item.disable_collision()
+		EventScheduler.BoxQuestCount += 1
+		if EventScheduler.BoxQuestCount >= 5:
+			EventScheduler.BoxCheck = true
+		return
+	# =========================================================
+	# DINAMO
+	# =========================================================
+	if item.is_in_group("dinamo") and ItemOnHand == "Wrench" and picked:
+		print("เจอแบ้วจ้า")
+		print(ItemOnHand)
+
+		$CheckEvent.visible = true
+		$CheckEvent.start_event()
+		return
+	# =========================================================
+	# EVENT ITEM
+	# =========================================================
+	if item.is_in_group("EventItem"):
+		if not textChange:
+			UI.setCollition(true)
+			UI.TextChanger(item.getInteractive())
+		if picked:
+			item.interactive()
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		return
+	# =========================================================
+	# ELECTRIC BOX
+	# =========================================================
+	if item.is_in_group("ElecBox"):
+		if not textChange:
+			UI.setCollition(true)
+			UI.TextChanger(item.getInteractive())
+		if not picked:
+			return
+		var used: bool = item.use_item(ItemOnHand)
+		if used and ItemOnHand == "Fuse":
+			hideItemInHand()
+			ItemOnHand = "none"
+			return
+		if not used and ItemOnHand != "Fuse" and not item.powered:
+			UI.TextChanger("ต้องถือ Fuse อยู่ในมือก่อน")
+			textChange = true
+			await get_tree().create_timer(0.8).timeout
+			textChange = false
+		return
+	# =========================================================
+	# ITEM CLASS
+	# =========================================================
+	if item is itemClass:
+		if not textChange:
+			UI.setCollition(true)
+			UI.TextChanger(item.getInteractive())
+			if picked:
+				if ItemOnHand != "none":
+					checkItemOnHand(item)
+				else:
+					showItemandUseItemInHand(item)
+		return
 
 func checkItemOnHand(item):
 	if item is Wrench and ItemOnHand == "Wrench":

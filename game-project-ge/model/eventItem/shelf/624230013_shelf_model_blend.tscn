@@ -45,9 +45,3 @@ shadow_mesh = SubResource("ArrayMesh_idnbd")
 [node name="Cube" type="MeshInstance3D" parent="." unique_id=2098609880]
 transform = Transform3D(70, 0, 0, 0, -1.4305116e-05, 49.999996, 0, -120, -5.9604645e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_nc1w5")
-
-[node name="Camera" type="Camera3D" parent="." unique_id=607212494]
-transform = Transform3D(42.74851, -24.979956, 86.882484, -0.00010505318, 96.10655, 27.632057, -90.40223, -11.812385, 41.0841, 16.117535, 6.4769225, 7.0998273)
-fov = 14.611273
-near = 0.1
-far = 100.0

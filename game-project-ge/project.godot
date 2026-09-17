@@ -43,6 +43,8 @@ enabled=PackedStringArray()
 
 EventItem=""
 ElecBox=""
+Box=""
+dinamo=""
 
 [input]
 

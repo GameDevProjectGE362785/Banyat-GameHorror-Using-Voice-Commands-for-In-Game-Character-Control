@@ -1,17 +1,18 @@
 extends Node
-
+var ShutDown = true
 signal beat_triggered(hour: int, beat_id: StringName)
 var current_hour := 0
 var current_minute := 0
-var RunNumber = false
-var ShutDown = false
-var TollSort = false
-var DifColor = false
-var BoxCheck = false
-var Fix = false
-var GodangTwoCheck = false
-var fuseCheck = false
-var CutOut = false
+var BoxQuestCount = 0
+
+var RunNumber = false #ตรวจใบส่งของรอบกลางคืน (มินิเกม)
+var TollSort = false  #จัดเรียงอุปกรณ์บนชั้น B (มินิเกม)
+var DifColor = false #เช็กของชำรุด 3 กล่อง (มินิเกม)
+var BoxCheck = false #ตรวจเลขสินค้า A-01 ถึง A-05 (หากลอง 1 - 5 ให้ครบ)
+var Fix = false #ช่อมเครื่องปั่นไฟ 
+var GodangTwoCheck = false #เช็คของในโกดัง 2 (หาของให้ครบ)
+var fuseCheck = false #เปลี่ยน Fuse ตู้ไฟ (หาฟิวตามแมพ)
+var CutOut = false #ปิดเครื่องจักร ปิดคัตเอ้า (มินิเกม)
 const BEATS: Dictionary = {
 	0: &"intro_blackout",
 	1: &"machine_check",

@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dbwse5b5krl1x" path="res://model/eventItem/dinamo/model.glb" id="1_qgnc8"]
 [ext_resource type="Material" uid="uid://sk1l4goxmqk0" path="res://Asset/Item/MaterialHide.tres" id="2_ynea4"]
+[ext_resource type="PackedScene" uid="uid://dxau6p63024aq" path="res://minigame/IdenCheck/idencheck.tscn" id="3_fex2n"]
 
 [sub_resource type="GDScript" id="GDScript_ynea4"]
-script/source = "extends \"res://Asset/ItemClass.gd\"
+script/source = "extends Node3D
 
-class_name dinamo
 
 
 func getInteractive() -> String:
@@ -16,30 +16,30 @@ func get_item_name() -> String:
 	return \"dinamo\"
 
 func interactive():
-	$Main.visible = true
-	
-
+	print(\"เจอละ\")
 	
 "
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jv1ba"]
-size = Vector3(1.932373, 1.2919312, 1.1706543)
 
 [sub_resource type="BoxMesh" id="BoxMesh_fex2n"]
 material = ExtResource("2_ynea4")
 size = Vector3(6.4696126, 3.94383, 3.5706599)
 
-[node name="Dinamo" type="Node3D" unique_id=892634800 groups=["EventItem"]]
+[sub_resource type="BoxShape3D" id="BoxShape3D_jv1ba"]
+size = Vector3(1.932373, 1.2919312, 1.1706543)
+
+[node name="Dinamo" type="StaticBody3D" unique_id=1145836353 groups=["dinamo"]]
+collision_layer = 2
 script = SubResource("GDScript_ynea4")
 
 [node name="model" parent="." unique_id=1073014669 instance=ExtResource("1_qgnc8")]
 
-[node name="Area3D" type="Area3D" parent="model" unique_id=951360790]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="model/Area3D" unique_id=1129158612]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.049682617, 0.011138916, -0.00012207031)
-shape = SubResource("BoxShape3D_jv1ba")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1296500700]
 transform = Transform3D(0.37690312, 0, 0, 0, 0.37690312, 0, 0, 0, 0.37690312, -0.04271753, 0.055857867, 0.0039301515)
 mesh = SubResource("BoxMesh_fex2n")
+
+[node name="CheckEvent" parent="." unique_id=1858441454 groups=["dinamo"] instance=ExtResource("3_fex2n")]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1129158612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.049682617, 0.011138916, -0.00012207031)
+shape = SubResource("BoxShape3D_jv1ba")

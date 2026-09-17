@@ -46,8 +46,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9146669, -0.0005903989, 0.
 [node name="Node3D" parent="Node3D/Node3D/Node3D/Node3D" unique_id=1025011883 groups=["Box"] instance=ExtResource("2_n8bxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.284071, -0.0005903989, 0.6873388)
 
+[node name="Dinamo" parent="Node3D/Node3D/Node3D" unique_id=892634800 instance=ExtResource("3_axjjv")]
+transform = Transform3D(0.575, 0, 0, 0, 0.575, 0, 0, 0, 0.575, -3.2655916, 0.30672634, -0.4346366)
+
 [node name="Wrench" parent="." unique_id=1082256035 instance=ExtResource("3_pyd3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4380019, 0.13419932, 1.5969553)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4380019, 0.13419932, 0.9646072)
 
 [node name="Fuse4" parent="." unique_id=1962960150 instance=ExtResource("4_4l8u5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7453928, 0.4947691, -3.92015)
@@ -73,6 +76,3 @@ transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 0.88343036, 0.032
 
 [node name="Shelf" parent="." unique_id=675805657 groups=["EventItem"] instance=ExtResource("8_5ghie")]
 transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 3.8618903, 0.3410834, 3.09699)
-
-[node name="Dinamo" parent="." unique_id=892634800 instance=ExtResource("3_axjjv")]
-transform = Transform3D(0.575, 0, 0, 0, 0.575, 0, 0, 0, 0.575, 0.5866215, 0.30495512, -3.9530964)

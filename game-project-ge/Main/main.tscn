@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cyh8yrsokurny" path="res://player/player.tscn" id="4_ib3t1"]
 [ext_resource type="PackedScene" uid="uid://clnwvwhyiba2j" path="res://model/secu room/security+room_fbx.tscn" id="5_k3v36"]
 [ext_resource type="PackedScene" uid="uid://cdx8dnkll7b1u" path="res://model/secu room/fence.tscn" id="6_liyct"]
-[ext_resource type="PackedScene" uid="uid://mlsfqig6k5m5" path="res://model/eventItem/deskfolder/deskfolder.tscn" id="7_ib3t1"]
 [ext_resource type="PackedScene" uid="uid://da5d1ysu70yb5" path="res://minigame/ShutDown/shutdown.tscn" id="8_f6fdm"]
 
 [node name="Main" type="Node" unique_id=1581661248]
@@ -177,8 +176,5 @@ transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 63
 
 [node name="fence48" parent="fence" unique_id=2066841350 instance=ExtResource("6_liyct")]
 transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 54.403755, 0, -54.04275)
-
-[node name="Deskfolder" parent="." unique_id=414086024 instance=ExtResource("7_ib3t1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.049484, 9.536743e-07, 22.192991)
 
 [node name="Main" parent="." unique_id=532195101 instance=ExtResource("8_f6fdm")]

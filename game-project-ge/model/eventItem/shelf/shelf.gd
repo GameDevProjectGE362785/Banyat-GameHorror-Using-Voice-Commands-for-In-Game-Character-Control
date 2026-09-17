@@ -1,11 +1,16 @@
-extends StaticBody3D
+extends "res://Asset/ItemClass.gd"
+
+class_name Shelf
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func getInteractive() -> String:
+	return "work"
 
+func get_item_name() -> String:
+	return "Shelf"
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func interactive():
+	$Main.visible = true
+	
+
+	
