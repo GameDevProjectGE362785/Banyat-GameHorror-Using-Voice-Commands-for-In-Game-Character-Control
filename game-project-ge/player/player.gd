@@ -10,15 +10,17 @@ const JUMP_VELOCITY = 4.5
 const MOUSE_SENSITIVITY = 0.003
 
 @onready var wrenchHand = $CameraController/Camera3D/HandedItem/Wrench
-@onready var boxHand = $CameraController/Camera3D/HandedItem/Box
 @onready var fuseHand = $CameraController/Camera3D/HandedItem/Fuse
+@onready var keyhand = $CameraController/Camera3D/HandedItem/Key
 
 var ItemOnHand = "none"
 
 var flashlighton = false
 
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	add_to_group("player")
 
 #Control rotate
 func _input(event: InputEvent) -> void:
@@ -79,15 +81,17 @@ func checkObjectInfront():
 					else:
 						showItemandUseItemInHand(item)
 				
-					
 	else:
 		UI.setCollition(false)
 
 
 func checkItemOnHand(item):
-	if item is Wrench and ItemOnHand == "Wrench":
+	if item is doorClass:
+		item.interactive()
+		return
+	if item.is_in_group("PlaceGroup") and ItemOnHand == item.get_item_name():
 		if !item.getOnTable():
-			hideItemInHand(item)
+			hideItemInHand()
 			item.interactive()
 			ItemOnHand = "none"
 	else:
@@ -96,24 +100,35 @@ func checkItemOnHand(item):
 		await get_tree().create_timer(0.8).timeout
 		textChange = false
 
+	
+
+
 func showItemandUseItemInHand(item: itemClass) -> void:
 	var inputItem = item.get_item_name()
 	
 	if inputItem == "Box":
 		return
 	
+	if item is doorClass:
+		item.interactive()
+		return
+	
 	if inputItem == "Wrench":
 		wrenchHand.visible = true
 	elif inputItem == "Fuse":
 		fuseHand.visible = true
+	elif inputItem == "Key":
+		keyhand.visible = true
 	ItemOnHand = inputItem
 	item.interactive()
 
-func hideItemInHand(item: itemClass) -> void:
+func hideItemInHand() -> void:
 	if ItemOnHand == "Wrench":
 		wrenchHand.visible = false
 	elif ItemOnHand == "Fuse":
 		fuseHand.visible = false
+	elif ItemOnHand == "Key":
+		keyhand.visible = false
 
 
 func get_visual_bottom(node: Node3D) -> float:

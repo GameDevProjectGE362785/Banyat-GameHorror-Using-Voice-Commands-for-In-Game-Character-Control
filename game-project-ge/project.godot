@@ -39,6 +39,10 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray()
 
+[global_group]
+
+PlaceGroup=""
+
 [input]
 
 ui_left={
