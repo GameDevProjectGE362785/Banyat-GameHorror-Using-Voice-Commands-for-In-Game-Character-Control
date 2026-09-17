@@ -79,7 +79,7 @@ func checkObjectInfront():
 	var picked := Input.is_action_just_pressed("PickUp")
 	print("RayCast เจอ: ", item)
 	print("Class: ", item.get_class())
-	print("Is itemClass: ", item is itemClass)
+	print("Is ClassItem: ", item is ClassItem)
 
 	# =========================================================
 	# BOX
@@ -135,7 +135,7 @@ func checkObjectInfront():
 	# =========================================================
 	# ITEM CLASS
 	# =========================================================
-	if item is itemClass:
+	if item is ClassItem:
 		if not textChange:
 			UI.setCollition(true)
 			UI.TextChanger(item.getInteractive())
@@ -158,7 +158,7 @@ func checkItemOnHand(item):
 		await get_tree().create_timer(0.8).timeout
 		textChange = false
 
-func showItemandUseItemInHand(item: itemClass) -> void:
+func showItemandUseItemInHand(item: ClassItem) -> void:
 	var inputItem = item.get_item_name()
 	
 	if inputItem == "Box":
