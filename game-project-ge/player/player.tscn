@@ -16,7 +16,7 @@ height = 2.0390625
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_g1dw6"]
 
-[node name="Player" type="CharacterBody3D" unique_id=965063473]
+[node name="Player" type="CharacterBody3D" unique_id=965063473 groups=["player"]]
 collision_mask = 3
 wall_min_slide_angle = 1.5707964
 script = ExtResource("1_oul6g")

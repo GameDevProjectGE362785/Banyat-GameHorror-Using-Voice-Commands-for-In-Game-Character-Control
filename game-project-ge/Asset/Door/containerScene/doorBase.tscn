@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c6red700otgyp"]
+
+[ext_resource type="PackedScene" uid="uid://qci4jehatk7o" path="res://Asset/Door/Model/container/rework2.glb" id="1_ey0mt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s1fef"]
+size = Vector3(80.40936, 129.89499, 11.050537)
+
+[node name="DoorRight" type="StaticBody3D" unique_id=1856151877]
+
+[node name="rework2" parent="." unique_id=266799599 instance=ExtResource("1_ey0mt")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1137163919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.70468, 64.447495, -1.5679741)
+shape = SubResource("BoxShape3D_s1fef")

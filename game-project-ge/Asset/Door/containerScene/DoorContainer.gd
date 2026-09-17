@@ -1,12 +1,10 @@
 extends itemClass
-class_name doorClass
+class_name doorContainer
 
 # --- Tunables (edit in the Inspector) ---
 @export var open_angle_deg: float = 90.0
 @export var open_duration: float = 0.5
 @export var invert_swing: bool = false  # flip this if it opens the wrong way in testing
-
-@onready var audioPlay = $AudioStreamPlayer3D
 
 var is_open: bool = false
 var is_animating: bool = false
@@ -16,13 +14,16 @@ var target_rotation_y: float
 
 var tween: Tween
 
+#From Inside
+var lock = false
+
 func _ready() -> void:
 	closed_rotation_y = rotation.y
 	target_rotation_y = closed_rotation_y
 
 
 func get_item_name() -> String:
-	return "Door"
+	return "DoorContainer"
 
 
 func getInteractive() -> String:
@@ -56,17 +57,10 @@ func _open_door() -> void:
 	door_facing.y = 0.0
 
 	var side: float = door_facing.normalized().dot(to_player.normalized())
-	if invert_swing:
-		side = -side
 
 	var angle: float = deg_to_rad(open_angle_deg)
 
-	# Player in front (side > 0) -> swing away from them (negative direction).
-	# Player behind (side <= 0) -> swing the other way.
-	if side > 0.0:
-		target_rotation_y = closed_rotation_y - angle
-	else:
-		target_rotation_y = closed_rotation_y + angle
+	target_rotation_y = closed_rotation_y + angle
 
 	is_open = true
 	_animate_to(target_rotation_y)
@@ -85,8 +79,6 @@ func _animate_to(target_y: float) -> void:
 	tween.tween_property(self, "rotation:y", target_y, open_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.finished.connect(func(): is_animating = false)
 	
-func randomEvent():
-	audioPlay.play()
-	if is_open:
-		print("Death")
+func getLockStatus():
+	return lock
 	
