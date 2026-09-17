@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://bel3bmn4q8tga"]
-
-[ext_resource type="PackedScene" uid="uid://bhdwkwyrvvyve" path="res://Asset/Item/electricBox/scene.gltf" id="1_oj4gy"]
-
-[node name="Sketchfab_Scene" unique_id=266028719 instance=ExtResource("1_oj4gy")]

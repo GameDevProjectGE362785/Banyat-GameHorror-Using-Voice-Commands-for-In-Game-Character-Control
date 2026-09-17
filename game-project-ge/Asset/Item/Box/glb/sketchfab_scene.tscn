@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://bfv0qn32snhuc"]
-
-[ext_resource type="PackedScene" uid="uid://b5djgvtqjgvca" path="res://Asset/Item/Box/glb/cc0_free_cardboard_box.glb" id="1_tusvx"]
-
-[node name="Sketchfab_Scene" unique_id=79407850 instance=ExtResource("1_tusvx")]

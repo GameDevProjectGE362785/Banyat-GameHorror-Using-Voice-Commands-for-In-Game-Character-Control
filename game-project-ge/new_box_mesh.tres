@@ -1,7 +1,0 @@
-[gd_resource type="BoxMesh" format=3 uid="uid://cvy6grndnssgb"]
-
-[ext_resource type="Material" uid="uid://sk1l4goxmqk0" path="res://Asset/Item/MaterialHide.tres" id="1_xywx5"]
-
-[resource]
-material = ExtResource("1_xywx5")
-size = Vector3(4.2168293, 1.6112574, 2.600022)
