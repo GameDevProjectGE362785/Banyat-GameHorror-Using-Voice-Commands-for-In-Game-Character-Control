@@ -12,6 +12,7 @@ const MOUSE_SENSITIVITY = 0.003
 @onready var wrenchHand = $CameraController/Camera3D/HandedItem/Wrench
 @onready var boxHand = $CameraController/Camera3D/HandedItem/Box
 @onready var fuseHand = $CameraController/Camera3D/HandedItem/Fuse
+@onready var keyhand = 1
 
 var ItemOnHand = "none"
 
@@ -101,6 +102,8 @@ func showItemandUseItemInHand(item: itemClass) -> void:
 		wrenchHand.visible = true
 	elif inputItem == "Fuse":
 		fuseHand.visible = true
+	elif inputItem == "Key":
+		keyHand.visible = true
 	ItemOnHand = inputItem
 	item.interactive()
 
@@ -109,6 +112,8 @@ func hideItemInHand(item: itemClass) -> void:
 		wrenchHand.visible = false
 	elif ItemOnHand == "Fuse":
 		fuseHand.visible = false
+	elif ItemOnHand == "Key":
+		keyHand.visible = false
 
 
 func get_visual_bottom(node: Node3D) -> float:
