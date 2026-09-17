@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://vrbcgy2awhto"]
+
+[ext_resource type="PackedScene" uid="uid://cyh8yrsokurny" path="res://player/player.tscn" id="1_vsfee"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_s1fef"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_khhxn"]
+size = Vector3(1.8537598, 0.44873047, 2.0147095)
+
+[node name="Core" type="Node3D" unique_id=595409074]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1724239981]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1768902852]
+mesh = SubResource("PlaneMesh_s1fef")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=950357309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0052490234, -0.093990624, -0.033599854)
+shape = SubResource("BoxShape3D_khhxn")
+
+[node name="Player" parent="." unique_id=965063473 instance=ExtResource("1_vsfee")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.7789576, 0)

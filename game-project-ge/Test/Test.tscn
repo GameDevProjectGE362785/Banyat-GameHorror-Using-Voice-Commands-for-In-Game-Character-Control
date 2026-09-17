@@ -76,3 +76,10 @@ transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 3.8618903, 0.3410834
 
 [node name="Dinamo" parent="." unique_id=892634800 instance=ExtResource("3_axjjv")]
 transform = Transform3D(0.575, 0, 0, 0, 0.575, 0, 0, 0, 0.575, 0.5866215, 0.30495512, -3.9530964)
+[node name="Node3D2" parent="." unique_id=1776206574 instance=ExtResource("5_lg8mm")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.23285758, 0.06560236, 2.428421)
+
+[node name="Key" parent="." unique_id=425120382 instance=ExtResource("6_un7ao")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 1.3961082, 0.17028144, 0.41120297)
+
+[node name="GameClock" parent="." unique_id=1905810359 instance=ExtResource("7_iednq")]
