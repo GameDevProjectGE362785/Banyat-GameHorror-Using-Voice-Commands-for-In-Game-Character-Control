@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://kpb4chml8u5f" path="res://Asset/Item/Box/Box.tscn" id="2_n8bxl"]
 [ext_resource type="PackedScene" uid="uid://d4a6uq4akepgb" path="res://Asset/Item/Wrench/Wrench.tscn" id="3_pyd3v"]
 [ext_resource type="PackedScene" uid="uid://cktlshhe6u5r5" path="res://Asset/Item/Fuse/Fuse.tscn" id="4_4l8u5"]
+[ext_resource type="PackedScene" uid="uid://da6d205kdo67b" path="res://Asset/Door/door.tscn" id="5_lg8mm"]
+[ext_resource type="PackedScene" uid="uid://bxbebo6xu746q" path="res://Asset/Item/key/key.tscn" id="6_un7ao"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_khhxn"]
 size = Vector3(2.0839844, 0.12188721, 2.0699463)
@@ -33,3 +35,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4380019, 0.13419932, 0.9646
 
 [node name="Fuse" parent="." unique_id=1962960150 instance=ExtResource("4_4l8u5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9740871, 0.33597302, -1)
+
+[node name="Node3D2" parent="." unique_id=1776206574 instance=ExtResource("5_lg8mm")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.23285758, 0.06560236, 2.428421)
+
+[node name="Key" parent="." unique_id=425120382 instance=ExtResource("6_un7ao")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 1.3961082, 0.17028144, 0.41120297)
