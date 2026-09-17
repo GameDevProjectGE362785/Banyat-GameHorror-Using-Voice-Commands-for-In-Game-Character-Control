@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cx51elv7y707c"]
+
+[ext_resource type="PackedScene" uid="uid://dcdhdw741n486" path="res://Asset/Door/Model/container/rework.glb" id="1_4yw8g"]
+
+[node name="rework" unique_id=1745819797 instance=ExtResource("1_4yw8g")]
