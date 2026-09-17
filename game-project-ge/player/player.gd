@@ -9,14 +9,11 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const MOUSE_SENSITIVITY = 0.003
 
-const INVENTORY_SIZE := 6
-const ITEM_SCENES := {
-	"Box": preload("res://Asset/Item/Box/Box.tscn"),
-	"Wrench": preload("res://Asset/Item/Wrench/Wrench.tscn"),
-	"Fuse": preload("res://Asset/Item/Fuse/Fuse.tscn")
-}
+@onready var wrenchHand = $CameraController/Camera3D/HandedItem/Wrench
+@onready var boxHand = $CameraController/Camera3D/HandedItem/Box
+@onready var fuseHand = $CameraController/Camera3D/HandedItem/Fuse
 
-var isItemOnHand = false
+var ItemOnHand = "none"
 
 var flashlighton = false
 
@@ -66,30 +63,52 @@ var textChange = false
 func checkObjectInfront():
 	if raycast.is_colliding():
 		var item = raycast.get_collider()
-		if not textChange:
-			#interactive Item
-			if item is itemClass:
+		#interactive Item
+		if item is itemClass:
+			if not textChange:
 				UI.setCollition(true)
 				var text = item.getInteractive()
 				UI.TextChanger(text)
 				if Input.is_action_just_pressed("PickUp"):
-					if not isItemOnHand:
-						pickup(item)
+					if ItemOnHand != "none":
+						checkItemOnHand(item)
 					else:
-						UI.TextChanger("Hand are Full")
-						textChange = true
-						await get_tree().create_timer(0.8).timeout
-						textChange = false
+						showItemandUseItemInHand(item)
+						
 	else:
 		UI.setCollition(false)
 
 
+func checkItemOnHand(item):
+	if item is Wrench and ItemOnHand == "Wrench":
+		if !item.getOnTable():
+			hideItemInHand(item)
+			item.interactive()
+			ItemOnHand = "none"
+	else:
+		UI.TextChanger("Hand are Full")
+		textChange = true
+		await get_tree().create_timer(0.8).timeout
+		textChange = false
 
-func pickup(item: itemClass) -> void:
-	isItemOnHand = true
-	item.queue_free()
+func showItemandUseItemInHand(item: itemClass) -> void:
+	var inputItem = item.get_item_name()
+	
+	if inputItem == "Box":
+		return
+	
+	if inputItem == "Wrench":
+		wrenchHand.visible = true
+	elif inputItem == "Fuse":
+		fuseHand.visible = true
+	ItemOnHand = inputItem
+	item.interactive()
 
-
+func hideItemInHand(item: itemClass) -> void:
+	if ItemOnHand == "Wrench":
+		wrenchHand.visible = false
+	elif ItemOnHand == "Fuse":
+		fuseHand.visible = false
 
 
 func get_visual_bottom(node: Node3D) -> float:

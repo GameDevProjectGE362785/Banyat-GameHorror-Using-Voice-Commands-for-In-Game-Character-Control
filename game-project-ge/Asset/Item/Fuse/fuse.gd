@@ -1,6 +1,6 @@
 extends "res://Asset/ItemClass.gd"
 
-class_name fuse
+class_name Fuse
 
 func getInteractive() -> String:
 	return "Pick Up Fuse"

@@ -29,7 +29,7 @@ transform = Transform3D(0.255, 0, 0, 0, 0.255, 0, 0, 0, 0.255, 0, 0.28874516, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2840712, -0.0005903989, -2.435182)
 
 [node name="Wrench" parent="." unique_id=1082256035 instance=ExtResource("3_pyd3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4380019, 0.13419932, 0.9646072)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4380019, 0.7356756, 0.9646072)
 
 [node name="Fuse" parent="." unique_id=1962960150 instance=ExtResource("4_4l8u5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9740871, 0.33597302, -1)

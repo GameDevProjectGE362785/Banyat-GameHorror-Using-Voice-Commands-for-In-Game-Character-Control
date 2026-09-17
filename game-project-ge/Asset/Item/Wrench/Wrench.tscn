@@ -1,17 +1,27 @@
 [gd_scene format=3 uid="uid://d4a6uq4akepgb"]
 
-[ext_resource type="PackedScene" uid="uid://c5kp11otxrlu8" path="res://Asset/Item/Wrench/glb/wrench.glb" id="1_4p3vx"]
 [ext_resource type="Script" uid="uid://cu68yolqqpep8" path="res://Asset/Item/Wrench/wrench.gd" id="1_edabk"]
+[ext_resource type="PackedScene" uid="uid://c4yg87okcx2wt" path="res://Asset/Item/Wrench/glb/wrench.tscn" id="2_ag65r"]
+[ext_resource type="Material" uid="uid://sk1l4goxmqk0" path="res://Asset/Item/MaterialHide.tres" id="3_7pfwj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s1fef"]
 size = Vector3(0.13647461, 0.06046295, 0.5062866)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s1fef"]
+material = ExtResource("3_7pfwj")
+size = Vector3(0.136, 0.06, 0.506)
 
 [node name="Wrench" type="StaticBody3D" unique_id=1082256035]
 collision_layer = 2
 script = ExtResource("1_edabk")
 
-[node name="Sketchfab_Scene" parent="." unique_id=657429296 instance=ExtResource("1_4p3vx")]
+[node name="Sketchfab_Scene" parent="." unique_id=328641929 instance=ExtResource("2_ag65r")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1119606652]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036499023, 0.0073509216, -0.019378662)
 shape = SubResource("BoxShape3D_s1fef")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2101864172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036, 0.007, -0.019)
+visible = false
+mesh = SubResource("BoxMesh_s1fef")

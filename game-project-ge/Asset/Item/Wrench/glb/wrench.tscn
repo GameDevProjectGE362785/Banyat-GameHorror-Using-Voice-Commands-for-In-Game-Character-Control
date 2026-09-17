@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c4yg87okcx2wt"]
+
+[ext_resource type="PackedScene" uid="uid://c5kp11otxrlu8" path="res://Asset/Item/Wrench/glb/wrench.glb" id="1_jsimq"]
+
+[node name="Sketchfab_Scene" unique_id=328641929 instance=ExtResource("1_jsimq")]
