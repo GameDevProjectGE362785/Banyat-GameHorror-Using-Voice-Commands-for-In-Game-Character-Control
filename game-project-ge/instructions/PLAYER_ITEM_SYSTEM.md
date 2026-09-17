@@ -53,17 +53,17 @@ The base implementation is in `Asset/interactiveItem.gd`:
 
 ```gdscript
 func use_item(_item_name: String) -> bool:
-    return false
+	return false
 ```
 
 A target object should override it and accept only the item it needs. Example:
 
 ```gdscript
 func use_item(item_name: String) -> bool:
-    if item_name == "Fuse":
-        restore_power()
-        return true
-    return false
+	if item_name == "Fuse":
+		restore_power()
+		return true
+	return false
 ```
 
 ## Dropping Items

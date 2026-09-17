@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://nqs5w5cktukr"]
 
 [ext_resource type="PackedScene" uid="uid://ddguv5qm7621p" path="res://temp/sketchfab_scene.tscn" id="1_55v2s"]
-[ext_resource type="PackedScene" uid="uid://dbntcfceyxx75" path="res://Asset/EventScheduler/events_scheduler.tscn" id="1_200h7"]
+[ext_resource type="PackedScene" uid="uid://dbntcfceyxx75" path="res://Asset/System/EventScheduler/events_scheduler.tscn" id="1_200h7"]
 [ext_resource type="PackedScene" uid="uid://cyh8yrsokurny" path="res://player/player.tscn" id="2_dayku"]
-[ext_resource type="PackedScene" uid="uid://ps4na6ndhgc4" path="res://Asset/GameClock/game_clock.tscn" id="2_rwrmc"]
+[ext_resource type="PackedScene" uid="uid://ps4na6ndhgc4" path="res://Asset/System/GameClock/game_clock.tscn" id="2_rwrmc"]
 [ext_resource type="PackedScene" uid="uid://djc0c1l7ltf5t" path="res://Asset/MapLight/map_light_blubs.tscn" id="5_rwrmc"]
-[ext_resource type="PackedScene" uid="uid://c3orp2gl3w6qi" path="res://Asset/StatesDisplayer/states_displayer.tscn" id="6_nbo30"]
-[ext_resource type="PackedScene" uid="uid://cokb4y4nu67t2" path="res://Asset/electricBox/electric_Box.tscn" id="7_bfbwu"]
-[ext_resource type="PackedScene" uid="uid://cktlshhe6u5r5" path="res://Asset/Fuse/Fuse.tscn" id="8_5enco"]
+[ext_resource type="PackedScene" uid="uid://c3orp2gl3w6qi" path="res://Asset/System/StatesDisplayer/states_displayer.tscn" id="6_nbo30"]
+[ext_resource type="PackedScene" uid="uid://cokb4y4nu67t2" path="res://Asset/Item/electricBox/electric_Box.tscn" id="7_bfbwu"]
+[ext_resource type="PackedScene" uid="uid://cktlshhe6u5r5" path="res://Asset/Item/Fuse/Fuse.tscn" id="8_5enco"]
 
 [sub_resource type="Environment" id="Environment_g4v7s"]
 background_mode = 1
