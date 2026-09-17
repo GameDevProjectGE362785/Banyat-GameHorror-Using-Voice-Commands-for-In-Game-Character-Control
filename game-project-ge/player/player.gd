@@ -10,7 +10,6 @@ const JUMP_VELOCITY = 4.5
 const MOUSE_SENSITIVITY = 0.003
 
 @onready var wrenchHand = $CameraController/Camera3D/HandedItem/Wrench
-@onready var boxHand = $CameraController/Camera3D/HandedItem/Box
 @onready var fuseHand = $CameraController/Camera3D/HandedItem/Fuse
 @onready var keyhand = $CameraController/Camera3D/HandedItem/Key
 
@@ -92,7 +91,7 @@ func checkItemOnHand(item):
 		return
 	if item.is_in_group("PlaceGroup") and ItemOnHand == item.get_item_name():
 		if !item.getOnTable():
-			hideItemInHand(item)
+			hideItemInHand()
 			item.interactive()
 			ItemOnHand = "none"
 	else:
@@ -123,7 +122,7 @@ func showItemandUseItemInHand(item: itemClass) -> void:
 	ItemOnHand = inputItem
 	item.interactive()
 
-func hideItemInHand(item: itemClass) -> void:
+func hideItemInHand() -> void:
 	if ItemOnHand == "Wrench":
 		wrenchHand.visible = false
 	elif ItemOnHand == "Fuse":

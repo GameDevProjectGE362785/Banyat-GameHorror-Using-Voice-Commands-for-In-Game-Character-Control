@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cktlshhe6u5r5" path="res://Asset/Item/Fuse/Fuse.tscn" id="4_4l8u5"]
 [ext_resource type="PackedScene" uid="uid://da6d205kdo67b" path="res://Asset/Door/door.tscn" id="5_lg8mm"]
 [ext_resource type="PackedScene" uid="uid://bxbebo6xu746q" path="res://Asset/Item/key/key.tscn" id="6_un7ao"]
+[ext_resource type="PackedScene" uid="uid://ps4na6ndhgc4" path="res://Asset/System/GameClock/game_clock.tscn" id="7_iednq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_khhxn"]
 size = Vector3(2.0839844, 0.12188721, 2.0699463)
@@ -41,3 +42,5 @@ transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.23285758, 0.06560
 
 [node name="Key" parent="." unique_id=425120382 instance=ExtResource("6_un7ao")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 1.3961082, 0.17028144, 0.41120297)
+
+[node name="GameClock" parent="." unique_id=1905810359 instance=ExtResource("7_iednq")]
