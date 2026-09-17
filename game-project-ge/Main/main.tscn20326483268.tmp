@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://br2olntaaiitq"]
 
 [ext_resource type="PackedScene" uid="uid://ps4na6ndhgc4" path="res://Asset/System/GameClock/game_clock.tscn" id="2_k3v36"]
-[ext_resource type="PackedScene" uid="uid://dbntcfceyxx75" path="res://Asset/EventScheduler/events_scheduler.tscn" id="3_liyct"]
+[ext_resource type="PackedScene" uid="uid://dbntcfceyxx75" path="res://Asset/System/EventScheduler/events_scheduler.tscn" id="3_liyct"]
 [ext_resource type="PackedScene" uid="uid://oo55yefi45re" path="res://temp/CloneContainer.tscn" id="4_eunhr"]
 [ext_resource type="PackedScene" uid="uid://cyh8yrsokurny" path="res://player/player.tscn" id="4_ib3t1"]
 [ext_resource type="PackedScene" uid="uid://clnwvwhyiba2j" path="res://model/secu room/security+room_fbx.tscn" id="5_k3v36"]

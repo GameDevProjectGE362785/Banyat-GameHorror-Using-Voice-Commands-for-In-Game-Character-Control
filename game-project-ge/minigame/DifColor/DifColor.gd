@@ -83,7 +83,8 @@ func _on_tile_pressed(idx: int) -> void:
 	accepting_input = false
 
 	if idx == odd_index:
-		history_lines.append("รอบ %d → ถูก ✓" % current_round)
+		history_label.text = "รอบ %d → ถูก ✓" % current_round
+
 		_update_history_label()
 		_apply_tile_color(tiles[idx], Color(0.3, 0.85, 0.3))
 		await get_tree().create_timer(0.5).timeout

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c50m7ccqvuc1u"]
+
+[ext_resource type="PackedScene" uid="uid://dbwse5b5krl1x" path="res://model/eventItem/dinamo/model.glb" id="1_qgnc8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jv1ba"]
+size = Vector3(1.932373, 1.2919312, 1.1706543)
+
+[node name="Dinamo" type="Node3D" unique_id=892634800]
+
+[node name="model" parent="." unique_id=1073014669 instance=ExtResource("1_qgnc8")]
+
+[node name="Area3D" type="Area3D" parent="model" unique_id=951360790]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="model/Area3D" unique_id=1129158612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.049682617, 0.011138916, -0.00012207031)
+shape = SubResource("BoxShape3D_jv1ba")

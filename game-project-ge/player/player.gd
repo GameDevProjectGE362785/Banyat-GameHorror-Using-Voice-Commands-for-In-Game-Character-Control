@@ -64,6 +64,10 @@ func checkObjectInfront():
 	if raycast.is_colliding():
 		var item = raycast.get_collider()
 		#interactive Item
+		if item is ItemEvent:
+			if Input.is_action_just_pressed("PickUp"):
+				UI.setCollition(true)
+				item.interactive()
 		if item is itemClass:
 			if not textChange:
 				UI.setCollition(true)
@@ -74,7 +78,8 @@ func checkObjectInfront():
 						checkItemOnHand(item)
 					else:
 						showItemandUseItemInHand(item)
-						
+				
+					
 	else:
 		UI.setCollition(false)
 

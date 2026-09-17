@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://mlsfqig6k5m5"]
+
+[ext_resource type="PackedScene" uid="uid://dbyvgmbbbl71n" path="res://model/eventItem/deskfolder/desk with drawers.fbx" id="1_2ygqv"]
+[ext_resource type="Script" uid="uid://bc47dbqhnei4i" path="res://model/eventItem/deskfolder/deskfolder.gd" id="1_ht7bh"]
+[ext_resource type="PackedScene" uid="uid://c3q7k2m8n1p4r" path="res://minigame/RunNumber/RunNumber.tscn" id="2_os2tg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jv1ba"]
+size = Vector3(4.8325195, 3.048462, 3.956787)
+
+[node name="Deskfolder" type="Node3D" unique_id=414086024]
+script = ExtResource("1_ht7bh")
+
+[node name="Area3D" type="StaticBody3D" parent="." unique_id=951298016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.041609287, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1164573335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016357422, 1.4666138, 0.6810303)
+shape = SubResource("BoxShape3D_jv1ba")
+
+[node name="desk with drawers" parent="." unique_id=1653270731 instance=ExtResource("1_2ygqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9820943, 0)
+
+[node name="Main" parent="." unique_id=1793809225 instance=ExtResource("2_os2tg")]
+visible = false
