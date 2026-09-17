@@ -41,9 +41,16 @@ enabled=PackedStringArray()
 
 [global_group]
 
+<<<<<<< HEAD
 PlaceGroup=""
 door=""
 player=""
+=======
+EventItem=""
+ElecBox=""
+Box=""
+dinamo=""
+>>>>>>> origin
 
 [input]
 

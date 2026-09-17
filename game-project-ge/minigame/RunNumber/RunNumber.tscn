@@ -12,6 +12,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eaig7")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1195375276]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 99.0
+offset_right = 985.0
+offset_bottom = 549.0
+color = Color(0.53333336, 0.6666667, 1, 0.078431375)
+
+[node name="Untitled2420260917193729" type="Sprite2D" parent="." unique_id=508504516]
+position = Vector2(576, 322.49997)
+scale = Vector2(0.5979166, 0.60092586)
+texture = ExtResource("2_yd2k4")
+
 [node name="VBox" type="VBoxContainer" parent="." unique_id=1748693495]
 layout_mode = 1
 anchors_preset = 8
@@ -75,15 +88,8 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 18
 text = "เริ่มใหม่"
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1195375276]
-layout_mode = 0
-offset_left = 185.0
-offset_top = 99.0
-offset_right = 985.0
-offset_bottom = 549.0
-color = Color(0.53333336, 0.6666667, 1, 0.078431375)
-
-[node name="Untitled2420260917193729" type="Sprite2D" parent="." unique_id=508504516]
-position = Vector2(576, 322.49997)
-scale = Vector2(0.5979166, 0.60092586)
-texture = ExtResource("2_yd2k4")
+[node name="ExitButton" type="Button" parent="VBox" unique_id=1461174154]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 18
+text = "ออก"

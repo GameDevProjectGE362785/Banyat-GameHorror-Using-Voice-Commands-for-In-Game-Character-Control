@@ -8,3 +8,5 @@ func getInteractive() -> String:
 
 func get_item_name() -> String:
 	return "Box"
+func disable_collision():
+	$CollisionShape3D.disabled = true

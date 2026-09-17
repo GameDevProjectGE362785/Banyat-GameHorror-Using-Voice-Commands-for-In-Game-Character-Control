@@ -10,28 +10,26 @@ const JUMP_VELOCITY = 4.5
 const MOUSE_SENSITIVITY = 0.003
 
 @onready var wrenchHand = $CameraController/Camera3D/HandedItem/Wrench
+@onready var boxHand = $CameraController/Camera3D/HandedItem/Box
 @onready var fuseHand = $CameraController/Camera3D/HandedItem/Fuse
-@onready var keyhand = $CameraController/Camera3D/HandedItem/Key
 
 var ItemOnHand = "none"
 
 var flashlighton = false
 
-
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	add_to_group("player")
 
 #Control rotate
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		# Rotate the whole player body left/right (yaw)
-		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED :
+		if event is InputEventMouseMotion:
+			# Rotate the whole player body left/right (yaw)
+			rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	if event is InputEventMouseButton and event.pressed:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 
 #Control Movement
 func _physics_process(delta: float) -> void:
@@ -44,51 +42,120 @@ func _physics_process(delta: float) -> void:
 	#	velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED :
+		var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 
-	move_and_slide()
+		move_and_slide()
 
 #Control interactive
 func _process(delta: float) -> void:
 	checkObjectInfront()
 	if Input.is_action_just_pressed("flashlight"):
 		flashLightFunction()
-
+	if Input.is_action_just_pressed("CheckLowhigh"):
+		EventScheduler.RunNumber = true
+		EventScheduler.ShutDown = true
+		EventScheduler.TollSort = true
+		EventScheduler.DifColor = true
+		EventScheduler.BoxCheck = true
+		EventScheduler.Fix = true
+		EventScheduler.GodangTwoCheck = true
 var textChange = false
-func checkObjectInfront():
-	if raycast.is_colliding():
-		var item = raycast.get_collider()
-		#interactive Item
-		if item is ItemEvent:
-			if Input.is_action_just_pressed("PickUp"):
-				UI.setCollition(true)
-				item.interactive()
-		if item is itemClass:
-			if not textChange:
-				UI.setCollition(true)
-				var text = item.getInteractive()
-				UI.TextChanger(text)
-				if Input.is_action_just_pressed("PickUp"):
-					if ItemOnHand != "none":
-						checkItemOnHand(item)
-					else:
-						showItemandUseItemInHand(item)
-				
-	else:
-		UI.setCollition(false)
 
+<<<<<<< HEAD
 func checkItemOnHand(item):
 	if item.is_in_group("door"):
 		item.interactive()
 		return
 	if item.is_in_group("PlaceGroup") and ItemOnHand == item.get_item_name():
+=======
+
+func checkObjectInfront():
+	if not raycast.is_colliding():
+		UI.setCollition(false)
+		return
+	
+	var item = raycast.get_collider()
+	var picked := Input.is_action_just_pressed("PickUp")
+	print("RayCast เจอ: ", item)
+	print("Class: ", item.get_class())
+	print("Is itemClass: ", item is itemClass)
+
+	# =========================================================
+	# BOX
+	# =========================================================
+	if item.is_in_group("Box") and picked:
+		item.remove_from_group("Box")
+		item.disable_collision()
+		EventScheduler.BoxQuestCount += 1
+		if EventScheduler.BoxQuestCount >= 5:
+			EventScheduler.BoxCheck = true
+		return
+	# =========================================================
+	# DINAMO
+	# =========================================================
+	if item.is_in_group("dinamo") and ItemOnHand == "Wrench" and picked:
+		print("เจอแบ้วจ้า")
+		print(ItemOnHand)
+
+		$CheckEvent.visible = true
+		$CheckEvent.start_event()
+		return
+	# =========================================================
+	# EVENT ITEM
+	# =========================================================
+	if item.is_in_group("EventItem"):
+		if not textChange:
+			UI.setCollition(true)
+			UI.TextChanger(item.getInteractive())
+		if picked:
+			item.interactive()
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		return
+	# =========================================================
+	# ELECTRIC BOX
+	# =========================================================
+	if item.is_in_group("ElecBox"):
+		if not textChange:
+			UI.setCollition(true)
+			UI.TextChanger(item.getInteractive())
+		if not picked:
+			return
+		var used: bool = item.use_item(ItemOnHand)
+		if used and ItemOnHand == "Fuse":
+			hideItemInHand()
+			ItemOnHand = "none"
+			return
+		if not used and ItemOnHand != "Fuse" and not item.powered:
+			UI.TextChanger("ต้องถือ Fuse อยู่ในมือก่อน")
+			textChange = true
+			await get_tree().create_timer(0.8).timeout
+			textChange = false
+		return
+	# =========================================================
+	# ITEM CLASS
+	# =========================================================
+	if item is itemClass:
+		if not textChange:
+			UI.setCollition(true)
+			UI.TextChanger(item.getInteractive())
+			if picked:
+				if ItemOnHand != "none":
+					checkItemOnHand(item)
+				else:
+					showItemandUseItemInHand(item)
+		return
+
+func checkItemOnHand(item):
+	if item is Wrench and ItemOnHand == "Wrench":
+>>>>>>> origin
 		if !item.getOnTable():
 			hideItemInHand()
 			item.interactive()
@@ -99,24 +166,28 @@ func checkItemOnHand(item):
 		await get_tree().create_timer(0.8).timeout
 		textChange = false
 
+<<<<<<< HEAD
 	
 
+=======
+>>>>>>> origin
 func showItemandUseItemInHand(item: itemClass) -> void:
 	var inputItem = item.get_item_name()
 	
 	if inputItem == "Box":
 		return
 	
+<<<<<<< HEAD
 	if item.is_in_group("door") :
 		item.interactive()
 		return
 	
+=======
+>>>>>>> origin
 	if inputItem == "Wrench":
 		wrenchHand.visible = true
 	elif inputItem == "Fuse":
 		fuseHand.visible = true
-	elif inputItem == "Key":
-		keyhand.visible = true
 	ItemOnHand = inputItem
 	item.interactive()
 
@@ -125,8 +196,6 @@ func hideItemInHand() -> void:
 		wrenchHand.visible = false
 	elif ItemOnHand == "Fuse":
 		fuseHand.visible = false
-	elif ItemOnHand == "Key":
-		keyhand.visible = false
 
 
 func get_visual_bottom(node: Node3D) -> float:

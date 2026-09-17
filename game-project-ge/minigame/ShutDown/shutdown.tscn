@@ -72,3 +72,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 16
 text = "เริ่มใหม่"
+
+[node name="ExitButton" type="Button" parent="." unique_id=1147974583]
+layout_mode = 0
+offset_left = 555.0
+offset_top = 461.0
+offset_right = 596.0
+offset_bottom = 495.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 18
+text = "ออก"

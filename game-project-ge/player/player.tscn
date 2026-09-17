@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d0lk6sw7lvmi2" path="res://UI/CameraView.tscn" id="3_yw30f"]
 [ext_resource type="PackedScene" uid="uid://bxbebo6xu746q" path="res://Asset/Item/key/key.tscn" id="5_boad6"]
 [ext_resource type="PackedScene" uid="uid://cktlshhe6u5r5" path="res://Asset/Item/Fuse/Fuse.tscn" id="5_g6k8r"]
+[ext_resource type="Script" uid="uid://d3yvt52xbk4b0" path="res://player/quest.gd" id="7_boad6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s1fef"]
 
@@ -73,3 +74,50 @@ spot_angle_attenuation = 1.414212
 stream = SubResource("AudioStreamMicrophone_g1dw6")
 autoplay = true
 bus = &"Mic"
+
+[node name="Quest" type="Control" parent="." unique_id=2032509068]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1148.0
+offset_bottom = 646.0
+script = ExtResource("7_boad6")
+
+[node name="Panel" type="Panel" parent="Quest" unique_id=251284695]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Quest/Panel" unique_id=528532869]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="Quest/Panel/VBoxContainer" unique_id=335550911]
+layout_mode = 2
+
+[node name="RunNumber" type="Label" parent="Quest/Panel/VBoxContainer" unique_id=1907279576]
+layout_mode = 2
+
+[node name="TollSort" type="Label" parent="Quest/Panel/VBoxContainer" unique_id=1041858230]
+layout_mode = 2
+
+[node name="DifColor" type="Label" parent="Quest/Panel/VBoxContainer" unique_id=1241697155]
+layout_mode = 2
+
+[node name="BoxCheck" type="Label" parent="Quest/Panel/VBoxContainer" unique_id=1089132130]
+layout_mode = 2
+
+[node name="Fix" type="Label" parent="Quest/Panel/VBoxContainer" unique_id=1885287873]
+layout_mode = 2
+
+[node name="GodangTwoCheck" type="Label" parent="Quest/Panel/VBoxContainer" unique_id=1325138295]
+layout_mode = 2
+
+[node name="fuseCheck" type="Label" parent="Quest/Panel/VBoxContainer" unique_id=165827708]
+layout_mode = 2
+
+[node name="CutOut" type="Label" parent="Quest/Panel/VBoxContainer" unique_id=1793593435]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="Quest/Panel/VBoxContainer" unique_id=975908008]
+layout_mode = 2

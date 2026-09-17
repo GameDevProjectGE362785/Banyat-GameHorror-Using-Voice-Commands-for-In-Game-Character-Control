@@ -1,9 +1,18 @@
 extends Node
-
+var ShutDown = true
 signal beat_triggered(hour: int, beat_id: StringName)
+var current_hour := 0
+var current_minute := 0
+var BoxQuestCount = 0
 
-var RunNumber = false
-
+var RunNumber = false #ตรวจใบส่งของรอบกลางคืน (มินิเกม)
+var TollSort = false  #จัดเรียงอุปกรณ์บนชั้น B (มินิเกม)
+var DifColor = false #เช็กของชำรุด 3 กล่อง (มินิเกม)
+var BoxCheck = false #ตรวจเลขสินค้า A-01 ถึง A-05 (หากลอง 1 - 5 ให้ครบ)
+var Fix = false #ช่อมเครื่องปั่นไฟ 
+var GodangTwoCheck = false #เช็คของในโกดัง 2 (หาของให้ครบ)
+var fuseCheck = false #เปลี่ยน Fuse ตู้ไฟ (หาฟิวตามแมพ)
+var CutOut = false #ปิดเครื่องจักร ปิดคัตเอ้า (มินิเกม)
 const BEATS: Dictionary = {
 	0: &"intro_blackout",
 	1: &"machine_check",
@@ -29,7 +38,7 @@ func _ready() -> void:
 	# เชื่อม beat_triggered เข้ากับ event จริง (จุดที่ขาดไปก่อนหน้านี้)
 	beat_triggered.connect(_on_beat_triggered)
 
-	_on_hour_tick(GameClock.current_hour)
+	_on_hour_tick(EventScheduler.current_hour)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
@@ -88,7 +97,7 @@ func trigger_beat(hour: int) -> void:
 func reset() -> void:
 	last_triggered_hour = -1
 	triggered_beats.clear()
-	_on_hour_tick(GameClock.current_hour)
+	_on_hour_tick(GameClock.EventScheduler.current_hour)
 
 
 func _on_hour_tick(hour: int) -> void:

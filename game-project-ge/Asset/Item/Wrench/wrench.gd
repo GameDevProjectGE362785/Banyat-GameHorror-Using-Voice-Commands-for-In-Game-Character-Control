@@ -1,4 +1,4 @@
-extends "res://Asset/ItemClass.gd"
+extends "res://Asset/itemClass.gd"
 
 class_name Wrench
 
