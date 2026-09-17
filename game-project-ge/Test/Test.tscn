@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://cenwvphfkh3el"]
 
 [ext_resource type="PackedScene" uid="uid://cyh8yrsokurny" path="res://player/player.tscn" id="1_tf838"]
+[ext_resource type="PackedScene" uid="uid://dafbfagxllnxr" path="res://Asset/Item/electricBox/ElecBox.tscn" id="1_un7ao"]
 [ext_resource type="PackedScene" uid="uid://kpb4chml8u5f" path="res://Asset/Item/Box/Box.tscn" id="2_n8bxl"]
 [ext_resource type="PackedScene" uid="uid://d4a6uq4akepgb" path="res://Asset/Item/Wrench/Wrench.tscn" id="3_pyd3v"]
 [ext_resource type="PackedScene" uid="uid://cktlshhe6u5r5" path="res://Asset/Item/Fuse/Fuse.tscn" id="4_4l8u5"]
+[ext_resource type="PackedScene" uid="uid://mlsfqig6k5m5" path="res://model/eventItem/deskfolder/deskfolder.tscn" id="5_lg8mm"]
+[ext_resource type="PackedScene" uid="uid://cfcs6uk54xcx4" path="res://model/eventItem/workbrach/workbench.tscn" id="7_iednq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_khhxn"]
 size = Vector3(2.0839844, 0.12188721, 2.0699463)
@@ -14,6 +17,7 @@ size = Vector3(2.0839844, 0.12188721, 2.0699463)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=715995170]
 transform = Transform3D(4.985, 0, 0, 0, 4.985, 0, 0, 0, 4.985, 0, 0, 0)
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=807308150]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06542969, -0.014190674, -0.046569824)
@@ -31,5 +35,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2840712, -0.0005903989, -2.
 [node name="Wrench" parent="." unique_id=1082256035 instance=ExtResource("3_pyd3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4380019, 0.13419932, 0.9646072)
 
-[node name="Fuse" parent="." unique_id=1962960150 instance=ExtResource("4_4l8u5")]
+[node name="Fuse4" parent="." unique_id=1962960150 instance=ExtResource("4_4l8u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7453928, 0.4947691, -3.92015)
+
+[node name="Fuse3" parent="." unique_id=334658270 instance=ExtResource("4_4l8u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9554415, 0.42492855, -3)
+
+[node name="Fuse2" parent="." unique_id=2103524916 instance=ExtResource("4_4l8u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9481742, 0.2896514, -2)
+
+[node name="Fuse" parent="." unique_id=1608636631 instance=ExtResource("4_4l8u5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9740871, 0.33597302, -1)
+
+[node name="Deskfolder" parent="." unique_id=1083293930 instance=ExtResource("5_lg8mm")]
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, -1.0455185, 0.2330631, 1.5958416)
+
+[node name="ElecBox" parent="." unique_id=266028719 groups=["ElecBox"] instance=ExtResource("1_un7ao")]
+transform = Transform3D(0.37387502, 0, 0, 0, 0.37387502, 0, 0, 0, 0.37387502, 3.1453674, 0.165164, -0.091650486)
+collision_layer = 2
+
+[node name="Workbench" parent="." unique_id=28344661 instance=ExtResource("7_iednq")]
+transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 0.88343036, 0.032958806, 3.17416)

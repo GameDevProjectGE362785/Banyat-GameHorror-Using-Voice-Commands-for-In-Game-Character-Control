@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://q5xe42fwnw5t"]
 
 [ext_resource type="PackedScene" uid="uid://bspi51v4ist57" path="res://model/eventItem/shelf/624230013_shelf_model_blend.tscn" id="1_ko8nt"]
+[ext_resource type="Material" uid="uid://sk1l4goxmqk0" path="res://Asset/Item/MaterialHide.tres" id="2_f8dky"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jv1ba"]
 size = Vector3(1.4976196, 4.005005, 2.3914795)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cyow6"]
+material = ExtResource("2_f8dky")
+size = Vector3(2.1778605, 4.2087226, 2.957726)
 
 [node name="Shelf" type="Node3D" unique_id=877798683]
 
@@ -14,3 +19,7 @@ size = Vector3(1.4976196, 4.005005, 2.3914795)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="624230013_shelf_model_blend/Area3D" unique_id=903567687]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012969971, 1.5025024, 0.010192871)
 shape = SubResource("BoxShape3D_jv1ba")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1146963087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037657857, 1.4304483, -0.04164481)
+mesh = SubResource("BoxMesh_cyow6")

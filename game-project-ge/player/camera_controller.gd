@@ -7,7 +7,8 @@ const MAX_PITCH = 90.0
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		# Rotate only up/down (pitch) — the Player handles left/right
-		rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
-		rotation.x = clamp(rotation.x, deg_to_rad(MIN_PITCH), deg_to_rad(MAX_PITCH))
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion:
+			# Rotate only up/down (pitch) — the Player handles left/right
+			rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
+			rotation.x = clamp(rotation.x, deg_to_rad(MIN_PITCH), deg_to_rad(MAX_PITCH))

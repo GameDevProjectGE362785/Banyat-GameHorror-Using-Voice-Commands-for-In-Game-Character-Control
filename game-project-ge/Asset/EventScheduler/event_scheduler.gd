@@ -1,9 +1,17 @@
 extends Node
 
 signal beat_triggered(hour: int, beat_id: StringName)
-
+var current_hour := 0
+var current_minute := 0
 var RunNumber = false
-
+var ShutDown = false
+var TollSort = false
+var DifColor = false
+var BoxCheck = false
+var Fix = false
+var GodangTwoCheck = false
+var fuseCheck = false
+var CutOut = false
 const BEATS: Dictionary = {
 	0: &"intro_blackout",
 	1: &"machine_check",
@@ -29,7 +37,7 @@ func _ready() -> void:
 	# เชื่อม beat_triggered เข้ากับ event จริง (จุดที่ขาดไปก่อนหน้านี้)
 	beat_triggered.connect(_on_beat_triggered)
 
-	_on_hour_tick(GameClock.current_hour)
+	_on_hour_tick(EventScheduler.current_hour)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
@@ -88,7 +96,7 @@ func trigger_beat(hour: int) -> void:
 func reset() -> void:
 	last_triggered_hour = -1
 	triggered_beats.clear()
-	_on_hour_tick(GameClock.current_hour)
+	_on_hour_tick(GameClock.EventScheduler.current_hour)
 
 
 func _on_hour_tick(hour: int) -> void:

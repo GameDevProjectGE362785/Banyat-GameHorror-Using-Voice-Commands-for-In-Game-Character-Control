@@ -22,14 +22,14 @@ func _ready() -> void:
 
 #Control rotate
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		# Rotate the whole player body left/right (yaw)
-		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED :
+		if event is InputEventMouseMotion:
+			# Rotate the whole player body left/right (yaw)
+			rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	if event is InputEventMouseButton and event.pressed:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 
 #Control Movement
 func _physics_process(delta: float) -> void:
@@ -42,33 +42,62 @@ func _physics_process(delta: float) -> void:
 	#	velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED :
+		var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 
-	move_and_slide()
+		move_and_slide()
 
 #Control interactive
 func _process(delta: float) -> void:
 	checkObjectInfront()
 	if Input.is_action_just_pressed("flashlight"):
 		flashLightFunction()
-
+	if Input.is_action_just_pressed("CheckLowhigh"):
+		EventScheduler.RunNumber = true
+		EventScheduler.ShutDown = true
+		EventScheduler.TollSort = true
+		EventScheduler.DifColor = true
+		EventScheduler.BoxCheck = true
+		EventScheduler.Fix = true
+		EventScheduler.GodangTwoCheck = true
 var textChange = false
 func checkObjectInfront():
 	if raycast.is_colliding():
 		var item = raycast.get_collider()
-		#interactive Item
-		if item is ItemEvent:
-			if Input.is_action_just_pressed("PickUp"):
+		if item.is_in_group("EventItem"):
+			if not textChange:
 				UI.setCollition(true)
-				item.interactive()
-		if item is itemClass:
+				var text = item.getInteractive()
+				UI.TextChanger(text)
+				if Input.is_action_just_pressed("PickUp"):
+					item.interactive()
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+		elif item.is_in_group("ElecBox"):
+			if not textChange:
+				UI.setCollition(true)
+				UI.TextChanger(item.getInteractive())
+
+			if Input.is_action_just_pressed("PickUp"):
+				var used: bool = item.use_item(ItemOnHand)
+				if used:
+					if ItemOnHand == "Fuse":
+						hideItemInHand()
+						ItemOnHand = "none"
+				elif ItemOnHand != "Fuse" and not item.powered:
+					UI.TextChanger("ต้องถือ Fuse อยู่ในมือก่อน")
+					textChange = true
+					await get_tree().create_timer(0.8).timeout
+					textChange = false
+
+		elif item is itemClass:
 			if not textChange:
 				UI.setCollition(true)
 				var text = item.getInteractive()
@@ -78,8 +107,6 @@ func checkObjectInfront():
 						checkItemOnHand(item)
 					else:
 						showItemandUseItemInHand(item)
-				
-					
 	else:
 		UI.setCollition(false)
 
@@ -87,7 +114,7 @@ func checkObjectInfront():
 func checkItemOnHand(item):
 	if item is Wrench and ItemOnHand == "Wrench":
 		if !item.getOnTable():
-			hideItemInHand(item)
+			hideItemInHand()
 			item.interactive()
 			ItemOnHand = "none"
 	else:
@@ -109,7 +136,7 @@ func showItemandUseItemInHand(item: itemClass) -> void:
 	ItemOnHand = inputItem
 	item.interactive()
 
-func hideItemInHand(item: itemClass) -> void:
+func hideItemInHand() -> void:
 	if ItemOnHand == "Wrench":
 		wrenchHand.visible = false
 	elif ItemOnHand == "Fuse":
