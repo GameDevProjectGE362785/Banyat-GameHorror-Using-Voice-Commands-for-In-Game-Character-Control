@@ -1,4 +1,4 @@
-extends "res://Asset/ItemClass.gd"
+extends "res://Asset/ClassItem.gd"
 
 class_name Fuse
 

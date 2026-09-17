@@ -69,13 +69,6 @@ func _process(delta: float) -> void:
 		EventScheduler.GodangTwoCheck = true
 var textChange = false
 
-<<<<<<< HEAD
-func checkItemOnHand(item):
-	if item.is_in_group("door"):
-		item.interactive()
-		return
-	if item.is_in_group("PlaceGroup") and ItemOnHand == item.get_item_name():
-=======
 
 func checkObjectInfront():
 	if not raycast.is_colliding():
@@ -86,7 +79,7 @@ func checkObjectInfront():
 	var picked := Input.is_action_just_pressed("PickUp")
 	print("RayCast เจอ: ", item)
 	print("Class: ", item.get_class())
-	print("Is itemClass: ", item is itemClass)
+	print("Is ClassItem: ", item is ClassItem)
 
 	# =========================================================
 	# BOX
@@ -142,7 +135,7 @@ func checkObjectInfront():
 	# =========================================================
 	# ITEM CLASS
 	# =========================================================
-	if item is itemClass:
+	if item is ClassItem:
 		if not textChange:
 			UI.setCollition(true)
 			UI.TextChanger(item.getInteractive())
@@ -155,7 +148,6 @@ func checkObjectInfront():
 
 func checkItemOnHand(item):
 	if item is Wrench and ItemOnHand == "Wrench":
->>>>>>> origin
 		if !item.getOnTable():
 			hideItemInHand()
 			item.interactive()
@@ -166,24 +158,12 @@ func checkItemOnHand(item):
 		await get_tree().create_timer(0.8).timeout
 		textChange = false
 
-<<<<<<< HEAD
-	
-
-=======
->>>>>>> origin
-func showItemandUseItemInHand(item: itemClass) -> void:
+func showItemandUseItemInHand(item: ClassItem) -> void:
 	var inputItem = item.get_item_name()
 	
 	if inputItem == "Box":
 		return
 	
-<<<<<<< HEAD
-	if item.is_in_group("door") :
-		item.interactive()
-		return
-	
-=======
->>>>>>> origin
 	if inputItem == "Wrench":
 		wrenchHand.visible = true
 	elif inputItem == "Fuse":
