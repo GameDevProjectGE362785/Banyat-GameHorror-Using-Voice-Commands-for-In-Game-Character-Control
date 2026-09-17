@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dbntcfceyxx75" path="res://Asset/System/EventScheduler/events_scheduler.tscn" id="3_liyct"]
 [ext_resource type="PackedScene" uid="uid://oo55yefi45re" path="res://temp/CloneContainer.tscn" id="4_eunhr"]
 [ext_resource type="PackedScene" uid="uid://cyh8yrsokurny" path="res://player/player.tscn" id="4_ib3t1"]
+[ext_resource type="PackedScene" uid="uid://clnwvwhyiba2j" path="res://model/secu room/security+room_fbx.tscn" id="5_k3v36"]
 
 [node name="Main" type="Node" unique_id=1581661248]
 
@@ -12,7 +13,7 @@
 [node name="EventsScheduler" parent="." unique_id=659291456 instance=ExtResource("3_liyct")]
 
 [node name="Player" parent="." unique_id=965063473 instance=ExtResource("4_ib3t1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9350467, 1.4032148, 0.15376043)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.772152, 1.4032148, 27.255503)
 
 [node name="Node3D" type="Node3D" parent="." unique_id=2010853044]
 
@@ -24,3 +25,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.301487)
 
 [node name="Test_map3" parent="Node3D" unique_id=1084012023 instance=ExtResource("4_eunhr")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 26.74483, 0, 38.89479)
+
+[node name="security+room-fbx" parent="." unique_id=397097937 instance=ExtResource("5_k3v36")]
+transform = Transform3D(-25.982, 0, -2.9898679e-06, 0, 12.132, 0, 3.923173e-06, 0, -19.801, 48.569237, 0.096080445, 30.060856)

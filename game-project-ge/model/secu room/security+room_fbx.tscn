@@ -448,3 +448,19 @@ rules_text = "1.พนักงานที่นี้มีคนเดีย�
 5.ถ้าประตูโกดังล็อกเองให้ตะโกนเสียงแหลมแล้วประตูจะเปิด
 6.ห้ามเข้าโกดังสองตอนตี4
 7.ห้ามใช้เสียงและเคาะประตูตอนตี3"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1361036833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.23, -0.125)
+light_specular = 16.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." unique_id=123015094]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012, 0.225, 0.023)
+light_specular = 16.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1080540938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008, 0.205, -0.116)
+light_specular = 16.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=776108156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.067, 0.2, -0.114)
+light_specular = 16.0

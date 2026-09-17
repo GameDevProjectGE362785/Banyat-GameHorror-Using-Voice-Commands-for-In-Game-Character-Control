@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://d8643uyat1c5"]
 
 [ext_resource type="Script" uid="uid://k33ku4hn4qwq" path="res://minigame/DifColor/DifColor.gd" id="1_script"]
+[ext_resource type="LabelSettings" uid="uid://bg2a61hk0jvf6" path="res://model/secu room/new_label_settings.tres" id="2_vfw72"]
 
-[node name="Main" type="Control"]
+[node name="Main" type="Control" unique_id=1173138548]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,43 +12,59 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=85490406]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 44.0
+offset_right = 978.0
+offset_bottom = 599.0
+color = Color(0.16758826, 0.16153184, 0.2403517, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect" unique_id=337869618]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 23.0
+offset_right = 773.0
+offset_bottom = 527.0
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=2079702002]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -190.0
-offset_right = 160.0
-offset_bottom = 190.0
+offset_left = -154.0
+offset_top = -149.0
+offset_right = 166.0
+offset_bottom = 231.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="StatusLabel" type="Label" parent="VBox"]
+[node name="StatusLabel" type="Label" parent="VBox" unique_id=677951339]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
+text = "กำลังโหลด..."
+label_settings = ExtResource("2_vfw72")
 horizontal_alignment = 1
 autowrap_mode = 2
-text = "กำลังโหลด..."
 
-[node name="Grid" type="GridContainer" parent="VBox"]
+[node name="Grid" type="GridContainer" parent="VBox" unique_id=1913883113]
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 4
 
-[node name="HistoryLabel" type="Label" parent="VBox"]
+[node name="HistoryLabel" type="Label" parent="VBox" unique_id=571114337]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 16
+label_settings = ExtResource("2_vfw72")
 horizontal_alignment = 1
 autowrap_mode = 2
-text = ""
 
-[node name="RestartButton" type="Button" parent="VBox"]
+[node name="RestartButton" type="Button" parent="VBox" unique_id=332764083]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 18
