@@ -84,9 +84,8 @@ func checkObjectInfront():
 	else:
 		UI.setCollition(false)
 
-
 func checkItemOnHand(item):
-	if item is doorClass:
+	if item.is_in_group("door"):
 		item.interactive()
 		return
 	if item.is_in_group("PlaceGroup") and ItemOnHand == item.get_item_name():
@@ -102,14 +101,13 @@ func checkItemOnHand(item):
 
 	
 
-
 func showItemandUseItemInHand(item: itemClass) -> void:
 	var inputItem = item.get_item_name()
 	
 	if inputItem == "Box":
 		return
 	
-	if item is doorClass:
+	if item.is_in_group("door") :
 		item.interactive()
 		return
 	

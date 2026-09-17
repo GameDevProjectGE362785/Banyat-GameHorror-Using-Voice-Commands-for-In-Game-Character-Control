@@ -42,6 +42,8 @@ enabled=PackedStringArray()
 [global_group]
 
 PlaceGroup=""
+door=""
+player=""
 
 [input]
 
