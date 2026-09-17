@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://b63by7pt60xa2"]
+
+[ext_resource type="Script" uid="uid://yc4prkpthur5" path="res://minigame/Toolsort/Toolsort.gd" id="1_main"]
+[ext_resource type="Script" uid="uid://32rdu45udaqj" path="res://minigame/Toolsort/tool_slot.gd" id="2_slot"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -160.0
+offset_right = 220.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="StatusLabel" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "กำลังโหลด..."
+
+[node name="TrayTitleLabel" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+horizontal_alignment = 1
+text = "ของที่ต้องเรียง"
+
+[node name="TrayContainer" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="SlotsTitleLabel" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+horizontal_alignment = 1
+text = "ช่องวาง"
+
+[node name="SlotsContainer" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Slot0" type="PanelContainer" parent="VBox/SlotsContainer"]
+custom_minimum_size = Vector2(90, 110)
+layout_mode = 2
+script = ExtResource("2_slot")
+
+[node name="Inner" type="VBoxContainer" parent="VBox/SlotsContainer/Slot0"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Number" type="Label" parent="VBox/SlotsContainer/Slot0/Inner"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+text = "1"
+
+[node name="Content" type="CenterContainer" parent="VBox/SlotsContainer/Slot0/Inner"]
+custom_minimum_size = Vector2(76, 76)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Slot1" type="PanelContainer" parent="VBox/SlotsContainer"]
+custom_minimum_size = Vector2(90, 110)
+layout_mode = 2
+script = ExtResource("2_slot")
+
+[node name="Inner" type="VBoxContainer" parent="VBox/SlotsContainer/Slot1"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Number" type="Label" parent="VBox/SlotsContainer/Slot1/Inner"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+text = "2"
+
+[node name="Content" type="CenterContainer" parent="VBox/SlotsContainer/Slot1/Inner"]
+custom_minimum_size = Vector2(76, 76)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Slot2" type="PanelContainer" parent="VBox/SlotsContainer"]
+custom_minimum_size = Vector2(90, 110)
+layout_mode = 2
+script = ExtResource("2_slot")
+
+[node name="Inner" type="VBoxContainer" parent="VBox/SlotsContainer/Slot2"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Number" type="Label" parent="VBox/SlotsContainer/Slot2/Inner"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+text = "3"
+
+[node name="Content" type="CenterContainer" parent="VBox/SlotsContainer/Slot2/Inner"]
+custom_minimum_size = Vector2(76, 76)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Slot3" type="PanelContainer" parent="VBox/SlotsContainer"]
+custom_minimum_size = Vector2(90, 110)
+layout_mode = 2
+script = ExtResource("2_slot")
+
+[node name="Inner" type="VBoxContainer" parent="VBox/SlotsContainer/Slot3"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Number" type="Label" parent="VBox/SlotsContainer/Slot3/Inner"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+text = "4"
+
+[node name="Content" type="CenterContainer" parent="VBox/SlotsContainer/Slot3/Inner"]
+custom_minimum_size = Vector2(76, 76)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="RestartButton" type="Button" parent="VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+text = "สุ่มใหม่"
