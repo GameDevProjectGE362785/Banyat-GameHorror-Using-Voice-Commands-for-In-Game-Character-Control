@@ -11,7 +11,7 @@ size = Vector3(0.13647461, 0.06046295, 0.5062866)
 material = ExtResource("3_7pfwj")
 size = Vector3(0.136, 0.06, 0.506)
 
-[node name="Wrench" type="StaticBody3D" unique_id=1082256035]
+[node name="Wrench" type="StaticBody3D" unique_id=1082256035 groups=["PlaceGroup"]]
 collision_layer = 2
 script = ExtResource("1_edabk")
 

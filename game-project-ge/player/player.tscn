@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dbhf2ltybb4hv" path="res://player/camera_controller.gd" id="2_rkbax"]
 [ext_resource type="PackedScene" uid="uid://d4a6uq4akepgb" path="res://Asset/Item/Wrench/Wrench.tscn" id="3_qjkh3"]
 [ext_resource type="PackedScene" uid="uid://d0lk6sw7lvmi2" path="res://UI/CameraView.tscn" id="3_yw30f"]
-[ext_resource type="PackedScene" uid="uid://kpb4chml8u5f" path="res://Asset/Item/Box/Box.tscn" id="4_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://bxbebo6xu746q" path="res://Asset/Item/key/key.tscn" id="5_boad6"]
 [ext_resource type="PackedScene" uid="uid://cktlshhe6u5r5" path="res://Asset/Item/Fuse/Fuse.tscn" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://d3yvt52xbk4b0" path="res://player/quest.gd" id="7_boad6"]
 
@@ -16,8 +16,9 @@ height = 2.0390625
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_g1dw6"]
 
-[node name="Player" type="CharacterBody3D" unique_id=965063473]
+[node name="Player" type="CharacterBody3D" unique_id=965063473 groups=["player"]]
 collision_mask = 3
+wall_min_slide_angle = 1.5707964
 script = ExtResource("1_oul6g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1097621574]
@@ -42,13 +43,17 @@ visible = false
 collision_layer = 0
 collision_mask = 0
 
-[node name="Box" parent="CameraController/Camera3D/HandedItem" unique_id=1432651663 instance=ExtResource("4_qjkh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.79608667, -0.500391)
-visible = false
-
 [node name="Fuse" parent="CameraController/Camera3D/HandedItem" unique_id=1962960150 instance=ExtResource("5_g6k8r")]
 transform = Transform3D(0.4651794, 0.18332514, 0, -0.18332514, 0.4651794, 0, 0, 0, 0.5, 0.27374417, -0.34259164, -0.41942674)
 visible = false
+collision_layer = 0
+collision_mask = 0
+
+[node name="Key" parent="CameraController/Camera3D/HandedItem" unique_id=425120382 instance=ExtResource("5_boad6")]
+transform = Transform3D(-0.038991284, 0.090035, -0.01932301, 0.05611086, 0.0065915147, -0.08251135, -0.073015414, -0.04301454, -0.05308953, 0.195, -0.15, -0.24)
+visible = false
+collision_layer = 0
+collision_mask = 0
 
 [node name="RayCast3D" type="RayCast3D" parent="CameraController" unique_id=1718595647]
 transform = Transform3D(1.32, 0, 0, 0, 1.32, 0, 0, 0, 2, 0, 0.51315755, -0.5075002)
