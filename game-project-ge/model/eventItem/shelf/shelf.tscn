@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://q5xe42fwnw5t"]
+
+[ext_resource type="PackedScene" uid="uid://bspi51v4ist57" path="res://model/eventItem/shelf/624230013_shelf_model_blend.tscn" id="1_ko8nt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jv1ba"]
+size = Vector3(1.4976196, 4.005005, 2.3914795)
+
+[node name="Shelf" type="Node3D" unique_id=877798683]
+
+[node name="624230013_shelf_model_blend" parent="." unique_id=1430084252 instance=ExtResource("1_ko8nt")]
+
+[node name="Area3D" type="Area3D" parent="624230013_shelf_model_blend" unique_id=2124782857]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="624230013_shelf_model_blend/Area3D" unique_id=903567687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012969971, 1.5025024, 0.010192871)
+shape = SubResource("BoxShape3D_jv1ba")

@@ -25,7 +25,7 @@ input/transcribe/use_gpu=false
 [autoload]
 
 GameClock="*res://Asset/System/GameClock/game_clock.gd"
-EventScheduler="*res://Asset/System/EventScheduler/event_scheduler.gd"
+EventScheduler="*res://Asset/EventScheduler/event_scheduler.gd"
 LightingSystem="*res://Asset/System/LightingSystem/lighting_system.gd"
 Knockdetector="*uid://ckisulxesmsl3"
 PitchChecker="*uid://d1cksebxm171l"

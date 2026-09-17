@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cfcs6uk54xcx4"]
+
+[ext_resource type="PackedScene" uid="uid://dlovl585uwim7" path="res://model/eventItem/workbrach/wood_workbench.glb" id="1_bymvm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jv1ba"]
+size = Vector3(3.644043, 1.0708008, 2.020874)
+
+[node name="Workbench" type="Node3D" unique_id=28344661]
+
+[node name="Sketchfab_Scene" parent="." unique_id=1386697962 instance=ExtResource("1_bymvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9867945, 0, 1.0070937)
+
+[node name="Area3D" type="Area3D" parent="Sketchfab_Scene" unique_id=516769448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9393737, 0, -0.86069226)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_Scene/Area3D" unique_id=1404590258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14038086, 0.5632324, -0.11895752)
+shape = SubResource("BoxShape3D_jv1ba")

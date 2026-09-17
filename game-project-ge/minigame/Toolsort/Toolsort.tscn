@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://b63by7pt60xa2"]
 
 [ext_resource type="Script" uid="uid://yc4prkpthur5" path="res://minigame/Toolsort/Toolsort.gd" id="1_main"]
+[ext_resource type="Texture2D" uid="uid://kx6fjr7v54ci" path="res://minigame/Untitled24_20260917193729.png" id="2_blq03"]
 [ext_resource type="Script" uid="uid://32rdu45udaqj" path="res://minigame/Toolsort/tool_slot.gd" id="2_slot"]
 
-[node name="Main" type="Control"]
+[node name="Main" type="Control" unique_id=74981087]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +13,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_main")
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1371830924]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 99.0
+offset_right = 985.0
+offset_bottom = 549.0
+color = Color(0.53333336, 0.6666667, 1, 0.078431375)
+
+[node name="Untitled2420260917193729" type="Sprite2D" parent="." unique_id=591403339]
+position = Vector2(576, 322.49997)
+scale = Vector2(0.5979166, 0.60092586)
+texture = ExtResource("2_blq03")
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1722741669]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,128 +42,124 @@ grow_vertical = 2
 theme_override_constants/separation = 18
 alignment = 1
 
-[node name="StatusLabel" type="Label" parent="VBox"]
+[node name="StatusLabel" type="Label" parent="VBox" unique_id=1507660939]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
+text = "กำลังโหลด..."
 horizontal_alignment = 1
 autowrap_mode = 2
-text = "กำลังโหลด..."
 
-[node name="TrayTitleLabel" type="Label" parent="VBox"]
+[node name="TrayTitleLabel" type="Label" parent="VBox" unique_id=916597120]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
 theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 15
 text = "ของที่ต้องเรียง"
+horizontal_alignment = 1
 
-[node name="TrayContainer" type="HBoxContainer" parent="VBox"]
+[node name="TrayContainer" type="HBoxContainer" parent="VBox" unique_id=497732095]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 14
 alignment = 1
 
-[node name="SlotsTitleLabel" type="Label" parent="VBox"]
+[node name="SlotsTitleLabel" type="Label" parent="VBox" unique_id=65805457]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
 theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 15
 text = "ช่องวาง"
+horizontal_alignment = 1
 
-[node name="SlotsContainer" type="HBoxContainer" parent="VBox"]
+[node name="SlotsContainer" type="HBoxContainer" parent="VBox" unique_id=1724499578]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 14
 alignment = 1
 
-[node name="Slot0" type="PanelContainer" parent="VBox/SlotsContainer"]
+[node name="Slot0" type="PanelContainer" parent="VBox/SlotsContainer" unique_id=796157578]
 custom_minimum_size = Vector2(90, 110)
 layout_mode = 2
 script = ExtResource("2_slot")
 
-[node name="Inner" type="VBoxContainer" parent="VBox/SlotsContainer/Slot0"]
+[node name="Inner" type="VBoxContainer" parent="VBox/SlotsContainer/Slot0" unique_id=2094161441]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 4
 
-[node name="Number" type="Label" parent="VBox/SlotsContainer/Slot0/Inner"]
+[node name="Number" type="Label" parent="VBox/SlotsContainer/Slot0/Inner" unique_id=458601634]
 layout_mode = 2
-mouse_filter = 2
 theme_override_font_sizes/font_size = 14
-horizontal_alignment = 1
 text = "1"
+horizontal_alignment = 1
 
-[node name="Content" type="CenterContainer" parent="VBox/SlotsContainer/Slot0/Inner"]
+[node name="Content" type="CenterContainer" parent="VBox/SlotsContainer/Slot0/Inner" unique_id=1087776976]
 custom_minimum_size = Vector2(76, 76)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Slot1" type="PanelContainer" parent="VBox/SlotsContainer"]
+[node name="Slot1" type="PanelContainer" parent="VBox/SlotsContainer" unique_id=2081759240]
 custom_minimum_size = Vector2(90, 110)
 layout_mode = 2
 script = ExtResource("2_slot")
 
-[node name="Inner" type="VBoxContainer" parent="VBox/SlotsContainer/Slot1"]
+[node name="Inner" type="VBoxContainer" parent="VBox/SlotsContainer/Slot1" unique_id=108787478]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 4
 
-[node name="Number" type="Label" parent="VBox/SlotsContainer/Slot1/Inner"]
+[node name="Number" type="Label" parent="VBox/SlotsContainer/Slot1/Inner" unique_id=1771569022]
 layout_mode = 2
-mouse_filter = 2
 theme_override_font_sizes/font_size = 14
-horizontal_alignment = 1
 text = "2"
+horizontal_alignment = 1
 
-[node name="Content" type="CenterContainer" parent="VBox/SlotsContainer/Slot1/Inner"]
+[node name="Content" type="CenterContainer" parent="VBox/SlotsContainer/Slot1/Inner" unique_id=1102311561]
 custom_minimum_size = Vector2(76, 76)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Slot2" type="PanelContainer" parent="VBox/SlotsContainer"]
+[node name="Slot2" type="PanelContainer" parent="VBox/SlotsContainer" unique_id=2097869110]
 custom_minimum_size = Vector2(90, 110)
 layout_mode = 2
 script = ExtResource("2_slot")
 
-[node name="Inner" type="VBoxContainer" parent="VBox/SlotsContainer/Slot2"]
+[node name="Inner" type="VBoxContainer" parent="VBox/SlotsContainer/Slot2" unique_id=1830344653]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 4
 
-[node name="Number" type="Label" parent="VBox/SlotsContainer/Slot2/Inner"]
+[node name="Number" type="Label" parent="VBox/SlotsContainer/Slot2/Inner" unique_id=220324808]
 layout_mode = 2
-mouse_filter = 2
 theme_override_font_sizes/font_size = 14
-horizontal_alignment = 1
 text = "3"
+horizontal_alignment = 1
 
-[node name="Content" type="CenterContainer" parent="VBox/SlotsContainer/Slot2/Inner"]
+[node name="Content" type="CenterContainer" parent="VBox/SlotsContainer/Slot2/Inner" unique_id=1538183327]
 custom_minimum_size = Vector2(76, 76)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Slot3" type="PanelContainer" parent="VBox/SlotsContainer"]
+[node name="Slot3" type="PanelContainer" parent="VBox/SlotsContainer" unique_id=1052312660]
 custom_minimum_size = Vector2(90, 110)
 layout_mode = 2
 script = ExtResource("2_slot")
 
-[node name="Inner" type="VBoxContainer" parent="VBox/SlotsContainer/Slot3"]
+[node name="Inner" type="VBoxContainer" parent="VBox/SlotsContainer/Slot3" unique_id=718401277]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 4
 
-[node name="Number" type="Label" parent="VBox/SlotsContainer/Slot3/Inner"]
+[node name="Number" type="Label" parent="VBox/SlotsContainer/Slot3/Inner" unique_id=1570422948]
 layout_mode = 2
-mouse_filter = 2
 theme_override_font_sizes/font_size = 14
-horizontal_alignment = 1
 text = "4"
+horizontal_alignment = 1
 
-[node name="Content" type="CenterContainer" parent="VBox/SlotsContainer/Slot3/Inner"]
+[node name="Content" type="CenterContainer" parent="VBox/SlotsContainer/Slot3/Inner" unique_id=389696152]
 custom_minimum_size = Vector2(76, 76)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="RestartButton" type="Button" parent="VBox"]
+[node name="RestartButton" type="Button" parent="VBox" unique_id=1441329329]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 16

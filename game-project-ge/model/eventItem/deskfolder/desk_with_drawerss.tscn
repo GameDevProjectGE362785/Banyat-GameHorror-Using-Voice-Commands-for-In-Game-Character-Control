@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dr2i1ox1ney8e"]
+
+[ext_resource type="PackedScene" uid="uid://dbyvgmbbbl71n" path="res://model/eventItem/deskfolder/desk with drawers.fbx" id="1_apuf1"]
+
+[node name="desk with drawers" unique_id=1653270731 instance=ExtResource("1_apuf1")]

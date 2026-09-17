@@ -86,6 +86,8 @@ func _on_button_pressed(idx: int) -> void:
 			_set_buttons_disabled(true)
 			status_label.text = "ถูกต้องทั้งหมด! เยี่ยมมาก 🎉"
 			restart_button.visible = true
+			EventScheduler.RunNumber = true
+			$self.visibility_changed(false)
 		else:
 			accepting_input = true
 	else:
