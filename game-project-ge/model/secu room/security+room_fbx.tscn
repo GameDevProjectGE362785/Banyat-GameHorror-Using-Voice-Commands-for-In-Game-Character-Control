@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://p7g8xs27f4i7" path="res://model/secu room/new_standard_material_3d.tres" id="1_6hq5r"]
 [ext_resource type="PackedScene" uid="uid://cfi30183fhc1n" path="res://model/secu room/Office_Table.fbx" id="2_0iegj"]
 [ext_resource type="PackedScene" uid="uid://erihxwopu5jf" path="res://model/secu room/rules_board.tscn" id="3_xxi61"]
+[ext_resource type="Script" uid="uid://clua8g2tscgr2" path="res://model/secu room/safezone.gd" id="4_0iegj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yt4o5"]
 cull_mode = 2
@@ -405,6 +406,9 @@ size = Vector3(0.30981445, 0.24450684, 0.008178711)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew6px"]
 size = Vector3(0.24571252, 0.24768066, 0.01550293)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_jv1ba"]
+size = Vector3(0.33059692, 1, 0.34521484)
+
 [node name="security+room-fbx" type="Node3D" unique_id=397097937]
 transform = Transform3D(2.1470718, 0, 0, 0, 1, 0, 0, 0, 1.6349721, 0, 0, 0)
 
@@ -517,3 +521,13 @@ physics_material_override = SubResource("PhysicsMaterial_jv1ba")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=2061660192]
 transform = Transform3D(1, 0, -6.9849193e-10, 0, 1.0000001, 0, 0, 0, 1, 0.01236669, -0.0040893406, -0.032477885)
 shape = SubResource("BoxShape3D_ew6px")
+
+[node name="safezone" type="Area3D" parent="." unique_id=739138809]
+script = ExtResource("4_0iegj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="safezone" unique_id=1348936523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025527954, 0, -0.11254879)
+shape = SubResource("BoxShape3D_jv1ba")
+
+[connection signal="body_entered" from="safezone" to="safezone" method="_on_body_entered"]
+[connection signal="body_exited" from="safezone" to="safezone" method="_on_body_exited"]

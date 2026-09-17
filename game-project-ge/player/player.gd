@@ -56,6 +56,13 @@ func _physics_process(delta: float) -> void:
 
 #Control interactive
 func _process(delta: float) -> void:
+	if EventScheduler.GhoustinGodang1 == true and EventScheduler.CharacinGodang1 == true:
+		EventScheduler.playerAlive = false
+	if EventScheduler.GhoustinGodang2 == true and EventScheduler.CharacinGodang2 == true:
+		EventScheduler.playerAlive = false
+	if EventScheduler.GhoustinGodang3 == true and EventScheduler.CharacinGodang3 == true:
+		EventScheduler.playerAlive = false
+	EventScheduler.check_crying_event()
 	checkObjectInfront()
 	if Input.is_action_just_pressed("flashlight"):
 		flashLightFunction()
@@ -77,9 +84,7 @@ func checkObjectInfront():
 	
 	var item = raycast.get_collider()
 	var picked := Input.is_action_just_pressed("PickUp")
-	print("RayCast เจอ: ", item)
-	print("Class: ", item.get_class())
-	print("Is ClassItem: ", item is ClassItem)
+
 
 	# =========================================================
 	# BOX
@@ -91,6 +96,13 @@ func checkObjectInfront():
 		if EventScheduler.BoxQuestCount >= 5:
 			EventScheduler.BoxCheck = true
 		return
+	if item.is_in_group("Box2") and picked:
+		item.remove_from_group("Box2")
+		item.disable_collision()
+		EventScheduler.Box2QuestCount += 1
+		if EventScheduler.Box2QuestCount >= 5:
+			EventScheduler.GodangTwoCheck = true
+		return
 	# =========================================================
 	# DINAMO
 	# =========================================================
@@ -98,8 +110,8 @@ func checkObjectInfront():
 		print("เจอแบ้วจ้า")
 		print(ItemOnHand)
 
-		$CheckEvent.visible = true
-		$CheckEvent.start_event()
+		item.get_node("CheckEvent").visible = true
+		item.get_node("CheckEvent").open_event()
 		return
 	# =========================================================
 	# EVENT ITEM
@@ -139,11 +151,11 @@ func checkObjectInfront():
 		if not textChange:
 			UI.setCollition(true)
 			UI.TextChanger(item.getInteractive())
-			if picked:
-				if ItemOnHand != "none":
-					checkItemOnHand(item)
-				else:
-					showItemandUseItemInHand(item)
+		if picked:
+			if ItemOnHand != "none":
+				checkItemOnHand(item)
+			else:
+				showItemandUseItemInHand(item)
 		return
 
 func checkItemOnHand(item):
