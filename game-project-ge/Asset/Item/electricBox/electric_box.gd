@@ -34,7 +34,7 @@ func _process(_delta: float) -> void:
 func getInteractive() -> String:
 	if powered:
 		return "Power Restored"
-
+	$Electic.play()
 	return "Insert Fuse (%d/%d)" % [inserted_fuses, REQUIRED_FUSES]
 
 func interactive() -> void:
@@ -78,6 +78,7 @@ func use_item(item_name: String) -> bool:
 
 	# ตรวจว่า Fuse ครบหรือยัง
 	if inserted_fuses >= REQUIRED_FUSES:
+		$Cutout.play()
 		powered = true
 		$MeshInstance3D.visible = false
 		print("ElectricBox: POWER RESTORED")

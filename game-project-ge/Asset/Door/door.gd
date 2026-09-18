@@ -43,6 +43,7 @@ func interactive() -> void:
 
 func _open_door() -> void:
 	var player := get_tree().get_first_node_in_group("player")
+	$DoorOpen.play()
 	if player == null:
 		push_warning("doorClass: no node found in group 'player'. Add your player to a group named 'player'.")
 		return
@@ -73,6 +74,7 @@ func _open_door() -> void:
 
 
 func _close_door() -> void:
+	$DoorClose.play()
 	is_open = false
 	_animate_to(closed_rotation_y)
 

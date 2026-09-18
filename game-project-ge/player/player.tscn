@@ -7,11 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://bxbebo6xu746q" path="res://Asset/Item/key/key.tscn" id="5_boad6"]
 [ext_resource type="PackedScene" uid="uid://cktlshhe6u5r5" path="res://Asset/Item/Fuse/Fuse.tscn" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://d3yvt52xbk4b0" path="res://player/quest.gd" id="7_boad6"]
-[ext_resource type="Texture2D" uid="uid://dlf4hsk5fcjuu" path="res://โ.png" id="8_ebec5"]
+[ext_resource type="Texture2D" uid="uid://d0mqyflyseva5" path="res://Main/โ (1).png" id="8_kb6p2"]
 [ext_resource type="AudioStream" uid="uid://b8o1a1uumlisp" path="res://lose_card.wav" id="8_rgyib"]
 [ext_resource type="FontFile" uid="uid://ck3m62hlpemne" path="res://player/FC Vision Heavy Compressed [Non-commercial].otf" id="9_hg6s5"]
 [ext_resource type="Script" uid="uid://cujamx88amc1b" path="res://player/hak_core.gd" id="11_2ieo8"]
 [ext_resource type="AudioStream" uid="uid://b1sapv70agqj1" path="res://Main/floraphonic-bone-break-10-218514.mp3" id="11_ebec5"]
+[ext_resource type="AudioStream" uid="uid://p4ufwdobwtr7" path="res://player/freesound_community-item-equip-6904.mp3" id="13_yllr7"]
+[ext_resource type="AudioStream" uid="uid://blp3an01w445i" path="res://player/freesound_community-pencil_check_mark_1-88805.mp3" id="14_kb6p2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s1fef"]
 
@@ -19,7 +21,7 @@
 radius = 0.57714844
 height = 2.0390625
 
-[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_g1dw6"]
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_j3pel"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rgyib"]
 font = ExtResource("9_hg6s5")
@@ -260,8 +262,8 @@ spot_angle_attenuation = 1.414212
 
 [node name="CameraView" parent="." unique_id=554294395 instance=ExtResource("3_yw30f")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=308477569]
-stream = SubResource("AudioStreamMicrophone_g1dw6")
+[node name="mic" type="AudioStreamPlayer" parent="." unique_id=308477569]
+stream = SubResource("AudioStreamMicrophone_j3pel")
 autoplay = true
 bus = &"Mic"
 
@@ -317,10 +319,10 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="โ" type="Sprite2D" parent="Quest/Panel2" unique_id=132682682]
-position = Vector2(579, 319)
-scale = Vector2(0.435, 0.435)
-texture = ExtResource("8_ebec5")
+[node name="โ(1)" type="Sprite2D" parent="Quest/Panel2" unique_id=401528935]
+position = Vector2(573.99994, 318)
+scale = Vector2(0.425, 0.425)
+texture = ExtResource("8_kb6p2")
 
 [node name="CrySound" type="AudioStreamPlayer" parent="." unique_id=1290412402]
 stream = ExtResource("8_rgyib")
@@ -356,3 +358,10 @@ script = ExtResource("11_2ieo8")
 
 [node name="DeadCamera" type="Camera3D" parent="." unique_id=116927598]
 transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="PickUp" type="AudioStreamPlayer" parent="." unique_id=510288852]
+stream = ExtResource("13_yllr7")
+volume_db = 4.861
+
+[node name="CheckBox" type="AudioStreamPlayer" parent="." unique_id=953183403]
+stream = ExtResource("14_kb6p2")

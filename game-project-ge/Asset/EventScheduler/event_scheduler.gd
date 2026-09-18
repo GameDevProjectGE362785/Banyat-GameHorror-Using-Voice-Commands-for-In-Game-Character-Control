@@ -107,7 +107,15 @@ var SafeRoomLockTime := -1
 
 func _process(_delta: float) -> void:
 	check_quest_deadlines()
-
+	if RunNumber \
+	or TollSort \
+	or DifColor \
+	or BoxCheck \
+	or Fix \
+	or GodangTwoCheck \
+	or fuseCheck \
+	or CutOut:
+		$Check.play()
 
 # =========================================================
 # CHECK QUEST DEADLINES

@@ -12,7 +12,7 @@ size = Vector3(2.1778605, 4.2087226, 2.957726)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jv1ba"]
 size = Vector3(1.4976196, 4.005005, 2.3914795)
 
-[node name="Shelf" type="StaticBody3D" unique_id=675805657]
+[node name="Shelf" type="StaticBody3D" unique_id=675805657 groups=["EventItem"]]
 collision_layer = 2
 script = ExtResource("1_21c8r")
 

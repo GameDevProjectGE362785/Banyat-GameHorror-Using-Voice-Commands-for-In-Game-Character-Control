@@ -98,27 +98,7 @@ func _process(delta: float) -> void:
 		flashLightFunction()
 	if Input.is_action_just_pressed("CheckLowhigh"):
 		EventScheduler.fuseCheck = true
-	if Input.is_key_pressed(KEY_B):
-		EventScheduler.SafeRoomLock = !EventScheduler.SafeRoomLock
-		print("TEST: SafeRoomLock = true")
-
-	# กด N = ล็อกประตูโกดังปัจจุบัน
-	if Input.is_key_pressed(KEY_N):
-
-		if EventScheduler.CharacinGodang1:
-			EventScheduler.door_locked1 = true
-			print("TEST: door_locked1 = true")
-
-		elif EventScheduler.CharacinGodang2:
-			EventScheduler.door_locked2 = true
-			print("TEST: door_locked2 = true")
-
-		elif EventScheduler.CharacinGodang3:
-			EventScheduler.door_locked3 = true
-			print("TEST: door_locked3 = true")
-
-		else:
-			print("TEST: ผู้เล่นไม่ได้อยู่ในโกดัง")
+	
 var textChange = false
 func check_random_door_lock(delta: float) -> void:
 
@@ -254,6 +234,7 @@ func checkObjectInfront():
 				EventScheduler.SafeRoomLock = false
 				item.interactive()
 			else:
+				item.get_node("DoorLock").play()
 				UI.TextChanger("ต้องใช้ Key เพื่อเปิดประตู")
 				textChange = true
 				await get_tree().create_timer(0.8).timeout
@@ -286,6 +267,7 @@ func checkObjectInfront():
 	# BOX
 	# =========================================================
 	if item.is_in_group("Box") and picked:
+		$CheckBox.play()
 		item.remove_from_group("Box")
 		item.disable_collision()
 		EventScheduler.BoxQuestCount += 1
@@ -293,6 +275,7 @@ func checkObjectInfront():
 			EventScheduler.BoxCheck = true
 		return
 	if item.is_in_group("Box2") and picked:
+		$CheckBox.play()
 		item.remove_from_group("Box2")
 		item.disable_collision()
 		EventScheduler.Box2QuestCount += 1
@@ -369,6 +352,7 @@ func checkObjectInfront():
 			UI.setCollition(true)
 			UI.TextChanger(item.getInteractive())
 		if picked:
+			$PickUp.play()
 			if ItemOnHand != "none":
 
 				checkItemOnHand(item)

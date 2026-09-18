@@ -42,8 +42,8 @@ func _input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	# อัปเดตเวลา/Deadline ขณะเปิด UI
-	if panel.visible or MAP.visible:
-		update_quest()
+	update_quest()
+
 
 
 # =========================================================

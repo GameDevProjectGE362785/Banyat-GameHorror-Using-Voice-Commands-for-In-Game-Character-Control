@@ -33,5 +33,16 @@ func _unhandled_input(event: InputEvent) -> void:
 			_finish_intro()
 
 func _finish_intro() -> void:
-	if next_scene_path != "":
-		get_tree().change_scene_to_file(next_scene_path)
+	$Button.visible = true
+	$Button2.visible = true
+
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file(next_scene_path)
+	pass # Replace with function body.
+
+
+func _on_button_2_pressed() -> void:
+	get_tree().change_scene_to_file("res://Main/MainMenuUI.tscn")
+	pass # Replace with function body.

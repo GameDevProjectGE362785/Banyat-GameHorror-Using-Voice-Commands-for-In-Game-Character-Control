@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d2yvo7bra43ny" path="res://Asset/EventScheduler/event_scheduler.gd" id="1_yexww"]
 [ext_resource type="AudioStream" uid="uid://dkssr8ilm6oln" path="res://Main/alex_jauk-crying-specter-256452.mp3" id="2_i2u6s"]
 [ext_resource type="Script" uid="uid://dgkg5srn4705a" path="res://Asset/EventScheduler/cry_sound.gd" id="3_phu58"]
+[ext_resource type="AudioStream" uid="uid://blp3an01w445i" path="res://player/freesound_community-pencil_check_mark_1-88805.mp3" id="4_phu58"]
 
 [node name="EventsScheduler" type="Node" unique_id=659291456]
 script = ExtResource("1_yexww")
@@ -12,3 +13,6 @@ stream = ExtResource("2_i2u6s")
 volume_db = -1.351
 parameters/looping = false
 script = ExtResource("3_phu58")
+
+[node name="Check" type="AudioStreamPlayer" parent="." unique_id=1307191557]
+stream = ExtResource("4_phu58")

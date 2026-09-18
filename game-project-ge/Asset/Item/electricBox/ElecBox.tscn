@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://c0e12wo1ulg7w" path="res://Asset/Item/electricBox/electric_box.gd" id="1_ymx54"]
 [ext_resource type="Material" uid="uid://sk1l4goxmqk0" path="res://Asset/Item/MaterialHide.tres" id="3_ajwrt"]
 [ext_resource type="PackedScene" uid="uid://da5d1ysu70yb5" path="res://minigame/ShutDown/shutdown.tscn" id="4_4esk8"]
+[ext_resource type="AudioStream" uid="uid://b6te4tt2nbdnv" path="res://Main/creatorshome-electric-shock-334777.mp3" id="5_02mr5"]
+[ext_resource type="AudioStream" uid="uid://dd5foqwea0ong" path="res://Main/Big switch sound effect.mp3" id="6_fjmcr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbp8d"]
 resource_name = "metertex"
@@ -168,3 +170,10 @@ shape = SubResource("BoxShape3D_jv1ba")
 
 [node name="Main" parent="." unique_id=532195101 instance=ExtResource("4_4esk8")]
 visible = false
+
+[node name="Electic" type="AudioStreamPlayer" parent="." unique_id=287713729]
+stream = ExtResource("5_02mr5")
+volume_db = 4.561
+
+[node name="Cutout" type="AudioStreamPlayer" parent="." unique_id=1517227143]
+stream = ExtResource("6_fjmcr")
