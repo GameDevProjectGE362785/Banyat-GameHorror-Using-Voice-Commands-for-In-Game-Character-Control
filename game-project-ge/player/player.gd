@@ -46,22 +46,39 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED :
-		var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		if direction:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
+		if EventScheduler.playerAlive:
+			var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+			var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+			if direction:
+				velocity.x = direction.x * SPEED
+				velocity.z = direction.z * SPEED
+			else:
+				velocity.x = move_toward(velocity.x, 0, SPEED)
+				velocity.z = move_toward(velocity.z, 0, SPEED)
 
-		move_and_slide()
+			move_and_slide()
 
 #Control interactive
 func _process(delta: float) -> void:
+	print(ResourceLoader.exists("res://Main/MainMenuUI.tscn"))
 	if !EventScheduler.playerAlive:
+		print("1: Player Dead")
+
+		$AnimationPlayer.play("Dead")
+		await get_tree().create_timer(6).timeout
+		print("2: 6 seconds passed")
+
+		$AnimationPlayer.stop()
 		$Control.visible = true
+		print("3: Control visible")
+
+		await get_tree().create_timer(2).timeout
+		print("4: Changing to MainMenu")
+
+		var error = get_tree().change_scene_to_file("res://Main/MainMenuUI.tscn")
+		print("5: Change scene result = ", error)
 	EventScheduler.update_ghouston_status()
+	EventScheduler.update_safe_room_lock()
 	if EventScheduler.GhoustinGodang1 == true and EventScheduler.CharacinGodang1 == true:
 		EventScheduler.playerAlive = false
 	if EventScheduler.GhoustinGodang2 == true and EventScheduler.CharacinGodang2 == true:
@@ -80,6 +97,21 @@ func _process(delta: float) -> void:
 		EventScheduler.BoxCheck = true
 		EventScheduler.Fix = true
 		EventScheduler.GodangTwoCheck = true
+	if Input.is_key_pressed(KEY_B):
+		EventScheduler.SafeRoomLock = !EventScheduler.SafeRoomLock
+		print("TEST: SafeRoomLock = true")
+
+	# กด N = ล็อกประตูโกดังปัจจุบัน
+	if Input.is_key_pressed(KEY_N):
+		if current_godang > 0:
+			EventScheduler.set(
+				"door_locked" + str(current_godang),
+				true
+			)
+
+			print("TEST: doorlock", current_godang, " = true")
+		else:
+			print("TEST: ไม่ได้อยู่ในโกดัง")
 var textChange = false
 
 func check_random_door_lock(delta: float) -> void:
@@ -165,7 +197,18 @@ func checkObjectInfront():
 	var picked := Input.is_action_just_pressed("PickUp")
 
 	if item.is_in_group("door"):
-		
+		if item.is_in_group("saveRoom") and EventScheduler.SafeRoomLock:
+			if ItemOnHand == "Key":
+				hideItemInHand()
+				EventScheduler.SafeRoomLock = false
+				item.interactive()
+			else:
+				UI.TextChanger("ต้องใช้ Key เพื่อเปิดประตู")
+				textChange = true
+				await get_tree().create_timer(0.8).timeout
+				textChange = false
+			return
+			
 		if Input.is_action_just_pressed("checkmic"):
 			var door_number: int = item.NumberDoor
 			var is_locked: bool = EventScheduler.get("doorlock" + str(door_number))

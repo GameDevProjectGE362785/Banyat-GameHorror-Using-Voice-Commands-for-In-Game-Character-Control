@@ -48,6 +48,7 @@ dinamo=""
 Box2=""
 Player=""
 door=""
+saveRoom=""
 
 [input]
 

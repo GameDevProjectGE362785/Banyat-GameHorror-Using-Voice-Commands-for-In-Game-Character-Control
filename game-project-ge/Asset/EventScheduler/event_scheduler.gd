@@ -20,7 +20,7 @@ var playerAlive = true
 var door_locked1 = false
 var door_locked2 = false
 var door_locked3 = false
-
+var SafeRoomLock = false
 
 var RunNumber = false #ตรวจใบส่งของรอบกลางคืน (มินิเกม)
 var TollSort = false  #จัดเรียงอุปกรณ์บนชั้น B (มินิเกม)
@@ -124,7 +124,21 @@ func update_ghouston_status():
 	else:
 		GhoustinGodang3 = true
 
+func update_safe_room_lock() -> void:
+	var total_minutes := current_hour * 60 + current_minute
 
+	if total_minutes == 130: # 02:10
+		SafeRoomLock = true
+		print("SafeRoomLock = TRUE at 02:10")
+
+	elif total_minutes == 210: # 03:30
+		SafeRoomLock = true
+		print("SafeRoomLock = TRUE at 03:30")
+
+	elif total_minutes == 300: # 05:00
+		SafeRoomLock = true
+		print("SafeRoomLock = TRUE at 05:00")
+		
 func check_crying_event():
 	var total_minutes = current_hour * 60 + current_minute
 
@@ -162,7 +176,7 @@ func check_crying_event():
 
 
 func start_crying_event(start_time: int, event_index: int):
-
+	
 	crying_event_active = true
 	crying_event_start_minutes = start_time
 	crying_event_index = event_index
