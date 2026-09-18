@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bxbebo6xu746q"]
+
+[ext_resource type="Script" uid="uid://cjggctjkcpalb" path="res://Asset/Item/key/key.gd" id="1_jrnin"]
+[ext_resource type="PackedScene" uid="uid://c0cut1gr2oq3t" path="res://Asset/Item/key/Model/fancy_key.glb" id="2_btykt"]
+[ext_resource type="Material" uid="uid://sk1l4goxmqk0" path="res://Asset/Item/MaterialHide.tres" id="3_btykt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s1fef"]
+size = Vector3(3.981079, 1, 1.0690918)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ekj36"]
+material = ExtResource("3_btykt")
+size = Vector3(4.0858765, 1, 0.440979)
+
+[node name="Key" type="StaticBody3D" unique_id=425120382 groups=["PlaceGroup"]]
+collision_layer = 2
+script = ExtResource("1_jrnin")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=850487909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25621474, 0.016706318, -0.010137975)
+shape = SubResource("BoxShape3D_s1fef")
+
+[node name="Sketchfab_Scene" parent="." unique_id=610787836 instance=ExtResource("2_btykt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1603676)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=103711127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10105252, 0.007, -0.008898675)
+visible = false
+mesh = SubResource("BoxMesh_ekj36")
