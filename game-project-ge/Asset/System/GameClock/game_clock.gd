@@ -8,7 +8,7 @@ const START_TIME_SECONDS := 0.0
 const END_TIME_SECONDS := 6.0 * 60.0 * 60.0
 
 ## Real seconds required to advance one in-game hour.
-@export_range(0.1, 3600.0, 0.1) var time_compression := 60.0
+@export_range(0.1, 3600.0, 0.1) var time_compression := 10.0
 
 var elapsed_game_seconds := START_TIME_SECONDS
 var is_running := true

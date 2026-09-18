@@ -12,9 +12,12 @@ const MOUSE_SENSITIVITY = 0.003
 @onready var wrenchHand = $CameraController/Camera3D/HandedItem/Wrench
 @onready var boxHand = $CameraController/Camera3D/HandedItem/Box
 @onready var fuseHand = $CameraController/Camera3D/HandedItem/Fuse
+@onready var KeyHand = $CameraController/Camera3D/HandedItem/Key
 
 var ItemOnHand = "none"
-
+var current_godang := 0
+var door_lock_timer := 0.0
+var door_timer_started := false
 var flashlighton = false
 
 func _ready() -> void:
@@ -56,6 +59,8 @@ func _physics_process(delta: float) -> void:
 
 #Control interactive
 func _process(delta: float) -> void:
+	
+	EventScheduler.update_ghouston_status()
 	if EventScheduler.GhoustinGodang1 == true and EventScheduler.CharacinGodang1 == true:
 		EventScheduler.playerAlive = false
 	if EventScheduler.GhoustinGodang2 == true and EventScheduler.CharacinGodang2 == true:
@@ -76,7 +81,80 @@ func _process(delta: float) -> void:
 		EventScheduler.GodangTwoCheck = true
 var textChange = false
 
+func check_random_door_lock(delta: float) -> void:
+	# =========================
+	# เข้าโกดัง 1
+	# =========================
+	if EventScheduler.CharacinGodang1 and current_godang != 1:
+		current_godang = 1
+		door_timer_started = true
+		door_lock_timer = randf_range(10.0, 30.0)
 
+		EventScheduler.doorlock1 = false
+
+		print("เข้าโกดัง 1")
+		print("ประตูจะล็อกใน ", door_lock_timer, " วินาที")
+
+
+	# =========================
+	# เข้าโกดัง 2
+	# =========================
+	elif EventScheduler.CharacinGodang2 and current_godang != 2:
+		current_godang = 2
+		door_timer_started = true
+		door_lock_timer = randf_range(10.0, 30.0)
+
+		EventScheduler.doorlock2 = false
+
+		print("เข้าโกดัง 2")
+		print("ประตูจะล็อกใน ", door_lock_timer, " วินาที")
+
+
+	# =========================
+	# เข้าโกดัง 3
+	# =========================
+	elif EventScheduler.CharacinGodang3 and current_godang != 3:
+		current_godang = 3
+		door_timer_started = true
+		door_lock_timer = randf_range(10.0, 30.0)
+
+		EventScheduler.doorlock3 = false
+
+		print("เข้าโกดัง 3")
+		print("ประตูจะล็อกใน ", door_lock_timer, " วินาที")
+
+
+	# =========================
+	# นับเวลา
+	# =========================
+	if door_timer_started:
+		door_lock_timer -= delta
+
+		if door_lock_timer <= 0.0:
+			door_timer_started = false
+
+			if current_godang == 1:
+				EventScheduler.doorlock1 = true
+				print("ประตูโกดัง 1 ล็อกแล้ว")
+
+			elif current_godang == 2:
+				EventScheduler.doorlock2 = true
+				print("ประตูโกดัง 2 ล็อกแล้ว")
+
+			elif current_godang == 3:
+				EventScheduler.doorlock3 = true
+				print("ประตูโกดัง 3 ล็อกแล้ว")
+
+
+	# =========================
+	# ออกจากโกดังทั้งหมด
+	# =========================
+	if not EventScheduler.CharacinGodang1 \
+	and not EventScheduler.CharacinGodang2 \
+	and not EventScheduler.CharacinGodang3:
+
+		current_godang = 0
+		door_timer_started = false
 func checkObjectInfront():
 	if not raycast.is_colliding():
 		UI.setCollition(false)
@@ -85,7 +163,27 @@ func checkObjectInfront():
 	var item = raycast.get_collider()
 	var picked := Input.is_action_just_pressed("PickUp")
 
-
+	if item.is_in_group("door"):
+		if Input.is_action_just_pressed("checkmic"):
+			var door_number: int = item.NumberDoor
+			var is_locked: bool = EventScheduler.get("doorlock" + str(door_number))
+			if is_locked:
+				var unlocked: bool = await Knockdetector.start_listening_sharp()
+				if unlocked:
+					EventScheduler.set("doorlock" + str(door_number), false)
+			var passed: bool = await Knockdetector.start_listening()
+			if passed:
+				print("เคาะผ่าน")
+				# ทำสิ่งที่ต้องการเมื่อเคาะผ่าน
+				print(EventScheduler.get("CharacinGodang" + str(item.NumberDoor)))
+				print(("GhoustinGodang" + str(item.NumberDoor)))
+				print(EventScheduler.get("GhoustinGodang" + str(item.NumberDoor)))
+				if EventScheduler.get("GhoustinGodang" + str(item.NumberDoor)) == true:
+					item.get_node("Knock").play()
+			else:
+				print("เคาะไม่ผ่าน")
+				# ทำสิ่งที่ต้องการเมื่อเคาะไม่ผ่าน
+	
 	# =========================================================
 	# BOX
 	# =========================================================
@@ -148,18 +246,29 @@ func checkObjectInfront():
 	# ITEM CLASS
 	# =========================================================
 	if item is ClassItem:
+		print(ItemOnHand)
 		if not textChange:
 			UI.setCollition(true)
 			UI.TextChanger(item.getInteractive())
 		if picked:
 			if ItemOnHand != "none":
+
 				checkItemOnHand(item)
 			else:
 				showItemandUseItemInHand(item)
 		return
 
 func checkItemOnHand(item):
-	if item is Wrench and ItemOnHand == "Wrench":
+	if item.is_in_group("door"):
+		item.interactive()
+		return
+		
+	elif item is Wrench and ItemOnHand == "Wrench" :
+		if !item.getOnTable():
+			hideItemInHand()
+			item.interactive()
+			ItemOnHand = "none"
+	elif item is Key and ItemOnHand == "Key" :
 		if !item.getOnTable():
 			hideItemInHand()
 			item.interactive()
@@ -169,13 +278,16 @@ func checkItemOnHand(item):
 		textChange = true
 		await get_tree().create_timer(0.8).timeout
 		textChange = false
-
+	
 func showItemandUseItemInHand(item: ClassItem) -> void:
 	var inputItem = item.get_item_name()
-	
+	if item.is_in_group('door'):
+		item.interactive()
+		return
 	if inputItem == "Box":
 		return
-	
+	if inputItem == "Key":
+		KeyHand.visible = true
 	if inputItem == "Wrench":
 		wrenchHand.visible = true
 	elif inputItem == "Fuse":
@@ -188,7 +300,8 @@ func hideItemInHand() -> void:
 		wrenchHand.visible = false
 	elif ItemOnHand == "Fuse":
 		fuseHand.visible = false
-
+	elif ItemOnHand == "Key":
+		KeyHand.visible = false
 
 func get_visual_bottom(node: Node3D) -> float:
 	var lowest_y: float = INF

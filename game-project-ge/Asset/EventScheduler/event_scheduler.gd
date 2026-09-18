@@ -4,8 +4,7 @@ signal beat_triggered(hour: int, beat_id: StringName)
 var crying_event_active = false
 var crying_event_start_minutes = -1
 var crying_event_index = -1
-
-@onready var crying_sound: AudioStreamPlayer = $CryingSound
+@onready var crying_sound: AudioStreamPlayer = $CrySound
 var current_hour := 0
 var current_minute := 0
 var BoxQuestCount = 0
@@ -16,8 +15,12 @@ var CharacinGodang2 = false
 var CharacinGodang3 = false
 var GhoustinGodang1 = false
 var GhoustinGodang2 = false
-var GhoustsinGodang3 = false
+var GhoustinGodang3 = false
 var playerAlive = true
+var door_locked1 = false
+var door_locked2 = false
+var door_locked3 = false
+
 
 var RunNumber = false #ตรวจใบส่งของรอบกลางคืน (มินิเกม)
 var TollSort = false  #จัดเรียงอุปกรณ์บนชั้น B (มินิเกม)
@@ -46,76 +49,82 @@ var triggered_beats: Array[StringName] = []
 func update_ghouston_status():
 	var total_minutes = current_hour * 60 + current_minute
 	
-	# =========================
-	# โกดัง 1
-	# =========================
-
 	if CharacinGodang1:
 		GhoustinGodang1 = false
 
 	elif total_minutes >= 0 and total_minutes < 30:
-		GhoustinGodang1 = true
-
-	elif total_minutes >= 60 and total_minutes < 90:
-		GhoustinGodang1 = true
-
-	elif total_minutes >= 90 and total_minutes < 120:
-		GhoustinGodang1 = true
-
-	elif total_minutes >= 150 and total_minutes < 180:
-		GhoustinGodang1 = true
-
-	elif total_minutes >= 210 and total_minutes < 240:
-		GhoustinGodang1 = true
-
-	elif total_minutes >= 300 and total_minutes < 330:
-		GhoustinGodang1 = true
-
-	else:
 		GhoustinGodang1 = false
 
+	elif total_minutes >= 60 and total_minutes < 120:
+		GhoustinGodang1 = false
 
-	# =========================
+	elif total_minutes >= 150 and total_minutes < 180:
+		GhoustinGodang1 = false
+
+	elif total_minutes >= 210 and total_minutes < 240:
+		GhoustinGodang1 = false
+
+	elif total_minutes >= 300 and total_minutes < 330:
+		GhoustinGodang1 = false
+
+	else:
+		GhoustinGodang1 = true
+
+
+	# =====================================================
 	# โกดัง 2
-	# =========================
+	#
+	# เข้าได้:
+	# 00:00–01:00
+	# 01:30–02:30
+	# 03:30–04:00
+	# =====================================================
 
 	if CharacinGodang2:
 		GhoustinGodang2 = false
 
 	elif total_minutes >= 0 and total_minutes < 60:
-		GhoustinGodang2 = true
-
-	elif total_minutes >= 90 and total_minutes < 150:
-		GhoustinGodang2 = true
-
-	elif total_minutes >= 210 and total_minutes < 240:
-		GhoustinGodang2 = true
-
-	else:
 		GhoustinGodang2 = false
 
+	elif total_minutes >= 90 and total_minutes < 150:
+		GhoustinGodang2 = false
 
-	# =========================
-	# โกดัง 3
-	# =========================
-
-	if CharacinGodang3:
-		GhoustsinGodang3 = false
-
-	elif total_minutes >= 0 and total_minutes < 90:
-		GhoustsinGodang3 = true
-
-	elif total_minutes >= 120 and total_minutes < 180:
-		GhoustsinGodang3 = true
-
-	elif total_minutes >= 240 and total_minutes < 270:
-		GhoustsinGodang3 = true
-
-	elif total_minutes >= 300 and total_minutes < 330:
-		GhoustsinGodang3 = true
+	elif total_minutes >= 210 and total_minutes < 240:
+		GhoustinGodang2 = false
 
 	else:
-		GhoustsinGodang3 = false
+		GhoustinGodang2 = true
+
+
+	# =====================================================
+	# โกดัง 3
+	#
+	# เข้าได้:
+	# 00:00–01:30
+	# 02:00–03:00
+	# 04:00–04:30
+	# 05:00–05:30
+	# =====================================================
+
+	if CharacinGodang3:
+		GhoustinGodang3 = false
+
+	elif total_minutes >= 0 and total_minutes < 90:
+		GhoustinGodang3 = false
+
+	elif total_minutes >= 120 and total_minutes < 180:
+		GhoustinGodang3 = false
+
+	elif total_minutes >= 240 and total_minutes < 270:
+		GhoustinGodang3 = false
+
+	elif total_minutes >= 300 and total_minutes < 330:
+		GhoustinGodang3 = false
+
+	else:
+		GhoustinGodang3 = true
+
+
 func check_crying_event():
 	var total_minutes = current_hour * 60 + current_minute
 
@@ -157,10 +166,11 @@ func start_crying_event(start_time: int, event_index: int):
 	crying_event_active = true
 	crying_event_start_minutes = start_time
 	crying_event_index = event_index
-
+	print("crying_sound = ", crying_sound)
+	print("is_instance_valid = ", is_instance_valid(crying_sound))
+	print("has_node = ", has_node("CrySound"))
 	# เปิดเสียงร้องไห้
-	if not crying_sound.playing:
-		crying_sound.play()
+	crying_sound.play()
 
 
 func stop_crying_event():
@@ -172,6 +182,8 @@ func stop_crying_event():
 	if crying_sound.playing:
 		crying_sound.stop()
 func _ready() -> void:
+	print("SELF: ", self)
+	print("CRY: ", $CrySound)
 	# KnockDetector เป็น Autoload (Global) แล้ว เข้าถึงตรงๆ ผ่านชื่อ ไม่ต้อง get_node
 	Knockdetector.knock_detected.connect(_on_knock)
 	Knockdetector.knock_sequence_completed.connect(_on_success)
@@ -184,11 +196,7 @@ func _ready() -> void:
 
 	_on_hour_tick(EventScheduler.current_hour)
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo:
-		if event.keycode == KEY_K:
-			print("=== TEST: เริ่มฟังเคาะ ===")
-			Knockdetector.start_listening()
+
 			
 			
 func _on_beat_triggered(hour: int, beat_id: StringName) -> void:

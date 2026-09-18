@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bbyotenvgm476" path="res://Asset/Door/containerScene/DoorContainer.gd" id="1_yhi21"]
 [ext_resource type="PackedScene" uid="uid://cx51elv7y707c" path="res://Asset/Door/Model/container/containerLeft.tscn" id="2_ccy2v"]
+[ext_resource type="AudioStream" uid="uid://d08koulibrveo" path="res://Asset/SFX/knock.mp3" id="3_ccy2v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lqiej"]
 size = Vector3(0.6586914, 13.073669, 8.896057)
@@ -15,3 +16,7 @@ shape = SubResource("BoxShape3D_lqiej")
 
 [node name="rework" parent="." unique_id=1745819797 instance=ExtResource("2_ccy2v")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 8.516167)
+
+[node name="Knock" type="AudioStreamPlayer3D" parent="." unique_id=921199483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9110935, 4.296179, 3.8125668)
+stream = ExtResource("3_ccy2v")

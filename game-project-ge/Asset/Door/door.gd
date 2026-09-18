@@ -1,4 +1,4 @@
-extends itemClass
+extends ClassItem
 class_name doorClass
 
 # --- Tunables (edit in the Inspector) ---

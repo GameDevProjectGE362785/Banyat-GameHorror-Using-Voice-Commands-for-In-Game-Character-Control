@@ -1,10 +1,12 @@
-extends itemClass
+extends ClassItem
 class_name doorContainer
 
 # --- Tunables (edit in the Inspector) ---
 @export var open_angle_deg: float = 90.0
 @export var open_duration: float = 0.5
 @export var invert_swing: bool = false  # flip this if it opens the wrong way in testing
+
+@export var NumberDoor = 0
 
 var is_open: bool = false
 var is_animating: bool = false
@@ -17,9 +19,43 @@ var tween: Tween
 #From Inside
 var lock = false
 
+# =========================================================
+# ตรวจจับการเปลี่ยนสถานะล็อก (poll ทุกเฟรม เพราะ EventScheduler
+# เก็บเป็น bool ธรรมดา ไม่มี signal แจ้งตอนเปลี่ยนค่า)
+# =========================================================
+var _was_locked: bool = false
+
+
 func _ready() -> void:
 	closed_rotation_y = rotation.y
 	target_rotation_y = closed_rotation_y
+
+	# เก็บสถานะล็อกตอนเริ่มไว้ก่อน กันไม่ให้ตีความว่า "เพิ่งล็อก" ตอนเริ่มเกม
+	_was_locked = _get_lock_status()
+
+
+func _process(_delta: float) -> void:
+	var locked_now: bool = _get_lock_status()
+
+	# =====================================================
+	# เพิ่งถูกล็อก (false -> true) -> ปิดประตูเองถ้าเปิดอยู่
+	# =====================================================
+	if locked_now and not _was_locked:
+		print("ประตู ", NumberDoor, " ถูกล็อก -> ปิดประตูอัตโนมัติ")
+		if is_open and not is_animating:
+			_close_door()
+
+	_was_locked = locked_now
+
+
+func _get_lock_status() -> bool:
+	var value = EventScheduler.get("door_locked" + str(NumberDoor))
+
+	if value == null:
+		push_warning("doorContainer: ไม่พบ 'doorlock%s' ใน EventScheduler (เช็คว่า NumberDoor ตั้งถูกไหม)" % str(NumberDoor))
+		return false
+
+	return value
 
 
 func get_item_name() -> String:
@@ -34,12 +70,13 @@ func getInteractive() -> String:
 
 
 func interactive() -> void:
-	if is_animating:
-		return
-	if is_open:
-		_close_door()
-	else:
-		_open_door()
+	if !_get_lock_status():
+		if is_animating:
+			return
+		if is_open:
+			_close_door()
+		else:
+			_open_door()
 
 
 func _open_door() -> void:
@@ -81,4 +118,3 @@ func _animate_to(target_y: float) -> void:
 	
 func getLockStatus():
 	return lock
-	

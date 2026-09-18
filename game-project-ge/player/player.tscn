@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bxbebo6xu746q" path="res://Asset/Item/key/key.tscn" id="5_boad6"]
 [ext_resource type="PackedScene" uid="uid://cktlshhe6u5r5" path="res://Asset/Item/Fuse/Fuse.tscn" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://d3yvt52xbk4b0" path="res://player/quest.gd" id="7_boad6"]
+[ext_resource type="AudioStream" uid="uid://b8o1a1uumlisp" path="res://lose_card.wav" id="8_rgyib"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s1fef"]
 
@@ -37,7 +38,7 @@ current = true
 
 [node name="HandedItem" type="Node3D" parent="CameraController/Camera3D" unique_id=1777925866]
 
-[node name="Wrench" parent="CameraController/Camera3D/HandedItem" unique_id=1082256035 groups=["PlaceGroup"] instance=ExtResource("3_qjkh3")]
+[node name="Wrench" parent="CameraController/Camera3D/HandedItem" unique_id=1082256035 instance=ExtResource("3_qjkh3")]
 transform = Transform3D(0.12246314, -0.7217732, 0.6812094, -0.23387054, 0.64606017, 0.72657466, -0.96452445, -0.24829343, -0.08968293, 0.1397925, -0.19349802, -0.27274865)
 visible = false
 collision_layer = 0
@@ -121,3 +122,6 @@ layout_mode = 2
 
 [node name="CloseButton" type="Button" parent="Quest/Panel/VBoxContainer" unique_id=975908008]
 layout_mode = 2
+
+[node name="CrySound" type="AudioStreamPlayer" parent="." unique_id=1290412402]
+stream = ExtResource("8_rgyib")

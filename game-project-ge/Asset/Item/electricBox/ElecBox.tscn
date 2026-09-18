@@ -134,7 +134,8 @@ size = Vector3(8.095097, 0.025701225, 2.600022)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jv1ba"]
 size = Vector3(6.1898193, 5.678467, 1.0317383)
 
-[node name="ElecBox" type="StaticBody3D" unique_id=432392954]
+[node name="ElecBox" type="StaticBody3D" unique_id=432392954 groups=["ElecBox"]]
+collision_layer = 2
 script = ExtResource("1_ymx54")
 
 [node name="Sketchfab_model" type="Node3D" parent="." unique_id=20639372]
