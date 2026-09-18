@@ -34,11 +34,11 @@ signal sharp_finished(passed: bool)
 # EXPORT - SHARP SOUND
 # เสียงแหลม = ความดังถึงเกณฑ์ + อัตรา zero-crossing (ความถี่) สูง
 # ==========================================================
-@export var required_sharps: int = 3
-@export var sharp_threshold: float = 0.20       # ความดังขั้นต่ำที่นับเป็นเสียง
+@export var required_sharps: int = 1
+@export var sharp_threshold: float = 0.20
 @export var sharp_release_threshold: float = 0.08
 @export var sharp_cooldown: float = 0.12
-@export var zcr_threshold: float = 0.35         # ยิ่งสูง = เสียงแหลม/ความถี่สูงยิ่งมาก (ค่า 0.0 - 1.0)
+@export var zcr_threshold: float = 0.35    # ยิ่งสูง = เสียงแหลม/ความถี่สูงยิ่งมาก (ค่า 0.0 - 1.0)
 
 # ==========================================================
 # INTERNAL STATE
@@ -261,32 +261,62 @@ func _process_knock(peak: float) -> void:
 # =========================================================
 
 func _process_sharp(peak: float, zcr: float) -> void:
-	if _armed and peak >= sharp_threshold and zcr >= zcr_threshold and _cooldown_timer <= 0.0:
+
+	# DEBUG ทุกครั้งที่ได้รับข้อมูลเสียง
+	print(
+		"SHARP DEBUG | peak=%.3f / ต้อง >= %.3f | zcr=%.3f / ต้อง >= %.3f"
+		% [
+			peak,
+			sharp_threshold,
+			zcr,
+			zcr_threshold
+		]
+	)
+
+	# =====================================================
+	# ตรวจเสียงแหลม
+	# ต้องดังถึงเกณฑ์ และความถี่สูงถึงเกณฑ์
+	# =====================================================
+
+	if _armed \
+	and peak >= sharp_threshold \
+	and zcr >= zcr_threshold \
+	and _cooldown_timer <= 0.0:
 
 		_armed = false
 		_cooldown_timer = sharp_cooldown
 		_count += 1
 
-		print("เสียงแหลม %d/%d | peak %.3f | zcr %.3f" % [_count, required_sharps, peak, zcr])
+		print("========================================")
+		print("SHARP ผ่าน!")
+		print("ครั้งที่: %d/%d" % [_count, required_sharps])
+		print("Peak: %.3f / ต้อง >= %.3f" % [peak, sharp_threshold])
+		print("ZCR : %.3f / ต้อง >= %.3f" % [zcr, zcr_threshold])
+		print("========================================")
 
 		sharp_detected.emit(_count)
 
-		if _count >= required_sharps:
-			last_result = "success"
-			print("ทำเสียงแหลมครบแล้ว!")
-			stop_listening()
-			sharp_sequence_completed.emit()
-			sharp_finished.emit(true)
-			return
+		# =================================================
+		# เสียงแหลมครั้งเดียว = ผ่าน
+		# =================================================
+
+		last_result = "success"
+
+		print("เสียงแหลมผ่าน -> ปลดล็อกประตู")
+
+		stop_listening()
+
+		sharp_sequence_completed.emit()
+		sharp_finished.emit(true)
+
+		return
+
+	# =====================================================
+	# รอให้เสียงลดลงก่อนถึงจะตรวจใหม่
+	# =====================================================
 
 	elif not _armed and peak < sharp_release_threshold:
 		_armed = true
-
-
-# =========================================================
-# TIMEOUT HANDLER แยกตามโหมด
-# =========================================================
-
 func _fail_current_mode() -> void:
 	last_result = "failed"
 

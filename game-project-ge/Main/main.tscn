@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bg05ygkx7qjan" path="res://Main/godang_3.gd" id="5_l5bfp"]
 [ext_resource type="Script" uid="uid://dit36hxy1tllh" path="res://Main/godang_1.gd" id="5_uhr2j"]
 [ext_resource type="PackedScene" uid="uid://cdx8dnkll7b1u" path="res://model/secu room/fence.tscn" id="6_liyct"]
+[ext_resource type="PackedScene" uid="uid://djc0c1l7ltf5t" path="res://Asset/MapLight/map_light_blubs.tscn" id="7_pcl83"]
 [ext_resource type="PackedScene" uid="uid://d4a6uq4akepgb" path="res://Asset/Item/Wrench/Wrench.tscn" id="8_0gq1e"]
 [ext_resource type="PackedScene" uid="uid://dafbfagxllnxr" path="res://Asset/Item/electricBox/ElecBox.tscn" id="8_rj11h"]
 [ext_resource type="Texture2D" uid="uid://bkw8pwa3wwyid" path="res://model/warehouse/textures/Asphalt_New_baseColor.jpeg" id="8_wbdht"]
@@ -29,6 +30,8 @@
 [ext_resource type="Script" uid="uid://bh4vk85prghws" path="res://Main/door_godang_1.gd" id="26_y88hr"]
 [ext_resource type="AudioStream" uid="uid://cvqj2xndi3b1j" path="res://Main/เสียงพื้นหลังในเกม.mp3" id="28_y88hr"]
 [ext_resource type="PackedScene" uid="uid://c7ueewpfrlncu" path="res://scenes/TutorialHUD.tscn" id="29_qded6"]
+[ext_resource type="PackedScene" uid="uid://dhifq2ti57ohf" path="res://model/road/road.tscn" id="30_21byg"]
+[ext_resource type="PackedScene" uid="uid://cs0ser13ss14g" path="res://model/sao/sao.tscn" id="31_pcl83"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l5bfp"]
 size = Vector3(23.97876, 8.552856, 32.055603)
@@ -97,7 +100,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.772152, 1.4032148, 27.2555
 [node name="Node3D" type="Node3D" parent="." unique_id=2010853044]
 
 [node name="godang2" parent="Node3D" unique_id=1154989283 instance=ExtResource("4_eunhr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.501, 0, -10.448)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.501, 0, -19.630114)
 
 [node name="godang2" type="Area3D" parent="Node3D/godang2" unique_id=1050747795]
 script = ExtResource("5_guo5i")
@@ -106,8 +109,40 @@ script = ExtResource("5_guo5i")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3463135, 3.7764282, -18.33603)
 shape = SubResource("BoxShape3D_l5bfp")
 
+[node name="MapLightBlubs2" parent="Node3D/godang2" unique_id=1885680585 instance=ExtResource("7_pcl83")]
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Node3D/godang2/MapLightBlubs2" unique_id=109515779]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 48.090927, 4.549714, -29.062897)
+spot_range = 12.555
+spot_angle = 38.82
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="Node3D/godang2/MapLightBlubs2" unique_id=897757456]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 58.648914, 4.549714, -29.062897)
+spot_range = 12.555
+spot_angle = 38.82
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="Node3D/godang2/MapLightBlubs2" unique_id=575975068]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 48.090927, 4.549714, -37.355663)
+spot_range = 12.555
+spot_angle = 38.82
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="Node3D/godang2/MapLightBlubs2" unique_id=831101814]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 58.629173, 4.549714, -37.355663)
+spot_range = 12.555
+spot_angle = 38.82
+
+[node name="SpotLight3D11" type="SpotLight3D" parent="Node3D/godang2/MapLightBlubs2" unique_id=963806813]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 48.090927, 4.549714, -46.02066)
+spot_range = 12.555
+spot_angle = 38.82
+
+[node name="SpotLight3D12" type="SpotLight3D" parent="Node3D/godang2/MapLightBlubs2" unique_id=46323231]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 58.629044, 4.549714, -46.02066)
+spot_range = 12.555
+spot_angle = 38.82
+
 [node name="godang3" parent="Node3D" unique_id=2101915557 instance=ExtResource("4_eunhr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.301487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.4836)
 
 [node name="godang3" type="Area3D" parent="Node3D/godang3" unique_id=876917626]
 script = ExtResource("5_l5bfp")
@@ -126,16 +161,48 @@ script = ExtResource("5_uhr2j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.909298, 4.3867188, -17.742554)
 shape = SubResource("BoxShape3D_jv1ba")
 
-[node name="Material3" type="Node3D" parent="Node3D/godang1/godang1" unique_id=392171646]
-transform = Transform3D(0.045, 0, 0, 0, -1.9670126e-09, 0.045, 0, -0.045, -1.9670126e-09, -3.8146973e-06, 0, 67.562386)
+[node name="MapLightBlubs2" parent="Node3D/godang1" unique_id=207162193 instance=ExtResource("7_pcl83")]
 
-[node name="Material32" type="MeshInstance3D" parent="Node3D/godang1/godang1/Material3" unique_id=263438603]
+[node name="SpotLight3D7" type="SpotLight3D" parent="Node3D/godang1/MapLightBlubs2" unique_id=675843278]
+transform = Transform3D(-0.039540157, -0.999218, -4.3677204e-08, 0, -4.371139e-08, 1, -0.999218, 0.039540157, 1.7283551e-09, 17.584976, 4.549714, 39.250244)
+spot_range = 12.555
+spot_angle = 38.82
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="Node3D/godang1/MapLightBlubs2" unique_id=540515203]
+transform = Transform3D(-0.039540157, -0.999218, -4.3677204e-08, 0, -4.371139e-08, 1, -0.999218, 0.039540157, 1.7283551e-09, 17.167511, 4.549714, 28.700516)
+spot_range = 12.555
+spot_angle = 38.82
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="Node3D/godang1/MapLightBlubs2" unique_id=1118961808]
+transform = Transform3D(-0.039540157, -0.999218, -4.3677204e-08, 0, -4.371139e-08, 1, -0.999218, 0.039540157, 1.7283551e-09, 9.298693, 4.549714, 39.578144)
+spot_range = 12.555
+spot_angle = 38.82
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="Node3D/godang1/MapLightBlubs2" unique_id=281854709]
+transform = Transform3D(-0.039540157, -0.999218, -4.3677204e-08, 0, -4.371139e-08, 1, -0.999218, 0.039540157, 1.7283551e-09, 8.882009, 4.549714, 29.04814)
+spot_range = 12.555
+spot_angle = 38.82
+
+[node name="SpotLight3D11" type="SpotLight3D" parent="Node3D/godang1/MapLightBlubs2" unique_id=1004010362]
+transform = Transform3D(-0.039540157, -0.999218, -4.3677204e-08, 0, -4.371139e-08, 1, -0.999218, 0.039540157, 1.7283551e-09, 0.64047384, 4.549714, 39.920757)
+spot_range = 12.555
+spot_angle = 38.82
+
+[node name="SpotLight3D12" type="SpotLight3D" parent="Node3D/godang1/MapLightBlubs2" unique_id=1341172489]
+transform = Transform3D(-0.039540157, -0.999218, -4.3677204e-08, 0, -4.371139e-08, 1, -0.999218, 0.039540157, 1.7283551e-09, 0.22379541, 4.549714, 29.390884)
+spot_range = 12.555
+spot_angle = 38.82
+
+[node name="Material3" type="Node3D" parent="Node3D" unique_id=392171646]
+transform = Transform3D(-1.9670126e-09, -0.045, -1.9670126e-09, 0, -1.9670126e-09, 0.045, -0.045, 1.9670126e-09, 8.598085e-17, 94.36038, 0, 38.908)
+
+[node name="Material32" type="MeshInstance3D" parent="Node3D/Material3" unique_id=263438603]
 transform = Transform3D(1.0171127, 7.1054274e-15, 6.352747e-22, -1.0658141e-14, 1, -7.1054274e-15, -2.1175824e-22, 7.1054274e-15, 1, 5.4401245, 27.127441, 1.1857774e-06)
 mesh = SubResource("ArrayMesh_xi84t")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/godang1/godang1/Material3/Material32" unique_id=62538318]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/Material3/Material32" unique_id=62538318]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/godang1/godang1/Material3/Material32/StaticBody3D" unique_id=1619157509]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Material3/Material32/StaticBody3D" unique_id=1619157509]
 shape = SubResource("ConcavePolygonShape3D_j4inf")
 
 [node name="Wrench" parent="Node3D" unique_id=1082256035 instance=ExtResource("8_0gq1e")]
@@ -330,7 +397,7 @@ transform = Transform3D(0.017838323, 0, 0.99984086, 0, 1, 0, -0.99984086, 0, 0.0
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 54.743633, 0.34453824, -35.091896)
 
 [node name="Workbench" parent="." unique_id=1813840685 instance=ExtResource("13_0gq1e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.151096, 0.12841809, 35.82571)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.151096, 0.12841809, 35.96763)
 
 [node name="Box6" parent="." unique_id=554708643 instance=ExtResource("14_wbdht")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.957138, 0.0006201407, -15.83305)
@@ -358,30 +425,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.583214, 0, -10.653149)
 script = ExtResource("22_g147q")
 
 [node name="DoorRight" parent="DoorGodang2" unique_id=1856151877 instance=ExtResource("22_nf7xu")]
-transform = Transform3D(0.038694356, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -1.9512138, 0, 0.49852467)
+transform = Transform3D(0.038694356, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -1.9512138, 0, -9.1514015)
 
 [node name="DoorRight2" parent="DoorGodang2" unique_id=1781404408 instance=ExtResource("22_nf7xu")]
-transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -4.4222145, 0, 0.65314865)
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -4.4222145, 0, -8.996777)
 
 [node name="Doorleft" parent="DoorGodang2" unique_id=1253491357 instance=ExtResource("23_1nqbc")]
-transform = Transform3D(-1.3113417e-08, 0, -0.36082536, 0, 0.2926129, 0, 0.3, 0, -1.5772178e-08, 4.060787, 0.122, 0.62028694)
+transform = Transform3D(-1.3113417e-08, 0, -0.36082536, 0, 0.2926129, 0, 0.3, 0, -1.5772178e-08, 4.060787, 0.122, -9.029636)
 collision_layer = 2
+open_angle_deg = null
+open_duration = null
+invert_swing = null
 NumberDoor = 2
+auto_open_minutes = null
 
 [node name="DoorGodang3" type="Node3D" parent="." unique_id=1096839266]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.67541, 0, -10.653149)
 script = ExtResource("25_t85yq")
 
 [node name="DoorRight" parent="DoorGodang3" unique_id=236194698 instance=ExtResource("22_nf7xu")]
-transform = Transform3D(0.038694356, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -1.9512138, 0, 0.49852467)
+transform = Transform3D(0.038694356, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -1.9512138, 0, -9.1514015)
 
 [node name="DoorRight2" parent="DoorGodang3" unique_id=3931077 instance=ExtResource("22_nf7xu")]
-transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -4.4222145, 0, 0.65314865)
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -4.4222145, 0, -8.996777)
 
 [node name="Doorleft" parent="DoorGodang3" unique_id=1436257954 instance=ExtResource("23_1nqbc")]
-transform = Transform3D(-1.3113417e-08, 0, -0.36082536, 0, 0.2926129, 0, 0.3, 0, -1.5772178e-08, 4.060787, 0.122, 0.62028694)
+transform = Transform3D(-1.3113417e-08, 0, -0.36082536, 0, 0.2926129, 0, 0.3, 0, -1.5772178e-08, 4.0607867, 0.122, -9.029636)
 collision_layer = 2
+open_angle_deg = null
+open_duration = null
+invert_swing = null
 NumberDoor = 3
+auto_open_minutes = null
 
 [node name="DoorGodang1" type="Node3D" parent="." unique_id=1858358846]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 26.448734, 0, 33.93434)
@@ -396,7 +471,11 @@ transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -4.4222145, 0, 0.653
 [node name="Doorleft" parent="DoorGodang1" unique_id=1782785267 instance=ExtResource("23_1nqbc")]
 transform = Transform3D(-1.3113417e-08, 0, -0.36082536, 0, 0.2926129, 0, 0.3, 0, -1.5772178e-08, 4.060787, 0.122, 0.62028694)
 collision_layer = 2
+open_angle_deg = null
+open_duration = null
+invert_swing = null
 NumberDoor = 1
+auto_open_minutes = null
 
 [node name="bg" type="AudioStreamPlayer" parent="." unique_id=548257844]
 stream = ExtResource("28_y88hr")
@@ -404,6 +483,48 @@ autoplay = true
 parameters/looping = true
 
 [node name="root" parent="." unique_id=1310149447 instance=ExtResource("29_qded6")]
+
+[node name="untitled" parent="." unique_id=1993557890 instance=ExtResource("30_21byg")]
+transform = Transform3D(-1.01191866e-07, 0, 2.315, 0, 2.315, 0, -2.315, 0, -1.01191866e-07, 70.36655, 1.0637657e-06, 5.901735)
+
+[node name="untitled2" parent="." unique_id=785823987 instance=ExtResource("30_21byg")]
+transform = Transform3D(-1.01191866e-07, 0, 2.315, 0, 2.315, 0, -2.315, 0, -1.01191866e-07, 56.983227, 1.0637657e-06, 5.901735)
+
+[node name="untitled3" parent="." unique_id=1529950375 instance=ExtResource("30_21byg")]
+transform = Transform3D(-1.01191866e-07, 0, 2.315, 0, 2.315, 0, -2.315, 0, -1.01191866e-07, 43.266895, 1.0637657e-06, 5.901735)
+
+[node name="untitled4" parent="." unique_id=916542690 instance=ExtResource("30_21byg")]
+transform = Transform3D(-1.01191866e-07, 0, 2.315, 0, 2.315, 0, -2.315, 0, -1.01191866e-07, 29.948593, 1.0637657e-06, 5.901735)
+
+[node name="untitled5" parent="." unique_id=2066448203 instance=ExtResource("30_21byg")]
+transform = Transform3D(-1.01191866e-07, 0, 2.315, 0, 2.315, 0, -2.315, 0, -1.01191866e-07, 16.565273, 1.0637657e-06, 5.901735)
+
+[node name="untitled6" parent="." unique_id=1310798116 instance=ExtResource("30_21byg")]
+transform = Transform3D(-1.01191866e-07, 0, 2.315, 0, 2.315, 0, -2.315, 0, -1.01191866e-07, 2.8489418, 1.0637657e-06, 5.901735)
+
+[node name="untitled7" parent="." unique_id=1576555838 instance=ExtResource("30_21byg")]
+transform = Transform3D(-1.01191866e-07, 0, 2.315, 0, 2.315, 0, -2.315, 0, -1.01191866e-07, -10.502304, 1.0637657e-06, 5.901735)
+
+[node name="untitled8" parent="." unique_id=660804567 instance=ExtResource("30_21byg")]
+transform = Transform3D(-1.01191866e-07, 0, 2.315, 0, 2.315, 0, -2.315, 0, -1.01191866e-07, -24.218636, 1.0637657e-06, 5.901735)
+
+[node name="sao" parent="." unique_id=239272506 instance=ExtResource("31_pcl83")]
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 62.653725, 0.14620733, -0.089526296)
+
+[node name="sao2" parent="." unique_id=383180441 instance=ExtResource("31_pcl83")]
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 48.8822, 0.14620733, -0.089526296)
+
+[node name="sao3" parent="." unique_id=221124032 instance=ExtResource("31_pcl83")]
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 36.581356, 0.14620733, -0.089526296)
+
+[node name="sao4" parent="." unique_id=833801546 instance=ExtResource("31_pcl83")]
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 22.80983, 0.14620733, -0.089526296)
+
+[node name="sao5" parent="." unique_id=553801834 instance=ExtResource("31_pcl83")]
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 9.027988, 0.14620733, -0.089526296)
+
+[node name="sao6" parent="." unique_id=1184947535 instance=ExtResource("31_pcl83")]
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -4.743538, 0.14620733, -0.089526296)
 
 [connection signal="body_entered" from="Node3D/godang3/godang3" to="Node3D/godang3/godang3" method="_on_body_entered"]
 [connection signal="body_exited" from="Node3D/godang3/godang3" to="Node3D/godang3/godang3" method="_on_body_exited"]

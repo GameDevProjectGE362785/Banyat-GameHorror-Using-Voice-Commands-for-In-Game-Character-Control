@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bxbebo6xu746q" path="res://Asset/Item/key/key.tscn" id="5_boad6"]
 [ext_resource type="PackedScene" uid="uid://cktlshhe6u5r5" path="res://Asset/Item/Fuse/Fuse.tscn" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://d3yvt52xbk4b0" path="res://player/quest.gd" id="7_boad6"]
-[ext_resource type="Texture2D" uid="uid://b3n2qr8lnbawh" path="res://player/1.png" id="8_8t03j"]
+[ext_resource type="Texture2D" uid="uid://dlf4hsk5fcjuu" path="res://โ.png" id="8_ebec5"]
 [ext_resource type="AudioStream" uid="uid://b8o1a1uumlisp" path="res://lose_card.wav" id="8_rgyib"]
 [ext_resource type="FontFile" uid="uid://ck3m62hlpemne" path="res://player/FC Vision Heavy Compressed [Non-commercial].otf" id="9_hg6s5"]
 [ext_resource type="Script" uid="uid://cujamx88amc1b" path="res://player/hak_core.gd" id="11_2ieo8"]
@@ -313,15 +313,14 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Panel2" type="Panel" parent="Quest" unique_id=1440030311]
-visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="1" type="Sprite2D" parent="Quest/Panel2" unique_id=780733013]
-position = Vector2(564, 319)
-scale = Vector2(0.43, 0.43)
-texture = ExtResource("8_8t03j")
+[node name="โ" type="Sprite2D" parent="Quest/Panel2" unique_id=132682682]
+position = Vector2(579, 319)
+scale = Vector2(0.435, 0.435)
+texture = ExtResource("8_ebec5")
 
 [node name="CrySound" type="AudioStreamPlayer" parent="." unique_id=1290412402]
 stream = ExtResource("8_rgyib")

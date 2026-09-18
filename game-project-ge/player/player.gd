@@ -8,17 +8,19 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const MOUSE_SENSITIVITY = 0.003
-
+var last_godang := 0
 @onready var wrenchHand = $CameraController/Camera3D/HandedItem/Wrench
 @onready var boxHand = $CameraController/Camera3D/HandedItem/Box
 @onready var fuseHand = $CameraController/Camera3D/HandedItem/Fuse
 @onready var KeyHand = $CameraController/Camera3D/HandedItem/Key
 
 var ItemOnHand = "none"
-var current_godang := 0
 var door_lock_timer := 0.0
 var door_timer_started := false
 var flashlighton = false
+
+var last_characin_godang := 0
+var locking_godang := 0
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -62,9 +64,10 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	EventScheduler.Winner()
 	EventScheduler.OverTime()
+	debug_godang_status()
+	check_random_door_lock(delta)
 	if EventScheduler.Win :
 		get_tree().change_scene_to_file("res://scenes/Outro.tscn")
-	print(ResourceLoader.exists("res://Main/MainMenuUI.tscn"))
 	if !EventScheduler.playerAlive:
 		print("1: Player Dead")
 
@@ -94,104 +97,148 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("flashlight"):
 		flashLightFunction()
 	if Input.is_action_just_pressed("CheckLowhigh"):
-		EventScheduler.RunNumber = true
-		EventScheduler.ShutDown = true
-		EventScheduler.TollSort = true
-		EventScheduler.DifColor = true
-		EventScheduler.BoxCheck = true
-		EventScheduler.Fix = true
-		EventScheduler.GodangTwoCheck = true
+		EventScheduler.fuseCheck = true
 	if Input.is_key_pressed(KEY_B):
 		EventScheduler.SafeRoomLock = !EventScheduler.SafeRoomLock
 		print("TEST: SafeRoomLock = true")
 
 	# กด N = ล็อกประตูโกดังปัจจุบัน
 	if Input.is_key_pressed(KEY_N):
-		if current_godang > 0:
-			EventScheduler.set(
-				"door_locked" + str(current_godang),
-				true
-			)
 
-			print("TEST: doorlock", current_godang, " = true")
+		if EventScheduler.CharacinGodang1:
+			EventScheduler.door_locked1 = true
+			print("TEST: door_locked1 = true")
+
+		elif EventScheduler.CharacinGodang2:
+			EventScheduler.door_locked2 = true
+			print("TEST: door_locked2 = true")
+
+		elif EventScheduler.CharacinGodang3:
+			EventScheduler.door_locked3 = true
+			print("TEST: door_locked3 = true")
+
 		else:
-			print("TEST: ไม่ได้อยู่ในโกดัง")
+			print("TEST: ผู้เล่นไม่ได้อยู่ในโกดัง")
 var textChange = false
-
 func check_random_door_lock(delta: float) -> void:
-	# =========================
+
+	# =========================================================
+	# ตรวจการเข้าโกดัง
+	# =========================================================
+
 	# เข้าโกดัง 1
-	# =========================
-	if EventScheduler.CharacinGodang1 and current_godang != 1:
-		current_godang = 1
+	if EventScheduler.CharacinGodang1 and last_characin_godang != 1:
+		last_characin_godang = 1
+		locking_godang = 1
+
 		door_timer_started = true
-		door_lock_timer = randf_range(10.0, 30.0)
+		door_lock_timer = randf_range(7.0, 10.0)
 
-		EventScheduler.doorlock1 = false
+		EventScheduler.door_locked1 = false
 
-		print("เข้าโกดัง 1")
-		print("ประตูจะล็อกใน ", door_lock_timer, " วินาที")
+		print("DEBUG: เข้าโกดัง 1")
+		print("DEBUG: สุ่มล็อกใน ", door_lock_timer, " วินาที")
 
 
-	# =========================
 	# เข้าโกดัง 2
-	# =========================
-	elif EventScheduler.CharacinGodang2 and current_godang != 2:
-		current_godang = 2
+	elif EventScheduler.CharacinGodang2 and last_characin_godang != 2:
+		last_characin_godang = 2
+		locking_godang = 2
+
 		door_timer_started = true
-		door_lock_timer = randf_range(10.0, 30.0)
+		door_lock_timer = randf_range(7.0, 10.0)
 
-		EventScheduler.doorlock2 = false
+		EventScheduler.door_locked2 = false
 
-		print("เข้าโกดัง 2")
-		print("ประตูจะล็อกใน ", door_lock_timer, " วินาที")
+		print("DEBUG: เข้าโกดัง 2")
+		print("DEBUG: สุ่มล็อกใน ", door_lock_timer, " วินาที")
 
 
-	# =========================
 	# เข้าโกดัง 3
-	# =========================
-	elif EventScheduler.CharacinGodang3 and current_godang != 3:
-		current_godang = 3
+	elif EventScheduler.CharacinGodang3 and last_characin_godang != 3:
+		last_characin_godang = 3
+		locking_godang = 3
+
 		door_timer_started = true
-		door_lock_timer = randf_range(10.0, 30.0)
+		door_lock_timer = randf_range(7.0, 10.0)
 
-		EventScheduler.doorlock3 = false
+		EventScheduler.door_locked3 = false
 
-		print("เข้าโกดัง 3")
-		print("ประตูจะล็อกใน ", door_lock_timer, " วินาที")
+		print("DEBUG: เข้าโกดัง 3")
+		print("DEBUG: สุ่มล็อกใน ", door_lock_timer, " วินาที")
 
 
-	# =========================
-	# นับเวลา
-	# =========================
+	# =========================================================
+	# นับเวลาล็อกประตู
+	# =========================================================
+
 	if door_timer_started:
 		door_lock_timer -= delta
 
 		if door_lock_timer <= 0.0:
 			door_timer_started = false
 
-			if current_godang == 1:
-				EventScheduler.doorlock1 = true
-				print("ประตูโกดัง 1 ล็อกแล้ว")
+			if locking_godang == 1:
+				EventScheduler.door_locked1 = true
+				print("DEBUG: ประตูโกดัง 1 ล็อกแล้ว")
 
-			elif current_godang == 2:
-				EventScheduler.doorlock2 = true
-				print("ประตูโกดัง 2 ล็อกแล้ว")
+			elif locking_godang == 2:
+				EventScheduler.door_locked2 = true
+				print("DEBUG: ประตูโกดัง 2 ล็อกแล้ว")
 
-			elif current_godang == 3:
-				EventScheduler.doorlock3 = true
-				print("ประตูโกดัง 3 ล็อกแล้ว")
+			elif locking_godang == 3:
+				EventScheduler.door_locked3 = true
+				print("DEBUG: ประตูโกดัง 3 ล็อกแล้ว")
 
 
-	# =========================
-	# ออกจากโกดังทั้งหมด
-	# =========================
+	# =========================================================
+	# ตรวจออกจากโกดัง
+	# =========================================================
+
 	if not EventScheduler.CharacinGodang1 \
 	and not EventScheduler.CharacinGodang2 \
 	and not EventScheduler.CharacinGodang3:
 
-		current_godang = 0
+		if last_characin_godang != 0:
+			print("DEBUG: ออกจากโกดัง ", last_characin_godang)
+
+		last_characin_godang = 0
+		locking_godang = 0
 		door_timer_started = false
+		
+func debug_godang_status() -> void:
+	var new_godang := 0
+
+	if EventScheduler.CharacinGodang1:
+		new_godang = 1
+	elif EventScheduler.CharacinGodang2:
+		new_godang = 2
+	elif EventScheduler.CharacinGodang3:
+		new_godang = 3
+
+	# ไม่มีการเปลี่ยนแปลง
+	if new_godang == last_godang:
+		return
+
+	# =========================
+	# เข้าโกดัง
+	# =========================
+	if new_godang > 0:
+		print("================================")
+		print("DEBUG: ผู้เล่นเข้าโกดัง ", new_godang)
+		print("เวลา: ", EventScheduler.current_hour, ":", EventScheduler.current_minute)
+		print("================================")
+
+	# =========================
+	# ออกจากโกดัง
+	# =========================
+	elif last_godang > 0:
+		print("================================")
+		print("DEBUG: ผู้เล่นออกจากโกดัง ", last_godang)
+		print("เวลา: ", EventScheduler.current_hour, ":", EventScheduler.current_minute)
+		print("================================")
+
+	last_godang = new_godang
 func checkObjectInfront():
 	if not raycast.is_colliding():
 		UI.setCollition(false)
@@ -214,6 +261,8 @@ func checkObjectInfront():
 			return
 			
 		if Input.is_action_just_pressed("checkmic"):
+			if EventScheduler.current_hour == 3:
+				EventScheduler.PlayerAlive = false
 			var door_number: int = item.NumberDoor
 			var is_locked: bool = EventScheduler.get("door_locked" + str(door_number))
 			if is_locked:
@@ -253,13 +302,34 @@ func checkObjectInfront():
 	# =========================================================
 	# DINAMO
 	# =========================================================
-	if item.is_in_group("dinamo") and ItemOnHand == "Wrench" and picked:
-		print("เจอแบ้วจ้า")
-		print(ItemOnHand)
+	# =========================================================
+# DINAMO
+# =========================================================
+	if item.is_in_group("dinamo"):
+		
+		# ไม่มีประแจ
+		if ItemOnHand != "Wrench":
+			if not textChange:
+				UI.setCollition(true)
+				UI.TextChanger("ต้องใช้ประแจในการซ่อม")
+			
+			if picked:
+				textChange = true
+				UI.TextChanger("ต้องใช้ประแจในการซ่อม")
+				await get_tree().create_timer(0.8).timeout
+				textChange = false
+			
+			return
+		
+		# มีประแจ
+		if ItemOnHand == "Wrench" and picked:
+			print("เจอไดนาโมแล้วจ้า")
+			print("ItemOnHand: ", ItemOnHand)
 
-		item.get_node("CheckEvent").visible = true
-		item.get_node("CheckEvent").open_event()
-		return
+			item.get_node("CheckEvent").visible = true
+			item.get_node("CheckEvent").open_event()
+			
+			return
 	# =========================================================
 	# EVENT ITEM
 	# =========================================================
@@ -295,7 +365,6 @@ func checkObjectInfront():
 	# ITEM CLASS
 	# =========================================================
 	if item is ClassItem:
-		print(ItemOnHand)
 		if not textChange:
 			UI.setCollition(true)
 			UI.TextChanger(item.getInteractive())

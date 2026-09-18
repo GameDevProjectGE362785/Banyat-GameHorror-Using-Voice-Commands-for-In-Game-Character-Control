@@ -1,0 +1,65 @@
+[gd_scene format=4 uid="uid://dhifq2ti57ohf"]
+
+[ext_resource type="Texture2D" uid="uid://b637x5fhwm6c8" path="res://model/road/untitled_Image_2.jpg" id="1_lt2hd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewjte"]
+resource_name = "Material.002"
+cull_mode = 2
+albedo_texture = ExtResource("1_lt2hd")
+roughness = 0.82111454
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tqvhm"]
+_surfaces = [{
+"aabb": AABB(-1, -1, 0, 2, 2, 1e-05),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AACAvwAAgL8AAAAAAACAPwAAgD8AAAAAAACAPwAAgL8AAAAAAACAvwAAgD8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xrdis"]
+resource_name = "untitled_Plane_001_Material_002_0"
+_surfaces = [{
+"aabb": AABB(-1, -1, 0, 2, 2, 1e-05),
+"attribute_data": PackedByteArray("cfl/P2/5fz9x+X8/b/l/P1qs0TgAANI4WqzROAAA0jhY3NE4c/l/P1jc0Thz+X8/b/l/PwCg0Thv+X8/AKDROA=="),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_ewjte"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AACAvwAAgL8AAAAAAACAPwAAgD8AAAAAAACAPwAAgL8AAAAAAACAvwAAgD8AAAAA/3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z8=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tqvhm")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jv1ba"]
+size = Vector3(3.7320557, 0.16015625, 5.713928)
+
+[node name="untitled" type="Node3D" unique_id=1993557890]
+
+[node name="Sketchfab_model" type="Node3D" parent="." unique_id=336093941]
+transform = Transform3D(1, 0, 0, 0, -3.5762787e-07, 0.99999994, 0, -0.99999994, -3.5762787e-07, 0, 0, 0)
+
+[node name="6b2acf4f9df14ba8bbebbbe3bc27b1f8_fbx" type="Node3D" parent="Sketchfab_model" unique_id=436417940]
+transform = Transform3D(0.01, 0, 0, 0, -3.5762793e-09, -0.010000001, 0, 0.010000001, -3.5762793e-09, 0, 0, 0)
+
+[node name="RootNode" type="Node3D" parent="Sketchfab_model/6b2acf4f9df14ba8bbebbbe3bc27b1f8_fbx" unique_id=1348549600]
+
+[node name="Plane_001_Material_002_0" type="MeshInstance3D" parent="Sketchfab_model/6b2acf4f9df14ba8bbebbbe3bc27b1f8_fbx/RootNode" unique_id=518443949]
+transform = Transform3D(198.44434, 0, 0, 0, -0.000106376574, 198.4443, 0, -297.45047, -7.096922e-05, -2.801156, 0, 0)
+mesh = SubResource("ArrayMesh_xrdis")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=116683783]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1554871914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11004639, -0.052734375, -0.04824829)
+shape = SubResource("BoxShape3D_jv1ba")

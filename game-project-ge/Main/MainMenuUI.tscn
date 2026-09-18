@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b17owbhf6fx4" path="res://Main/main_menu_ui.gd" id="1_3jx25"]
 [ext_resource type="Texture2D" uid="uid://jaulkv5fend5" path="res://Main/Untitled24_20260918151539.png" id="2_hjw53"]
+[ext_resource type="StyleBox" uid="uid://lcb0olthaxpp" path="res://model/sao/new_style_box_texture.tres" id="3_3lytu"]
 [ext_resource type="Script" uid="uid://opbjkdsj8lr3" path="res://Main/button.gd" id="3_hjw53"]
 [ext_resource type="PackedScene" uid="uid://bxkoy1c65w3f0" path="res://scenes/Intro.tscn" id="4_00ym5"]
 [ext_resource type="Script" uid="uid://cingpho7ho6l0" path="res://Main/button_2.gd" id="5_2wwo1"]
@@ -13,9 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bkw8pwa3wwyid" path="res://model/warehouse/textures/Asphalt_New_baseColor.jpeg" id="10_5n7dp"]
 [ext_resource type="PackedScene" uid="uid://d4a6uq4akepgb" path="res://Asset/Item/Wrench/Wrench.tscn" id="11_ijo6h"]
 [ext_resource type="AudioStream" uid="uid://c3gty6r6jnkdm" path="res://Main/เสียงหน้าเข้าเกม.mp3" id="13_00ym5"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbcfn"]
-bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iwj1c"]
 size = Vector3(23.97876, 8.552856, 32.055603)
@@ -335,44 +333,44 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Untitled2420260918144005" type="Sprite2D" parent="Control" unique_id=1819899860]
-position = Vector2(578, 327.25)
-scale = Vector2(0.6020834, 0.5939815)
+position = Vector2(578, 324.5)
+scale = Vector2(0.60208327, 0.60462964)
 texture = ExtResource("2_hjw53")
 
 [node name="Button" type="Button" parent="Control" unique_id=2108092570]
 layout_mode = 0
-offset_left = -31.0
-offset_top = 290.0
-offset_right = 498.0
-offset_bottom = 362.0
+offset_left = -29.0
+offset_top = 313.0
+offset_right = 500.0
+offset_bottom = 385.0
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 42
-theme_override_styles/normal = SubResource("StyleBoxFlat_xbcfn")
+theme_override_styles/normal = ExtResource("3_3lytu")
 text = "เริ่มเกมส์"
 script = ExtResource("3_hjw53")
 next_scene = ExtResource("4_00ym5")
 
 [node name="Button2" type="Button" parent="Control" unique_id=1378991381]
 layout_mode = 0
-offset_left = -26.0
-offset_top = 375.0
-offset_right = 498.0
-offset_bottom = 441.0
+offset_left = -24.0
+offset_top = 398.0
+offset_right = 500.0
+offset_bottom = 464.0
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 42
-theme_override_styles/normal = SubResource("StyleBoxFlat_xbcfn")
+theme_override_styles/normal = ExtResource("3_3lytu")
 text = "ตั้งค่า"
 script = ExtResource("5_2wwo1")
 
 [node name="Button3" type="Button" parent="Control" unique_id=66068171]
 layout_mode = 0
-offset_left = -40.0
-offset_top = 457.0
-offset_right = 499.0
-offset_bottom = 523.0
+offset_left = -38.0
+offset_top = 480.0
+offset_right = 501.0
+offset_bottom = 546.0
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 42
-theme_override_styles/normal = SubResource("StyleBoxFlat_xbcfn")
+theme_override_styles/normal = ExtResource("3_3lytu")
 text = "ออกเกมส์"
 script = ExtResource("6_7y04y")
 

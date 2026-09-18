@@ -10,8 +10,9 @@ size = Vector3(3.0541687, 2.15625, 0.22955322)
 [node name="Curb_Straight" parent="." index="0" unique_id=758677954]
 transform = Transform3D(0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, 2.447009, 0, -3.1121874)
 
-[node name="Area3D" type="Area3D" parent="." index="1" unique_id=1219435702]
+[node name="Area3D" type="StaticBody3D" parent="." index="1" unique_id=1174893494]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.028308868, 1.0516087, 0.1249938)
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=28423413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005600691, 0.02749288, 0.06326461)
