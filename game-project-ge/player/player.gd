@@ -60,6 +60,10 @@ func _physics_process(delta: float) -> void:
 
 #Control interactive
 func _process(delta: float) -> void:
+	EventScheduler.Winner()
+	EventScheduler.OverTime()
+	if EventScheduler.Win :
+		get_tree().change_scene_to_file("res://scenes/Outro.tscn")
 	print(ResourceLoader.exists("res://Main/MainMenuUI.tscn"))
 	if !EventScheduler.playerAlive:
 		print("1: Player Dead")
@@ -211,7 +215,7 @@ func checkObjectInfront():
 			
 		if Input.is_action_just_pressed("checkmic"):
 			var door_number: int = item.NumberDoor
-			var is_locked: bool = EventScheduler.get("doorlock" + str(door_number))
+			var is_locked: bool = EventScheduler.get("door_locked" + str(door_number))
 			if is_locked:
 				var unlocked: bool = await Knockdetector.start_listening_sharp()
 				if unlocked:

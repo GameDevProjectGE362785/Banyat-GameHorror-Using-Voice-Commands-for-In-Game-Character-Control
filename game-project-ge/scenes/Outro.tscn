@@ -1,15 +1,15 @@
-[gd_scene format=3 uid="uid://bxkoy1c65w3f0"]
+[gd_scene format=3 uid="uid://bu0qbbaeekla1"]
 
-[ext_resource type="Script" uid="uid://cujk7pkbag31v" path="res://scenes/intro.gd" id="1_45dpb"]
-[ext_resource type="FontFile" uid="uid://ck3m62hlpemne" path="res://player/FC Vision Heavy Compressed [Non-commercial].otf" id="2_hc7eg"]
-[ext_resource type="AudioStream" uid="uid://drab4ft3qwbqe" path="res://Main/dragon-studio-keyboard-typing-sound-effect-335503.mp3" id="3_aqbct"]
+[ext_resource type="Script" uid="uid://owx6ljypfkq2" path="res://scenes/outro.gd" id="1_ogn0c"]
+[ext_resource type="FontFile" uid="uid://ck3m62hlpemne" path="res://player/FC Vision Heavy Compressed [Non-commercial].otf" id="2_o2g6e"]
+[ext_resource type="AudioStream" uid="uid://drab4ft3qwbqe" path="res://Main/dragon-studio-keyboard-typing-sound-effect-335503.mp3" id="3_4v4y8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5ieep"]
-font = ExtResource("2_hc7eg")
+font = ExtResource("2_o2g6e")
 font_size = 22
 
 [sub_resource type="LabelSettings" id="LabelSettings_jv1ba"]
-font = ExtResource("2_hc7eg")
+font = ExtResource("2_o2g6e")
 
 [node name="root" type="Control" unique_id=852812872]
 layout_mode = 3
@@ -17,7 +17,7 @@ anchor_right = 0.23200001
 anchor_bottom = 0.216
 offset_right = -267.264
 offset_bottom = -139.968
-script = ExtResource("1_45dpb")
+script = ExtResource("1_ogn0c")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=250690466]
 layout_mode = 0
@@ -66,6 +66,6 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=54766181]
-stream = ExtResource("3_aqbct")
+stream = ExtResource("3_4v4y8")
 autoplay = true
 parameters/looping = false

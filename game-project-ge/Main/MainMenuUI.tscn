@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b17owbhf6fx4" path="res://Main/main_menu_ui.gd" id="1_3jx25"]
 [ext_resource type="Texture2D" uid="uid://jaulkv5fend5" path="res://Main/Untitled24_20260918151539.png" id="2_hjw53"]
 [ext_resource type="Script" uid="uid://opbjkdsj8lr3" path="res://Main/button.gd" id="3_hjw53"]
-[ext_resource type="PackedScene" uid="uid://br2olntaaiitq" path="res://Main/main.tscn" id="4_etj70"]
+[ext_resource type="PackedScene" uid="uid://bxkoy1c65w3f0" path="res://scenes/Intro.tscn" id="4_00ym5"]
 [ext_resource type="Script" uid="uid://cingpho7ho6l0" path="res://Main/button_2.gd" id="5_2wwo1"]
 [ext_resource type="PackedScene" uid="uid://oo55yefi45re" path="res://temp/CloneContainer.tscn" id="6_3sc4u"]
 [ext_resource type="Script" uid="uid://dp83fpg0s0cli" path="res://Main/button_3.gd" id="6_7y04y"]
@@ -350,7 +350,7 @@ theme_override_font_sizes/font_size = 42
 theme_override_styles/normal = SubResource("StyleBoxFlat_xbcfn")
 text = "เริ่มเกมส์"
 script = ExtResource("3_hjw53")
-next_scene = ExtResource("4_etj70")
+next_scene = ExtResource("4_00ym5")
 
 [node name="Button2" type="Button" parent="Control" unique_id=1378991381]
 layout_mode = 0

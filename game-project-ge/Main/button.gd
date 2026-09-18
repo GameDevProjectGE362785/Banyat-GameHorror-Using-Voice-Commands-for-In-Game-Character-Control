@@ -24,6 +24,8 @@ func _on_pressed() -> void:
 	
 	# เปลี่ยน scene — วิธีนี้จะจัดการ scene เก่าให้เอง ไม่ต้อง instantiate มือ
 	if next_scene:
+		GameClock.Start = true
 		get_tree().change_scene_to_packed(next_scene)
 	else:
-		get_tree().change_scene_to_file("res://Main/main.tscn")
+		GameClock.Start = true
+		get_tree().change_scene_to_file("res://scenes/Intro.tscn")

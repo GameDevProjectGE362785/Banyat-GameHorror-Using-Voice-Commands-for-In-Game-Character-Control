@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://bukywksgegj4f" path="res://Main/door_godang_3.gd" id="25_t85yq"]
 [ext_resource type="Script" uid="uid://bh4vk85prghws" path="res://Main/door_godang_1.gd" id="26_y88hr"]
 [ext_resource type="AudioStream" uid="uid://cvqj2xndi3b1j" path="res://Main/เสียงพื้นหลังในเกม.mp3" id="28_y88hr"]
+[ext_resource type="PackedScene" uid="uid://c7ueewpfrlncu" path="res://scenes/TutorialHUD.tscn" id="29_qded6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l5bfp"]
 size = Vector3(23.97876, 8.552856, 32.055603)
@@ -138,7 +139,7 @@ mesh = SubResource("ArrayMesh_xi84t")
 shape = SubResource("ConcavePolygonShape3D_j4inf")
 
 [node name="Wrench" parent="Node3D" unique_id=1082256035 instance=ExtResource("8_0gq1e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.97266, 0.84125644, 41.102577)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.97266, 1.0104445, 40.803947)
 
 [node name="security+room-fbx" parent="." unique_id=397097937 instance=ExtResource("5_k3v36")]
 transform = Transform3D(-25.982, 0, -2.9898679e-06, 0, 12.132, 0, 3.923173e-06, 0, -19.801, 48.569237, 0.096080445, 30.060856)
@@ -304,19 +305,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.15156, 0.33595845, -24.953
 [node name="Fuse4" parent="." unique_id=1429290521 instance=ExtResource("9_qac2q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.20352, 0.33596024, 34.996643)
 
-[node name="Box" parent="." unique_id=1432651663 instance=ExtResource("9_0jx5h")]
+[node name="Box" parent="." unique_id=1432651663 groups=["Box"] instance=ExtResource("9_0jx5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1115792, 0.00062085595, 38.71414)
 
-[node name="Box2" parent="." unique_id=1719165895 instance=ExtResource("9_0jx5h")]
+[node name="Box2" parent="." unique_id=1719165895 groups=["Box"] instance=ExtResource("9_0jx5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.881444, 0.0006211292, 33.501225)
 
-[node name="Box3" parent="." unique_id=1452479396 instance=ExtResource("9_0jx5h")]
+[node name="Box3" parent="." unique_id=1452479396 groups=["Box"] instance=ExtResource("9_0jx5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2643304, 0.0006211292, 30.96459)
 
-[node name="Box4" parent="." unique_id=78567705 instance=ExtResource("9_0jx5h")]
+[node name="Box4" parent="." unique_id=78567705 groups=["Box"] instance=ExtResource("9_0jx5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.678363, 0.00062089076, 36.286495)
 
-[node name="Box5" parent="." unique_id=850583974 instance=ExtResource("9_0jx5h")]
+[node name="Box5" parent="." unique_id=850583974 groups=["Box"] instance=ExtResource("9_0jx5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9193244, 0.0006213328, 43.370995)
 
 [node name="Dinamo" parent="." unique_id=1145836353 instance=ExtResource("10_uhr2j")]
@@ -401,6 +402,8 @@ NumberDoor = 1
 stream = ExtResource("28_y88hr")
 autoplay = true
 parameters/looping = true
+
+[node name="root" parent="." unique_id=1310149447 instance=ExtResource("29_qded6")]
 
 [connection signal="body_entered" from="Node3D/godang3/godang3" to="Node3D/godang3/godang3" method="_on_body_entered"]
 [connection signal="body_exited" from="Node3D/godang3/godang3" to="Node3D/godang3/godang3" method="_on_body_exited"]

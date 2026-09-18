@@ -8,11 +8,11 @@ const START_TIME_SECONDS := 0.0
 const END_TIME_SECONDS := 6.0 * 60.0 * 60.0
 
 ## Real seconds required to advance one in-game hour.
-@export_range(0.1, 3600.0, 0.1) var time_compression := 10.0
+@export_range(0.1, 3600.0, 0.1) var time_compression := 300.0
 
 var elapsed_game_seconds := START_TIME_SECONDS
 var is_running := true
-
+var Start = false
 
 func _ready() -> void:
 	_reset_display()
@@ -20,15 +20,17 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	
 	if not is_running:
 		return
-
+	
 	var previous_hour = EventScheduler.current_hour
-	elapsed_game_seconds = min(
-		elapsed_game_seconds + delta * 3600.0 / time_compression,
-		END_TIME_SECONDS
-	)
-	_update_display()
+	if Start:
+		elapsed_game_seconds = min(
+			elapsed_game_seconds + delta * 3600.0 / time_compression,
+			END_TIME_SECONDS
+		)
+		_update_display()
 
 	if EventScheduler.current_hour != previous_hour:
 		hour_tick.emit(EventScheduler.current_hour)

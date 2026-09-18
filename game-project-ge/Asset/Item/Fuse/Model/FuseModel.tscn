@@ -14,15 +14,18 @@ albedo_color = Color(1, 1, 1, 0.19607843)
 
 [node name="rod" type="MeshInstance3D" parent="." unique_id=529652768]
 transform = Transform3D(0.21, 0, 0, 0, 0.31, 0, 0, 0, 0.21, 0, 0, 0)
+layers = 5
 material_override = SubResource("StandardMaterial3D_qsuaf")
 mesh = SubResource("CylinderMesh_s1fef")
 
 [node name="Header" type="MeshInstance3D" parent="." unique_id=1305540615]
 transform = Transform3D(0.255, 0, 0, 0, 0.06, 0, 0, 0, 0.245, 0, -0.27596024, 0)
+layers = 5
 material_override = ExtResource("1_cgjrx")
 mesh = SubResource("CylinderMesh_khhxn")
 
 [node name="Header2" type="MeshInstance3D" parent="." unique_id=1803346983]
 transform = Transform3D(0.255, 0, 0, 0, 0.06, 0, 0, 0, 0.245, 0, 0.30890933, 0)
+layers = 5
 material_override = ExtResource("1_cgjrx")
 mesh = SubResource("CylinderMesh_khhxn")

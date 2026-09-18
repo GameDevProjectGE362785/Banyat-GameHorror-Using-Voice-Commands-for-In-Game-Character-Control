@@ -31,7 +31,7 @@ var GodangTwoCheck = false #เช็คของในโกดัง 2 (หา
 var fuseCheck = false #เปลี่ยน Fuse ตู้ไฟ (หาฟิวตามแมพ)
 var CutOut = false #ปิดเครื่องจักร ปิดคัตเอ้า (มินิเกม)
 
-
+var Win = false
 
 const BEATS: Dictionary = {
 	0: &"intro_blackout",
@@ -123,7 +123,20 @@ func update_ghouston_status():
 
 	else:
 		GhoustinGodang3 = true
-
+func OverTime() -> void:
+	if current_hour >= 6:
+		playerAlive = false
+		
+func Winner() -> void:
+	if RunNumber \
+	and TollSort \
+	and DifColor \
+	and BoxCheck \
+	and Fix \
+	and GodangTwoCheck \
+	and fuseCheck \
+	and CutOut:
+		Win = true
 func update_safe_room_lock() -> void:
 	var total_minutes := current_hour * 60 + current_minute
 
