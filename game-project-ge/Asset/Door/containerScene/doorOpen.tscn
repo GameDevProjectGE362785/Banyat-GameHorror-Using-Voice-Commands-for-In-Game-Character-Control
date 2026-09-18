@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bbyotenvgm476" path="res://Asset/Door/containerScene/DoorContainer.gd" id="1_yhi21"]
 [ext_resource type="PackedScene" uid="uid://cx51elv7y707c" path="res://Asset/Door/Model/container/containerLeft.tscn" id="2_ccy2v"]
 [ext_resource type="AudioStream" uid="uid://d08koulibrveo" path="res://Asset/SFX/knock.mp3" id="3_ccy2v"]
+[ext_resource type="AudioStream" uid="uid://vjx5l6m8k4i7" path="res://Asset/Door/containerScene/ประตูใหญ่เปิด.mp3" id="4_miqmp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lqiej"]
 size = Vector3(0.6586914, 13.073669, 8.896057)
@@ -20,3 +21,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 8.516167)
 [node name="Knock" type="AudioStreamPlayer3D" parent="." unique_id=921199483]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9110935, 4.296179, 3.8125668)
 stream = ExtResource("3_ccy2v")
+
+[node name="DoorSound" type="AudioStreamPlayer3D" parent="." unique_id=1964221012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6240196, 6.3785796, 0.12170172)
+stream = ExtResource("4_miqmp")

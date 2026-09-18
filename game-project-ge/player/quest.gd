@@ -2,6 +2,7 @@ extends Control
 
 
 @onready var panel: Panel = $Panel
+@onready var MAP: Panel = $Panel2
 @onready var title: Label = $Panel/VBoxContainer/Title
 @onready var run_number: Label = $Panel/VBoxContainer/RunNumber
 @onready var toll_sort: Label = $Panel/VBoxContainer/TollSort
@@ -27,7 +28,12 @@ func _input(event: InputEvent) -> void:
 
 			if panel.visible:
 				update_quest()
+		if event.pressed and event.keycode == KEY_M:
+			print("MAP")
+			MAP.visible = not MAP.visible
 
+			if MAP.visible:
+				update_quest()
 
 func update_quest() -> void:
 

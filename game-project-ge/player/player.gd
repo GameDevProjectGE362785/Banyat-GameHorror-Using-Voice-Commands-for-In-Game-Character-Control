@@ -59,7 +59,8 @@ func _physics_process(delta: float) -> void:
 
 #Control interactive
 func _process(delta: float) -> void:
-	
+	if !EventScheduler.playerAlive:
+		$Control.visible = true
 	EventScheduler.update_ghouston_status()
 	if EventScheduler.GhoustinGodang1 == true and EventScheduler.CharacinGodang1 == true:
 		EventScheduler.playerAlive = false
@@ -164,6 +165,7 @@ func checkObjectInfront():
 	var picked := Input.is_action_just_pressed("PickUp")
 
 	if item.is_in_group("door"):
+		
 		if Input.is_action_just_pressed("checkmic"):
 			var door_number: int = item.NumberDoor
 			var is_locked: bool = EventScheduler.get("doorlock" + str(door_number))

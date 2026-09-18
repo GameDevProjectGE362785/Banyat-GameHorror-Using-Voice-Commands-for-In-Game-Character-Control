@@ -129,13 +129,13 @@ layout_mode = 2
 [node name="CloseButton" type="Button" parent="Quest/Panel/VBoxContainer" unique_id=975908008]
 layout_mode = 2
 
-[node name="Panel2" type="Panel" parent="Quest" unique_id=1440030311]
+[node name="map" type="Control" parent="Quest" unique_id=878020705]
 visible = false
-layout_mode = 0
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="1" type="Sprite2D" parent="Quest/Panel2" unique_id=780733013]
+[node name="1" type="Sprite2D" parent="Quest" unique_id=780733013]
 position = Vector2(564, 319)
 scale = Vector2(0.43, 0.43)
 texture = ExtResource("8_8t03j")
