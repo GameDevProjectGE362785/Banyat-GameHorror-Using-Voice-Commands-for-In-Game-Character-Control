@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://q5xe42fwnw5t" path="res://model/eventItem/shelf/shelf.tscn" id="8_5ghie"]
 [ext_resource type="PackedScene" uid="uid://da6d205kdo67b" path="res://Asset/Door/door.tscn" id="10_ngwpp"]
 [ext_resource type="PackedScene" uid="uid://lc6hkey7uf5j" path="res://Asset/Door/containerScene/doorOpen.tscn" id="11_s7aw1"]
+[ext_resource type="PackedScene" uid="uid://clnwvwhyiba2j" path="res://model/secu room/security+room_fbx.tscn" id="12_s7aw1"]
+[ext_resource type="PackedScene" uid="uid://bxbebo6xu746q" path="res://Asset/Item/key/key.tscn" id="13_x1o0v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_khhxn"]
 size = Vector3(2.0839844, 0.12188721, 2.0699463)
@@ -49,7 +51,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9146669, -0.0005903989, 0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.284071, -0.0005903989, 0.6873388)
 
 [node name="Wrench" parent="." unique_id=1082256035 instance=ExtResource("3_pyd3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4380019, 0.13419932, 1.5969553)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4380019, 0.50922984, 1.5969553)
 
 [node name="Fuse4" parent="." unique_id=1962960150 instance=ExtResource("4_4l8u5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7453928, 0.4947691, -3.92015)
@@ -84,3 +86,8 @@ transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, -2.486475, 0.0445
 
 [node name="Doorleft" parent="." unique_id=1253491357 instance=ExtResource("11_s7aw1")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -3.1165311, -0.0062122643, 2.4049582)
+
+[node name="security+room-fbx" parent="." unique_id=397097937 instance=ExtResource("12_s7aw1")]
+transform = Transform3D(-0.1434642, 0, 2.3456166, 0, 2.35, 0, -2.3456166, 0, -0.1434642, -3.707565, 0, 0)
+
+[node name="Key" parent="." unique_id=425120382 instance=ExtResource("13_x1o0v")]

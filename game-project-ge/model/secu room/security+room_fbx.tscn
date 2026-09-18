@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://p7g8xs27f4i7" path="res://model/secu room/new_standard_material_3d.tres" id="1_6hq5r"]
 [ext_resource type="PackedScene" uid="uid://cfi30183fhc1n" path="res://model/secu room/Office_Table.fbx" id="2_0iegj"]
 [ext_resource type="PackedScene" uid="uid://erihxwopu5jf" path="res://model/secu room/rules_board.tscn" id="3_xxi61"]
+[ext_resource type="PackedScene" uid="uid://da6d205kdo67b" path="res://Asset/Door/door.tscn" id="4_0iegj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yt4o5"]
 cull_mode = 2
@@ -399,16 +400,16 @@ size = Vector3(1.7606201, 0.90911865, 0.6888428)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jv1ba"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_aai3x"]
-size = Vector3(0.30981445, 0.24450684, 0.008178711)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew6px"]
-size = Vector3(0.24571252, 0.24768066, 0.01550293)
+size = Vector3(0.39816952, 0.24768066, 0.01550293)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xxi61"]
+size = Vector3(0.66404784, 0.21885742, 0.015)
 
 [node name="security+room-fbx" type="Node3D" unique_id=397097937]
-transform = Transform3D(2.1470718, 0, 0, 0, 1, 0, 0, 0, 1.6349721, 0, 0, 0)
 
 [node name="security_room" type="Node3D" parent="." unique_id=1075097534]
+transform = Transform3D(2.1470718, 0, 0, 0, 1, 0, 0, 0, 1.6349721, 0, 0, 0)
 
 [node name="security_room2" type="MeshInstance3D" parent="security_room" unique_id=1672099878]
 transform = Transform3D(1.0091113, 0, 0, 0, 1.0091113, 0, 0, 0, 1.0091113, 0, 0.1424343, -0.11339366)
@@ -456,8 +457,41 @@ transform = Transform3D(0.0016031859, 0, 0.0789767, 0, 0.12499997, 0, -0.0659805
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010314941, 0.47207642, 0.066101074)
 shape = SubResource("BoxShape3D_6hq5r")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1570161112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0412914, 0.130736, 0.013891978)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_jv1ba")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=336063102]
+transform = Transform3D(1, 0, 0, 0, 0.9999945, 0, 0, 0, 0.9999998, 0.049225077, 1.4901161e-08, 0)
+shape = SubResource("BoxShape3D_ew6px")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1555744978]
+transform = Transform3D(0.0024839176, 0, 0.99999666, 0, 0.9999996, 0, -0.99999684, 0, 0.002483917, 0.36997873, 0.13955416, -0.20601228)
+physics_material_override = SubResource("PhysicsMaterial_jv1ba")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=2061660192]
+transform = Transform3D(1, 0, -6.9849193e-10, 0, 0.9999999, 0, -6.9849193e-10, 0, 1, -0.02800323, 0.005039975, -0.03237757)
+shape = SubResource("BoxShape3D_ew6px")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=556842290]
+transform = Transform3D(1, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999998, -0.104682505, 0.115520135, -0.23214467)
+physics_material_override = SubResource("PhysicsMaterial_jv1ba")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=2028315510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.108391136, 0.025530145, -0.14635088)
+shape = SubResource("BoxShape3D_xxi61")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="." unique_id=1228938689]
+transform = Transform3D(-0.0054283934, 0, -0.9999847, 0, 0.9999988, 0, 0.9999848, 0, -0.0054283924, -0.18621995, 0.14362535, -0.13595028)
+physics_material_override = SubResource("PhysicsMaterial_jv1ba")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4" unique_id=1110191882]
+transform = Transform3D(0.9999978, 0, -5.5879354e-08, 0, 1.0000001, 0, 1.2572855e-08, 0, 1, -0.05137995, -0.0040893406, 0.15027899)
+shape = SubResource("BoxShape3D_ew6px")
+
 [node name="RulesBoard" parent="." unique_id=185386984 instance=ExtResource("3_xxi61")]
-transform = Transform3D(0.054134317, 0, 0, 0, 0.09987034, 0, 0, 0, 0.034, 0.0037966603, -0.0960824, -0.2374235)
+transform = Transform3D(0.054134317, 0, 0, 0, 0.09987034, 0, 0, 0, 0.034, 0.0037966603, -0.0960824, -0.3824677)
 rules_text = "1.พนักงานที่นี้มีคนเดียวถ้ามีเสียงเคาะประตู ห้ามเปิดประตูเด็ดขาดให้เคาะกลับ 3 ครั้งแทน
 2.ก่อนจะเข้าโกดังให้เคาะประตูก่อนทุกครั้งถ้าเคาะแล้วไม่มีเสียงอะไรถึงเข้าไปได้
 3.ถ้ามีเสียงร้องไห้ให้รีบกลับห้องพักให้เร็วที่สุดแล้วรอจนกว่าเสียงจะเงียบ
@@ -486,34 +520,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.067, 0.2, -0.114)
 visible = false
 light_specular = 16.0
 
-[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=556842290]
-transform = Transform3D(1, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999998, 0.038597595, 0.115520135, -0.23214467)
-physics_material_override = SubResource("PhysicsMaterial_jv1ba")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=2028315510]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03595066, 0.014709979, -0.00030390918)
-shape = SubResource("BoxShape3D_aai3x")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1570161112]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040824875, 0.130736, 0.00482176)
-physics_material_override = SubResource("PhysicsMaterial_jv1ba")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=336063102]
-transform = Transform3D(1, 0, 0, 0, 0.9999945, 0, 0, 0, 0.9999998, 0.0023024157, 1.4901161e-08, 0)
-shape = SubResource("BoxShape3D_ew6px")
-
-[node name="StaticBody3D4" type="StaticBody3D" parent="." unique_id=1228938689]
-transform = Transform3D(-0.0054283934, 0, -0.9999847, 0, 0.9999988, 0, 0.9999848, 0, -0.0054283924, -0.18621995, 0.14362535, -0.13595028)
-physics_material_override = SubResource("PhysicsMaterial_jv1ba")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4" unique_id=1110191882]
-transform = Transform3D(0.9999978, 0, 1.6298145e-08, 0, 1.0000001, 0, 1.2572855e-08, 0, 1, 0.022200868, -0.0040893406, -0.0324779)
-shape = SubResource("BoxShape3D_ew6px")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1555744978]
-transform = Transform3D(0.0024839176, 0, 0.99999666, 0, 0.9999996, 0, -0.99999684, 0, 0.002483917, 0.18014771, 0.13955416, -0.10050982)
-physics_material_override = SubResource("PhysicsMaterial_jv1ba")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=2061660192]
-transform = Transform3D(1, 0, -6.9849193e-10, 0, 1.0000001, 0, 0, 0, 1, 0.01236669, -0.0040893406, -0.032477885)
-shape = SubResource("BoxShape3D_ew6px")
+[node name="Node3D" parent="." unique_id=1776206574 instance=ExtResource("4_0iegj")]
+transform = Transform3D(0.008, 0, 0, 0, 0.005, 0, 0, 0, 0.005, -0.1540524, 0.029775467, 0)

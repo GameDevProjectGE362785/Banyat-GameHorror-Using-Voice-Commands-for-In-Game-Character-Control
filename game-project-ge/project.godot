@@ -45,6 +45,8 @@ EventItem=""
 ElecBox=""
 Box=""
 dinamo=""
+door=""
+player=""
 
 [input]
 

@@ -1,6 +1,5 @@
 extends "res://Asset/ClassItem.gd"
 
-
 class_name Box
 
 func getInteractive() -> String:
