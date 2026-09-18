@@ -67,6 +67,7 @@ spot_angle = 30.0
 spot_angle_attenuation = 1.414212
 
 [node name="CameraView" parent="." unique_id=554294395 instance=ExtResource("3_yw30f")]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=308477569]
 stream = SubResource("AudioStreamMicrophone_g1dw6")
@@ -74,6 +75,7 @@ autoplay = true
 bus = &"Mic"
 
 [node name="Quest" type="Control" parent="." unique_id=2032509068]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1148.0

@@ -178,3 +178,12 @@ transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 63
 transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 54.403755, 0, -54.04275)
 
 [node name="Main" parent="." unique_id=532195101 instance=ExtResource("8_f6fdm")]
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=182237643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.81309, 2.754541, 33.918606)
+light_energy = 1.902
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=2052580303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.677444, 2.754541, 33.918606)
+light_energy = 1.902

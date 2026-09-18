@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://e18vg27nkngx"]
+
+[ext_resource type="Texture2D" uid="uid://c1nexxsh4qn5y" path="res://Main/picture/Screenshot 2026-09-18 150344.png" id="1_pe4t3"]
+[ext_resource type="Texture2D" uid="uid://bu472qqkxxhu4" path="res://Main/picture/Untitled24_20260918151539.png" id="2_hjw53"]
+[ext_resource type="Script" uid="uid://ooynf2ifvujj" path="res://Main/button.gd" id="3_hjw53"]
+[ext_resource type="PackedScene" uid="uid://br2olntaaiitq" path="res://Main/main.tscn" id="4_etj70"]
+[ext_resource type="Script" uid="uid://cingpho7ho6l0" path="res://Main/button_2.gd" id="5_2wwo1"]
+[ext_resource type="Script" uid="uid://gwh410ajlgf6" path="res://Main/button_3.gd" id="6_7y04y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbcfn"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="MainMenuUi" type="Control" unique_id=857219535]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="Control" parent="." unique_id=494706086]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Screenshot20260918150344" type="Sprite2D" parent="BG" unique_id=1655337344]
+position = Vector2(549.50006, 306.00003)
+scale = Vector2(1.0840708, 1.0744336)
+texture = ExtResource("1_pe4t3")
+
+[node name="Control" type="Control" parent="." unique_id=212283010]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Untitled2420260918144005" type="Sprite2D" parent="Control" unique_id=1819899860]
+position = Vector2(578, 327.25)
+scale = Vector2(0.6020834, 0.5939815)
+texture = ExtResource("2_hjw53")
+
+[node name="Button" type="Button" parent="Control" unique_id=2108092570]
+layout_mode = 0
+offset_left = -20.0
+offset_top = 257.0
+offset_right = 509.0
+offset_bottom = 329.0
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxFlat_xbcfn")
+text = "เริ่มเกมส์"
+script = ExtResource("3_hjw53")
+next_scene = ExtResource("4_etj70")
+
+[node name="Button2" type="Button" parent="Control" unique_id=1378991381]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 339.0
+offset_right = 499.0
+offset_bottom = 405.0
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxFlat_xbcfn")
+text = "ตั้งค่า"
+script = ExtResource("5_2wwo1")
+
+[node name="Button3" type="Button" parent="Control" unique_id=66068171]
+layout_mode = 0
+offset_left = -29.0
+offset_top = 432.0
+offset_right = 510.0
+offset_bottom = 498.0
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxFlat_xbcfn")
+text = "ออกเกมส์"
+script = ExtResource("6_7y04y")
+
+[connection signal="pressed" from="Control/Button3" to="Control/Button" method="_on_button_3_pressed"]
+[connection signal="pressed" from="Control/Button3" to="Control/Button3" method="_on_pressed"]

@@ -7,6 +7,7 @@
 script = ExtResource("1_l26py")
 
 [node name="TimeDisplay" type="Label" parent="." unique_id=1779260209]
+visible = false
 anchors_preset = -1
 anchor_right = 0.9722222
 anchor_bottom = 0.07561728

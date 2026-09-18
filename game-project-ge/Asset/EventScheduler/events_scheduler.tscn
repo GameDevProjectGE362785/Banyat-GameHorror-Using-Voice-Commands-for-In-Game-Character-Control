@@ -7,6 +7,7 @@
 script = ExtResource("1_yexww")
 
 [node name="EventDisplay" type="Label" parent="." unique_id=1356006399]
+visible = false
 anchors_preset = -1
 anchor_left = 0.0026041667
 anchor_top = 0.1095679
