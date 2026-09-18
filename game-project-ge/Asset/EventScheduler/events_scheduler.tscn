@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d2yvo7bra43ny" path="res://Asset/EventScheduler/event_scheduler.gd" id="1_yexww"]
 [ext_resource type="Script" uid="uid://egkintikqllc" path="res://Asset/EventScheduler/event_display.gd" id="2_dls8l"]
+[ext_resource type="AudioStream" uid="uid://bx4yv4v2l7bor" path="res://Main/lose_card.wav" id="3_i2u6s"]
 
 [node name="EventsScheduler" type="Node" unique_id=659291456]
 script = ExtResource("1_yexww")
@@ -19,5 +20,8 @@ text = "Event"
 horizontal_alignment = 1
 script = ExtResource("2_dls8l")
 metadata/_edit_use_anchors_ = true
+
+[node name="CrySound" type="AudioStreamPlayer" parent="." unique_id=2072183431]
+stream = ExtResource("3_i2u6s")
 
 [connection signal="beat_triggered" from="." to="EventDisplay" method="_on_events_scheduler_beat_triggered"]
