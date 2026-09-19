@@ -7,7 +7,6 @@ resource_name = "Capture"
 resource_name = "SpectrumAnalyzer"
 
 [resource]
-bus/0/send = &"Mic"
 bus/1/name = &"Mic"
 bus/1/solo = false
 bus/1/mute = true

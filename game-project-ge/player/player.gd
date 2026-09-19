@@ -62,6 +62,8 @@ func _physics_process(delta: float) -> void:
 
 #Control interactive
 func _process(delta: float) -> void:
+	if EventScheduler.current_hour == 4 and EventScheduler.CharacinGodang2:
+		EventScheduler.PlayerAlive = false
 	EventScheduler.Winner()
 	EventScheduler.OverTime()
 	debug_godang_status()
